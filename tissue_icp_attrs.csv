@@ -1,0 +1,9 @@
+attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum
+site_code,,,,,site name abbreviation,factor,,
+plot_id,,,,plot id number,plot id number,character,,
+treatment_code,,,,,treatment name abbreviation,factor,,
+sample_date,YYYY-MM-DD,,,,date of leaf collection,Date,,
+tissue_type,,,,,source of tissue material,factor,,
+instrument,,,,,type of instrument employed for tissue analysis,factor,,
+isotope_element,,,,isotope atomic mass and chemical symbol,isotope atomic mass and chemical symbol,character,,
+concentration,,milligramPerKilogram,real,,mass of isotope_element per mass of leaf material,numeric,,
