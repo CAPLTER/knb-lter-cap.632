@@ -33,49 +33,27 @@ source('~/localRepos/reml-helper-tools/createFactorsDataframe.R')
 
 # add filter to remove 2008 data from publication
 # add filter to remove total comparable annual cover from publication (could be removed from DB as well)
-annuals_composition <- dbGetQuery(pg,
-"SELECT
+annuals_biomass <- dbGetQuery(pg,"
+SELECT
   s.code as site_code,
-  ce.plot as plot_id,
+  ab.plot_id,
   t.code as treatment_code,
-  ce.patch_type as location_within_plot,
-  ce.subplot,
-  ce.sample_date as date,
-  ce.year,
-  ce.collector,
-  ct.cover_type,
-  ct.cover_category,
-  cc.cover_amt as cover_amount
+  ab.location_within_plot as location_within_plot,
+  ab.replicate as subplot,
+  ab.subquad_orientation,
+  ab.date,
+  ab.year,
+  ab.mass,
+  ab.notes
 FROM
-  urbancndep.cover_composition cc
-  JOIN urbancndep.cover_events ce ON (cc.cover_event_id = ce.cover_event_id)
-  JOIN urbancndep.cover_types ct ON (cc.cover_type_id = ct.cover_type_id)
-  JOIN urbancndep.plots p ON (ce.plot = p.id)
+  urbancndep.annuals_biomass ab
+  JOIN urbancndep.plots p ON (ab.plot_id = p.id)
   JOIN urbancndep.sites s ON (s.id = p.site_id)
   JOIN urbancndep.treatments t ON (t.id = p.treatment_id)
-WHERE
-  ce.year > 2008 AND
-  ct.cover_type != 'total_comparable_annual_cover'
-ORDER BY year, plot, location_within_plot, subplot, cover_type;")
-
-# remove underscores from names of annuals. addressing this with base R and I am
-# baffled as to why the dplyr approach commented below runs but mangles the data
-annuals_composition[annuals_composition$cover_category == 'annual',]$cover_type <- str_replace(annuals_composition[annuals_composition$cover_category == 'annual',]$cover_type, "_", " ")
-
-  # why is the dplyr approach not working for this?
-  # also tried case_when and other approaches but consistently mangles the data
-  # alpha <- annuals_composition %>% 
-  #   mutate(cover_type = replace(cover_type, cover_category == "annual", str_replace(cover_type, "_", " ")))
-
-# spread data and remove the sampled dummy variable
-annuals_composition <- annuals_composition %>%
-  select(-cover_category) %>%
-  spread(cover_type, cover_amount) %>%
-  arrange(year, plot_id) %>% 
-  select(-sampled)
+ORDER BY year, plot_id, location_within_plot, subplot, subquad_orientation;")
 
 # change column types as appropriate
-annuals_composition <- annuals_composition %>%
+annuals_biomass <- annuals_biomass %>%
   mutate(site_code = as.factor(site_code)) %>%
   mutate(treatment_code = as.factor(treatment_code)) %>%
   mutate(location_within_plot = as.factor(location_within_plot)) %>% 
@@ -83,9 +61,9 @@ annuals_composition <- annuals_composition %>%
   mutate(plot_id = as.character(plot_id))
 
  # write data frame attributes to a csv in current dir to edit metadata
-writeAttributes(annuals_composition, 'species or plot characteristic not present')
+writeAttributes(annuals_biomass)
 
-annuals_composition_desc <- 'Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Estimates are based on 0.25 square meter quadrats within each subplot. All measurements collected in the spring.'
+annuals_biomass_desc <- 'Biomass (g) of annual plants harvested from subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Material is harested from 0.25 square meter quadrats within each subplot. All harvests occur during the spring.'
 
 # address factors if needed
 site_code <- c(DBG = "core region, Desert Botanical Garden",
@@ -113,21 +91,22 @@ location_within_plot <- c(P = "subplot features a Larrea tridentata plant",
 subplot <- c(`1` = "one of two replicates",
              `2` = "second of two replicates")
 
-annuals_composition_factors <- factorsToFrame(annuals_composition)
+annuals_biomass_factors <- factorsToFrame(annuals_biomass)
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-annuals_composition_DT <- createDTFF(dfname = annuals_composition,
-                                     factors = annuals_composition_factors,
-                                     description = annuals_composition_desc)
+annuals_biomass_DT <- createDTFF(dfname = annuals_biomass,
+                                 factors = annuals_biomass_factors,
+                                 description = annuals_biomass_desc,
+                                 dateRangeField = 'year')
 
 # construct eml ----
 
 dataset <- new("dataset",
-               dataTable = c(annuals_composition_DT))
+               dataTable = c(annuals_biomass_DT))
 
 # as this is a revision, only the xml for the tables is required
 eml <- new("eml",
            dataset = dataset)
 
-write_eml(eml, "annuals_composition_2017.xml")
+write_eml(eml, "annuals_biomass_2017.xml")

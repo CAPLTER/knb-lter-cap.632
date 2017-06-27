@@ -119,37 +119,9 @@ annuals_composition_factors <- factorsToFrame(annuals_composition)
 # use createdataTableFn() if attributes and classes are to be passed directly
 annuals_composition_DT <- createDTFF(dfname = annuals_composition,
                                      factors = annuals_composition_factors,
-                                     description = annuals_composition_desc)
+                                     description = annuals_composition_desc,
+                                     dateRangeField = 'year')
 
-# add temporalCoverage to annuals_composition_DT 
-addTemporalCoverage <- function() {
-  
-  first <- new("calendarDate",
-               min(annuals_composition$year))
-  last <- new("calendarDate",
-               max(annuals_composition$year))
-  
-  begin <- new("beginDate")
-    begin@calendarDate <- first
-  
-  end <- new("endDate")
-    end@calendarDate <- last
-
-  extent <- new("rangeOfDates",
-                beginDate = begin,
-                endDate = end)
-  
-  temporal <- new("temporalCoverage",
-                  rangeOfDates = extent)
-  tempCover <- new("coverage",
-                   temporalCoverage = temporal)
-  
-  annuals_composition_DT@coverage <- tempCover
-  
-  return(annuals_composition_DT)
-  
-}
-annuals_composition_DT <- addTemporalCoverage()
 # viewEML(annuals_composition_DT)
 
 # construct eml ----
