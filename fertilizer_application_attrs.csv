@@ -1,0 +1,5 @@
+attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum,missingValueCode,missingValueCodeExplanation
+site_code,,,,,site name abbreviation,factor,,,,
+application_date,YYYY-MM-DD,,,,date of fertilizer application,Date,,,,
+nitrogen,,kilogram,real,,amount of ammonium-nitrate nitrogen fertilizer applied to 20mx20m nitrogen (N) and nitrogen+phosphorus (N+P) treatment plots,numeric,1.715,3.429,,
+phosphorus,,kilogram,real,,amount of triple-super phosphate phosphorus fertilizer applied to 20mx20m phosphorus (P) and nitrogen+phosphorus (N+P) treatment plots,numeric,0,12,,
