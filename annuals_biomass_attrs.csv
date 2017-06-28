@@ -1,0 +1,11 @@
+attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum,missingValueCode,missingValueCodeExplanation
+site_code,,,,,site name abbreviation,factor,,,,
+plot_id,,,,plot id number,plot id number,character,,,,
+treatment_code,,,,,treatment name abbreviation,factor,,,,
+location_within_plot,,,,,habitat within plot where probes were deployed,factor,,,,
+subplot,,,,,subplot number (one of two replicates),factor,,,,
+subquad_orientation,,,,direction of subquadrat from which biomass was harvested,direction of subquadrat from which biomass was harvested,character,,,NA,missing value
+date,YYYY-MM-DD,,,,date of data collection,Date,,,NA,missing value
+year,YYYY,,natural,,year of data collection,Date,2008,2017,,
+mass,,gram,real,,mass of biomass harvested in 0.25 meterSquare quadrat,numeric,-0.481,131.52,NA,missing value
+notes,,,,field and_or processing notes,field and_or processing notes,character,,,NA,missing value
