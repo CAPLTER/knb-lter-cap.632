@@ -22,16 +22,15 @@ Fertilization with N, P, and N+P of 20 m x 20 m plots at 4 sites each in
 upwind, core, and downwind positions will be done twice per year to test
 the hypothesis that urban N deposition pushes the desert system toward P
 limitation. The level of N addition (as NH4NO3) is chosen to be ~ twice
-the current maximum deposition rate, i.e., 60 kg kg ha<sup>-1</sup>
-y<sup>-1</sup>; P addition level\* is 1/5 (by mass; 1/11 by atoms) that
-of N at 12 kg ha<sup>-1</sup> y<sup>-1</sup>. Fertilizer is applied to
-treatment plots each winter and summer to coincide with the bimodal
-precipitation patterns characteristic of the region. The prescribed
-weight of dry, granular fertilizer (ammonium-nitrate for nitrogen
-treatments (N, N+P), triple-super phosphate for phosphorus treatments
-(P, N+P)) is applied using a hand spreader. As of August 2015, the rate
-of N fertilizer application was reduced to 30 kg ha<sup>-1</sup>
-y<sup>-1</sup>, with a resulting N:P ratio of 2.5:1.
+the current maximum deposition rate, i.e., 60 kg kg ha-1 y-1; P addition
+level\* is 1/5 (by mass; 1/11 by atoms) that of N at 12 kg ha-1 y-1.
+Fertilizer is applied to treatment plots each winter and summer to
+coincide with the bimodal precipitation patterns characteristic of the
+region. The prescribed weight of dry, granular fertilizer
+(ammonium-nitrate for nitrogen treatments (N, N+P), triple-super
+phosphate for phosphorus treatments (P, N+P)) is applied using a hand
+spreader. As of August 2015, the rate of N fertilizer application was
+reduced to 30 kg ha-1 y-1, with a resulting N:P ratio of 2.5:1.
 
 soil\_ph
 ========
@@ -77,9 +76,9 @@ Upon extraction, the 8 probes of each type (anion/cation) from each
 habitat (plant/inter-plant) are pooled, washed with distilled water in
 accordance with protocols outlined by Western Ag Innovations Inc., and
 shipped overnight to Western Ag Innovations Inc. for analysis. PRS probe
-analyses typically focus on nitrogen species (i.e., NO<sub>3</sub>-N and
-NH<sub>4</sub>-N). However, a braoder suite of analytes is assessed
-approximately every 3-5 years.
+analyses typically focus on nitrogen species (i.e., NO3-N and NH4-N).
+However, a braoder suite of analytes is assessed approximately every 3-5
+years.
 
 stem\_growth
 ============
