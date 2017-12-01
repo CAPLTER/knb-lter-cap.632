@@ -17,23 +17,16 @@ projectid <- '632'
 library("tools")
 library("EML")
 library('RPostgreSQL')
-library("googlesheets")
 library("tidyverse")
 library("readxl")
 library("lubridate")
 
-# DB connections ----
-pg <- dbConnect(dbDriver("PostgreSQL"),
-                user="srearl",
-                dbname="working",
-                host="localhost",
-                password=.rs.askForPassword("Enter password:"))
-
-pg <- dbConnect(dbDriver("PostgreSQL"),
-                user="srearl",
-                dbname="caplter",
-                host="stegosaurus.gios.asu.edu",
-                password=.rs.askForPassword("Enter password:"))
+# database connections ----
+source('~/Documents/localSettings/pg_prod.R')
+source('~/Documents/localSettings/pg_local.R')
+  
+pg <- pg_prod
+pg <- pg_local
 
 # functions and working dir ----
 source('~/Dropbox (ASU)/localRepos/reml-helper-tools/writeAttributesFn.R')
@@ -197,3 +190,76 @@ eml <- new("eml",
            additionalMetadata = as(unitList, "additionalMetadata"))
 
 write_eml(eml, "icp_2017.xml")
+
+# starting over? ----
+
+# get dates from stems for larrea tissue
+stemsDates <- dbGetQuery(pg,
+  "SELECT
+    sh.plot_id,
+    s.code AS site,
+    t.code AS trt,
+    st.post_date
+  FROM urbancndep.stems st
+  JOIN urbancndep.shrubs sh ON st.shrub_id = sh.id
+  JOIN urbancndep.plots pl ON sh.plot_id = pl.id
+  JOIN urbancndep.treatments t ON pl.treatment_id = t.id
+  JOIN urbancndep.sites s ON pl.site_id = s.id
+  WHERE
+    EXTRACT (YEAR FROM st.post_date) = 2013 AND
+    EXTRACT (MONTH FROM st.post_date) = 10 AND
+    st.post_date IS NOT NULL AND
+    t.code LIKE 'C1'
+  GROUP BY plot_id, t.code, s.code, post_date
+  ORDER BY post_date, plot_id;") %>% 
+  mutate(tissue_type = 'Larrea tridentata') %>%
+  rename(date = post_date)
+
+oct_10_stems <- stemsDates 
+
+# RUN: May, Oct 2009; May 2010; Oct 2013 ----
+
+may_oct_09_may_10_oct_13 <- read_excel('~/Dropbox/development/plant_tissue/marisa_corrected/Cndep_ICP_MS_02252014 _(Corrected on 11302017).xlsm')
+may_oct_09_may_10_oct_13 <- may_oct_09_may_10_oct_13 %>%
+  separate(`Orig Conc.`, into = c("site_code", "plot_id", "treatment_code"), sep = "-") %>% 
+  select(-`45Sc-CCT`, -`45Sc`, -`72Ge-CCT`, -`72Ge`, -`89Y-H2`, -`89Y`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`)
+
+# May 2009
+
+may_09 <- may_oct_09_may_10_oct_13 %>%
+  slice(14:28) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(may_09_stems, by = c("plot_id"))
+
+# Oct 2009
+
+oct_09 <- may_oct_09_may_10_oct_13 %>%
+  slice(31:45) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(oct_09_stems, by = c("plot_id"))
+
+# May 2010 there are two dates for SRR in May 2010, not sure which day is
+# correct but we can hazard a reasonable assumption based on the typical site
+# grouping
+may_10_stems <- may_10_stems %>% 
+  filter(!(plot_id == 13 & date == "2010-05-12"))
+  
+may_10 <- may_oct_09_may_10_oct_13 %>%
+  slice(56:70) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(may_10_stems, by = c("plot_id"))
+
+# Oct 2013
+
+oct_13 <- may_oct_09_may_10_oct_13 %>%
+  slice(73:87) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(oct_10_stems, by = c("plot_id"))
+
+# merge all data set from run
+large_run <- bind_rows(may_09, oct_09, may_10, oct_13) %>%
+  select(-site, -trt) %>% 
+  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>% 
+  mutate(instrument = "ICP-MS") %>% 
+  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration)
+
