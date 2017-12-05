@@ -206,7 +206,7 @@ stemsDates <- dbGetQuery(pg,
   JOIN urbancndep.treatments t ON pl.treatment_id = t.id
   JOIN urbancndep.sites s ON pl.site_id = s.id
   WHERE
-    EXTRACT (YEAR FROM st.post_date) = 2013 AND
+    EXTRACT (YEAR FROM st.post_date) = 2016 AND
     EXTRACT (MONTH FROM st.post_date) = 10 AND
     st.post_date IS NOT NULL AND
     t.code LIKE 'C1'
@@ -215,11 +215,31 @@ stemsDates <- dbGetQuery(pg,
   mutate(tissue_type = 'Larrea tridentata') %>%
   rename(date = post_date)
 
-oct_10_stems <- stemsDates 
+oct_16_stems <- stemsDates 
 
-# RUN: May, Oct 2009; May 2010; Oct 2013 ----
+# get dates from annuals biomass for pectocarya tissue
+annualsDates <- dbGetQuery(pg,
+  "SELECT
+    ab.plot_id,
+    s.code AS site,
+    t.code AS trt,
+    ab.date
+  FROM urbancndep.annuals_biomass ab
+  JOIN urbancndep.plots pl ON ab.plot_id = pl.id
+  JOIN urbancndep.treatments t ON pl.treatment_id = t.id
+  JOIN urbancndep.sites s ON pl.site_id = s.id
+  WHERE 
+	year = 2016 AND
+	t.code LIKE 'C1'
+  GROUP BY plot_id, site, trt, date
+  ORDER BY date, plot_id;") %>% 
+  mutate(tissue_type = 'Pectocarya sp.')
 
-may_oct_09_may_10_oct_13 <- read_excel('~/Dropbox/development/plant_tissue/marisa_corrected/Cndep_ICP_MS_02252014 _(Corrected on 11302017).xlsm')
+spring_16_anns <- annualsDates 
+
+# RUN: Larrea: May, Oct 2009; May 2010; Oct 2013 ----
+
+may_oct_09_may_10_oct_13 <- read_excel('./marisa_corrected/Cndep_ICP_MS_02252014 _(Corrected on 11302017).xlsm')
 may_oct_09_may_10_oct_13 <- may_oct_09_may_10_oct_13 %>%
   separate(`Orig Conc.`, into = c("site_code", "plot_id", "treatment_code"), sep = "-") %>% 
   select(-`45Sc-CCT`, -`45Sc`, -`72Ge-CCT`, -`72Ge`, -`89Y-H2`, -`89Y`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`)
@@ -257,9 +277,156 @@ oct_13 <- may_oct_09_may_10_oct_13 %>%
   inner_join(oct_10_stems, by = c("plot_id"))
 
 # merge all data set from run
-large_run <- bind_rows(may_09, oct_09, may_10, oct_13) %>%
+larrea_09_13 <- bind_rows(may_09, oct_09, may_10, oct_13) %>%
   select(-site, -trt) %>% 
   gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>% 
-  mutate(instrument = "ICP-MS") %>% 
-  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration)
+  mutate(instrument = "ICP-MS") %>%
+  mutate(source_file = list.files("./marisa_corrected/")[1]) %>% 
+  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration, source_file)
 
+
+# RUN: Larrea: Oct 2010 ----
+
+oct_10 <- read_excel('./marisa_corrected/CNdep_ICP-MS_Oct2010_(corrected on 11302017).xlsx')
+oct_10 <- oct_10  %>%
+  separate(`Orig Conc.`, into = c("site_code", "plot_id", "treatment_code"), sep = "-") %>% 
+  select(-`45Sc-CCT`, -`45Sc`, -`72Ge-CCT`, -`72Ge`, -`89Y-H2`, -`89Y`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`)
+
+oct_10 <- oct_10 %>%
+  slice(13:27) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(oct_10_stems, by = c("plot_id")) %>% 
+  mutate(treatment_code = "C1") %>%
+  select(-site, -trt) %>% 
+  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>% 
+  mutate(instrument = "ICP-MS") %>%
+  mutate(source_file = list.files("./marisa_corrected/")[3]) %>% 
+  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration, source_file)
+
+
+# RUN: Larrea: Oct 2015 (includes Sulfur) ----
+
+oct_15 <- read_excel('./from_repo/raw_icp/CNDep_Larrea_Metals_Oct2015.xlsm')
+oct_15 <- oct_15  %>%
+  separate(`Orig Conc.`, into = c("site_code", "treatment_code"), sep = "-") %>% 
+  select(-`72Ge-CCT`, -`72Ge`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`) %>% 
+  select(-contains("X__"))
+
+oct_15 <- oct_15 %>%
+  slice(14:28) %>% 
+  # mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(oct_15_stems, by = c("site_code" = "site")) %>% 
+  mutate(treatment_code = "C1") %>%
+  select(-trt) %>%
+  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>% 
+  mutate(instrument = "ICP-MS") %>%
+  mutate(instrument = replace(instrument, isotope_element == "S_182.0", "ICP-OES")) %>%
+  mutate(source_file = list.files("./from_repo/raw_icp/")[3]) %>% 
+  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration, source_file)
+
+
+# RUN: Larrea: May 2016, Oct 2016; Pecto: spring 2015, 2016 ----
+
+may_oct_15_16 <- read_excel('./from_repo/raw_icp/Cndep_Larrea_Pecto_10202016.XLSM')
+may_oct_15_16 <- may_oct_15_16 %>%
+  separate(`Orig Conc.`, into = c("site_code", "plot_id", "treatment_code"), sep = "-") %>% 
+  select(-`72Ge-CCT`, -`72Ge`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`) %>% 
+  select(-contains("X__"))
+
+# Larrea: May 2016
+
+may_16 <- may_oct_15_16 %>%
+  slice(14:28) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(may_16_stems, by = c("plot_id"))
+
+# Larrea: Oct 2016
+
+oct_16 <- may_oct_15_16 %>%
+  slice(54:68) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(oct_16_stems, by = c("plot_id"))
+
+# Pecto: spring 2016
+spring_16_pecto <- may_oct_15_16 %>%
+  slice(31:44) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(spring_16_anns, by = c("plot_id"))
+
+# Pecto: spring 2015
+
+spring_15_pecto <- may_oct_15_16 %>%
+  slice(47:51) %>% 
+  mutate(plot_id = as.integer(plot_id)) %>% 
+  inner_join(spring_15_anns, by = c("plot_id"))
+
+# merge all data set from run
+larrea_pecto_15_16 <- bind_rows(may_16, oct_16, spring_15_pecto, spring_16_pecto) %>%
+  select(-site, -trt) %>%
+  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>%
+  mutate(instrument = "ICP-MS") %>%
+  mutate(source_file = grep("Pecto",
+                            list.files("./from_repo/raw_icp/"),
+                            value = T)) %>%
+  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration, source_file)
+
+
+# RUN: Sulfur: Larrea: spring, fall 16; pecto: spring 15, fall 16 ----
+
+sulfur_only <- read_excel('./from_repo/raw_icp/Larrea_S_11032016.xls',
+                          skip = 11,
+                          col_names = FALSE)
+
+colnames(sulfur_only)[2] <- "sample_id"
+colnames(sulfur_only)[5] <- "concentration"
+
+sulfur_only <- sulfur_only %>% 
+  filter(!grepl("QC", sample_id)) %>% 
+  separate(sample_id, into = c("site_code", "treatment_code"), sep = "-") %>% 
+  select(-contains("X__"))
+  
+# sulfur larrea spring 2016
+
+larrea_spring_2016_sulfur <- sulfur_only %>%
+  slice(2:16) %>% 
+  inner_join(may_16_stems, by = c("site_code" = "site"))
+
+# sulfur larrea fall 2016
+
+larrea_fall_2016_sulfur <- sulfur_only %>%
+  slice(39:53) %>% 
+  inner_join(oct_16_stems, by = c("site_code" = "site"))
+
+# sulfur pecto spring 2016
+
+pecto_fall_2016_sulfur <- sulfur_only %>%
+  slice(18:31) %>% 
+  inner_join(spring_16_anns, by = c("site_code" = "site"))
+
+# sulfur pecto spring 2015
+
+pecto_fall_2015_sulfur <- sulfur_only %>%
+  slice(33:37) %>% 
+  inner_join(spring_15_anns, by = c("site_code" = "site"))
+
+# merge all data set from run
+sulfur_15_16 <- bind_rows(larrea_spring_2016_sulfur, larrea_fall_2016_sulfur, pecto_fall_2016_sulfur, pecto_fall_2015_sulfur) %>%
+  select(-trt) %>% 
+  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>%
+  mutate(instrument = "ICP-OES") %>%
+  mutate(isotope_element = "S_182.0") %>% 
+  mutate(source_file = grep("_S_",
+                            list.files("./from_repo/raw_icp/"),
+                            value = T)) %>%
+  select(site_code, plot_id, treatment_code, sample_date = date, tissue_type, instrument, isotope_element, concentration, source_file)
+
+
+# grande merge
+
+icp_all <- bind_rows(larrea_09_13,
+                     oct_10, oct_15,
+                     larrea_pecto_15_16,
+                     sulfur_15_16) %>%
+  mutate(concentration = as.numeric(concentration)) %>% 
+  mutate(concentration = round(concentration, digits = 3)) %>% 
+  arrange(tissue_type, sample_date, site_code, isotope_element)
