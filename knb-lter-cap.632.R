@@ -1,6 +1,5 @@
-# README ----
 
-# 2017-06-28
+# README ------------------------------------------------------------------
 
 # Code and metadata here is related to version 632.4. Des Fert (632) includes
 # the following data entities: biovolume, soil pH, tissue, annuals comp 2008,
@@ -9,8 +8,10 @@
 # sure not annuals comp 2008). As such, those metadata need to be extracted from
 # the EML of previous versions since they will never actually be updated.
 
-# Note that the ICP worflow is not included here and should be incoroprated the
-# next time those data are updated.
+# 2017-06-28
+
+# Note that the ICP and CHN worflows are separate from this main workflow owing
+# to the longitudinal nature of those analyses.
 
 # Note that we may need to add checksums and row numbers to meet future PASTA+
 # data quality checks. The code here reflects some early updates to the workflow
@@ -43,16 +44,18 @@ library(readxl)
 library(EML)
 library(stringr)
 
-# db connections ----
 
+# connections -------------------------------------------------------------
+
+# Amazon
+source('~/Documents/localSettings/aws.s3')
+  
 # postgres
 source('~/Documents/localSettings/pg_prod.R')
 source('~/Documents/localSettings/pg_local.R')
-
+  
 pg <- pg_prod
 pg <- pg_local
-
-dbGetInfo(pg)
 
 # mysql
 source('~/Documents/localSettings/mysql_prod.R')
@@ -375,9 +378,14 @@ stem_growth <- dbGetQuery(pg,"
       LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
       LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
       WHERE
+      	NOT (
+            -- omit post data not collected when smart sampling was implemented
+        		EXTRACT (YEAR FROM st.pre_date) = 2016 AND
+        		EXTRACT (MONTH FROM st.pre_date) = 10 AND
+        		st.post_date IS NULL
+      	) AND
         NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
-        NOT (p.id = 12 AND st.pre_date = '2010-05-11') AND
-        st.post_date IS NOT NULL
+        NOT (p.id = 12 AND st.pre_date = '2010-05-11')
       ORDER BY
         st.pre_date,
         p.id,
@@ -434,16 +442,17 @@ post_measurement <- c(`TRUE` = "final: post stem-length measurement",
 stem_growth_factors <- factorsToFrame(stem_growth)
 
 
-stem_growth_DT <- createDTFF(dfname = stem_growth_DT,
-                                      factors = stem_growth_factors,
-                                      description = stem_growth_desc,
-                                      dateRangeField = 'pre_date')
+stem_growth_DT <- createDTFF(dfname = stem_growth,
+                             factors = stem_growth_factors,
+                             description = stem_growth_desc,
+                             dateRangeField = 'pre_date')
 
-# will have to deal with the fact that the min and max of either the pre_or
-# post_date will yield different date ranges, so need to do max(post_date) and
-# edit by hand - or whatever solution
-
-dbGetQuery(pg, 'SELECT max(post_date) FROM urbancndep.stems;')
+# assuming you do not remove the NULL post_date values that have not yet been
+# measured, then the pre_date is appropriate for both the min and max datasets;
+# otherwise, will have to deal with the fact that the min and max of either the
+# pre_or post_date will yield different date ranges, so need to do
+# max(post_date) and edit by hand - or whatever solution
+# dbGetQuery(pg, 'SELECT max(post_date) FROM urbancndep.stems;')
 
 # construct eml
 dataset <- new("dataset",
@@ -454,6 +463,18 @@ eml <- new("eml",
            dataset = dataset)
 
 write_eml(eml, "stem_growth_2017.xml")
+
+# send data file to Amazon
+dataToAmz <- function(fileToUpload) {
+  
+  put_object(file = fileToUpload,
+             object = paste0('/datasets/cap/', basename(fileToUpload)),
+             bucket = 'gios-data') 
+  
+}
+
+# sensu:
+dataToAmz('~/localRepos/knb-lter-cap.632/632_stem_growth_592318cb473e05c78364247b1c45abbf.csv')
 
 
 # plant_root_simulator ----
@@ -493,8 +514,8 @@ plant_root_simulator <- plant_root_simulator %>%
   mutate(location_within_plot = as.factor(location_within_plot)) %>% 
   mutate(plot_id = as.character(plot_id))
 
- # write data frame attributes to a csv in current dir to edit metadata
-writeAttributes(plant_root_simulator)
+# write data frame attributes to a csv in current dir to edit metadata
+# writeAttributes(plant_root_simulator)
 
 plant_root_simulator_desc <- 'Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+).'
 
@@ -561,9 +582,22 @@ dataset <- new("dataset",
 
 # as this is a revision, only the xml for the tables is required
 eml <- new("eml",
-           dataset = dataset)
+           dataset = dataset,
+           additionalMetadata = as(unitList, "additionalMetadata"))
 
 write_eml(eml, "plant_root_simulator_2017.xml")
+
+# send data file to Amazon
+dataToAmz <- function(fileToUpload) {
+  
+  put_object(file = fileToUpload,
+             object = paste0('/datasets/cap/', basename(fileToUpload)),
+             bucket = 'gios-data') 
+  
+}
+
+# sensu:
+dataToAmz('~/localRepos/knb-lter-cap.632/632_plant_root_simulator_5ebc781cc4444ee517f828603f10dece.csv')
 
 
 # tissue ICP --------------------------------------------------------------

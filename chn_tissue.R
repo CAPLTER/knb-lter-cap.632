@@ -24,7 +24,7 @@ library(RPostgreSQL)
 library(tidyverse)
 library(readxl)
 library(lubridate)
-
+library(aws.s3)
 
 # database connections ----------------------------------------------------
 source('~/Documents/localSettings/pg_prod.R')
@@ -437,6 +437,19 @@ eml <- new("eml",
            dataset = dataset)
 
 write_eml(eml, "chn_2017.xml")
+
+
+# send data file to Amazon
+dataToAmz <- function(fileToUpload) {
+  
+  put_object(file = fileToUpload,
+             object = paste0('/datasets/cap/', basename(fileToUpload)),
+             bucket = 'gios-data') 
+  
+}
+
+# sensu:
+dataToAmz('~/Dropbox/development/plant_tissue/CHN/632_tissue_chn_409090f21b80850516a08943f8ecf469.csv')
 
 
 # ARCHIVE: create urbancndep.plant_tissue_chn table ----

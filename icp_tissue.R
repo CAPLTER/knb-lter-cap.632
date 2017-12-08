@@ -23,12 +23,13 @@
 projectid <- '632'
 
 # libraries ----
-library("tools")
-library("EML")
-library('RPostgreSQL')
-library("tidyverse")
-library("readxl")
-library("lubridate")
+library(tools)
+library(EML)
+library(RPostgreSQL)
+library(tidyverse)
+library(readxl)
+library(lubridate)
+library(aws.s3)
 
 # database connections ----
 source('~/Documents/localSettings/pg_prod.R')
@@ -37,10 +38,13 @@ source('~/Documents/localSettings/pg_local.R')
 pg <- pg_prod
 pg <- pg_local
 
-# functions and working dir ----
+
+# reml helper functions ---------------------------------------------------
 source('~/localRepos/reml-helper-tools/writeAttributesFn.R')
 source('~/localRepos/reml-helper-tools/createDataTableFromFileFn.R')
 source('~/localRepos/reml-helper-tools/createFactorsDataframe.R')
+source('~/localRepos/reml-helper-tools/createOtherEntityFn.R')
+
 
 # generate eml components ----
 writeAttributes(tissue_icp) # write data frame attributes to a csv in current dir to edit metadata
@@ -96,14 +100,30 @@ eml <- new("eml",
 write_eml(eml, "icp_2017.xml")
 
 
+# send data file to Amazon
+dataToAmz <- function(fileToUpload) {
+  
+  put_object(file = fileToUpload,
+             object = paste0('/datasets/cap/', basename(fileToUpload)),
+             bucket = 'gios-data') 
+  
+}
+
+# sensu:
+dataToAmz('~/Dropbox/development/plant_tissue/ICP/632_tissue_icp_7d940d0979cc34c094c46525f7cd2995.csv')
+
 
 # raw data as otherEntity -------------------------------------------------
 
 # zip raw data
-icp_raw_data <- createOE(object = '*.zip',
+# zip file must be in working directory!
+icp_raw_data <- createOE(object = 'icp_raw_data.zip',
                          description = "This zipped file contains the raw ICP-MS and ICP-OES data (as XSLM and xls files) pertaining to the analyses of Larrea tridentata leaf tissue and Pectocarya recurvata plant tissue samples. The calculated concentrations are presented in an analysis-friendly format in the data entity 'tissue_icp' that is part of this dataset; the raw data file from which the calculated concentrations were derived is referenced in the source_file field of the tissue_icp data entity.")
 
 write_eml(icp_raw_data, "icp_raw_data.xml")
+
+# add zip to Amz
+dataToAmz('~/Dropbox/development/plant_tissue/ICP/632_icp_raw_data_7ee5a125f39c4408597eab39908e90f8.zip')
 
 
 # data processing ---------------------------------------------------------
