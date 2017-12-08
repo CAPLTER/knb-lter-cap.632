@@ -32,8 +32,8 @@
 
 # dataset details to set first ----
 projectid <- '632'
-packageIdent <- 'knb-lter-cap.632.4'
-pubDate <- '2017-06-28'
+packageIdent <- 'knb-lter-cap.632.5'
+pubDate <- '2017-12-08'
 
 # libraries ----
 library(tidyverse)
@@ -346,7 +346,7 @@ fertilizer_application_DT <- createDTFF(dfname = fertilizer_application,
 
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
-### stem growth                                                             ####
+# stem growth -------------------------------------------------------------
 
 # note that the two where clause statements are to omit duplicate entries for
 # those two sites and dates. In each case, the pre-dates are incorrect but
@@ -376,7 +376,8 @@ stem_growth <- dbGetQuery(pg,"
       LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
       WHERE
         NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
-        NOT (p.id = 12 AND st.pre_date = '2010-05-11')
+        NOT (p.id = 12 AND st.pre_date = '2010-05-11') AND
+        st.post_date IS NOT NULL
       ORDER BY
         st.pre_date,
         p.id,
@@ -432,6 +433,27 @@ post_measurement <- c(`TRUE` = "final: post stem-length measurement",
 
 stem_growth_factors <- factorsToFrame(stem_growth)
 
+
+stem_growth_DT <- createDTFF(dfname = stem_growth_DT,
+                                      factors = stem_growth_factors,
+                                      description = stem_growth_desc,
+                                      dateRangeField = 'pre_date')
+
+# will have to deal with the fact that the min and max of either the pre_or
+# post_date will yield different date ranges, so need to do max(post_date) and
+# edit by hand - or whatever solution
+
+dbGetQuery(pg, 'SELECT max(post_date) FROM urbancndep.stems;')
+
+# construct eml
+dataset <- new("dataset",
+               dataTable = c(stem_growth_DT))
+
+# as this is a revision, only the xml for the tables is required
+eml <- new("eml",
+           dataset = dataset)
+
+write_eml(eml, "stem_growth_2017.xml")
 
 
 # plant_root_simulator ----
@@ -533,19 +555,28 @@ plant_root_simulator_DT <- createDTFF(dfname = plant_root_simulator,
 
 dbGetQuery(pg, 'SELECT max(end_date) FROM urbancndep.prs_analysis;')
 
-# # construct eml 
-# 
-# dataset <- new("dataset",
-#                dataTable = c(plant_root_simulator_DT))
-# 
-# # as this is a revision, only the xml for the tables is required
-# eml <- new("eml",
-#            dataset = dataset)
-# 
-# write_eml(eml, "plant_root_simulator_2017.xml")
+# construct eml
+dataset <- new("dataset",
+               dataTable = c(plant_root_simulator_DT))
+
+# as this is a revision, only the xml for the tables is required
+eml <- new("eml",
+           dataset = dataset)
+
+write_eml(eml, "plant_root_simulator_2017.xml")
 
 
-# title and abstract ----
+# tissue ICP --------------------------------------------------------------
+# record of data processing is kept for these data so the processing is detailed
+# in a separate workflow: icp_tissue.R
+
+
+# tissue CHN --------------------------------------------------------------
+# record of data processing is kept for these data so the processing is detailed
+# in a separate workflow: chn_tissue.R
+
+
+# title and abstract ------------------------------------------------------
 
 title <- 'Desert Fertilization Experiment: investigation of Sonoran desert ecosystem response to atmospheric deposition and experimental nutrient addition, ongoing since 2006'
 

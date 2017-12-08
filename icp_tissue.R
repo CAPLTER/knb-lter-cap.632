@@ -80,7 +80,8 @@ unitList <- set_unitList(custom_units)
 # use createdataTableFn() if attributes and classes are to be passed directly
 tissue_icp_DT <- createDTFF(dfname = tissue_icp,
                             factors = tissue_icp_factors,
-                            description = tissue_icp_desc)
+                            description = tissue_icp_desc,
+                            dateRangeField = 'sample_date')
 
 # construct eml ----
 
@@ -95,7 +96,17 @@ eml <- new("eml",
 write_eml(eml, "icp_2017.xml")
 
 
-# data processing ----
+
+# raw data as otherEntity -------------------------------------------------
+
+# zip raw data
+icp_raw_data <- createOE(object = '*.zip',
+                         description = "This zipped file contains the raw ICP-MS and ICP-OES data (as XSLM and xls files) pertaining to the analyses of Larrea tridentata leaf tissue and Pectocarya recurvata plant tissue samples. The calculated concentrations are presented in an analysis-friendly format in the data entity 'tissue_icp' that is part of this dataset; the raw data file from which the calculated concentrations were derived is referenced in the source_file field of the tissue_icp data entity.")
+
+write_eml(icp_raw_data, "icp_raw_data.xml")
+
+
+# data processing ---------------------------------------------------------
 
 # get sample collection dates from stems and annuals collections ----
 # get dates from stems for larrea tissue ----
