@@ -1,20 +1,3 @@
-biovolume
-=========
-
-All perennial plants in select study plots were inventoried and measured
-in spring 2012. Biovolume is estimated from the maximum canopy extent
-along N-S and E-W axes, and plant height. For those plants (some trees,
-some Saguaros) that were too tall to measure with tape, height details
-were collected with a clinometer from level ground. The height of
-specimens measured by clinometer should be calculated conditionally
-depending on whether the value Base (deg) is positive or negative:
-
-Base &lt; 0, height (m) =
-(TAN(RADIANS(Top))+TAN(RADIANS(ABS(Base))))\*distance
-
-Base &gt; 0, height (m) =
-(TAN(RADIANS(Top))-TAN(RADIANS(ABS(Base))))\*distance
-
 fertilizer\_application
 =======================
 
@@ -31,35 +14,6 @@ region. The prescribed weight of dry, granular fertilizer
 phosphate for phosphorus treatments (P, N+P)) is applied using a hand
 spreader. As of August 2015, the rate of N fertilizer application was
 reduced to 30 kg ha-1 y-1, with a resulting N:P ratio of 2.5:1.
-
-soil\_ph
-========
-
-soil for pH analyses was collected from plant (beneath the canopy of
-Larrea tridentata) and inter-plant (between plant canopies) spaces
-within study plots. All soil within a copper ring (X diater) to a depth
-of 2 cm was collected with a metal spoon. The material was placed in
-individual plastic bags, transported to the laboratory at Arizona State
-University, and stored in a cool, dry location until the time of
-analysis. Lab procedure: (1) Mix a 2:1 ratio (by weight) of DI water and
-pre-sieved soil into a slurry (usually 30 mL water to 15 g soil). If the
-soil is highly organic, you may need to increase this ratio. (2) Wait 30
-min before taking pH reading on samples. Individual samples should be
-started ~2 min apart to assure pH measurements are done for each sample
-at 30 min. During this time, calibrate the pH meter. Consult pH meter
-manual for calibration methods (also, see below). (3) Measure the pH of
-the soil slurry using a calibrated portable pH meter (be extremely
-careful with the tip of the probe!! Do not break it!). Press measure and
-wait until the pH meter has stabilized (stopped blinking) before you
-record the value. (4) Rinse electrode (including the bottom!) with DI
-water into a waste beaker between samples and dry with kim wipe but do
-not touch the bulb. (5) Every 10 samples check calibration in pH 7.00
-buffer. If reading is off +/-0.05 or more, recalibrate the meter. (6)
-When finished, clean probe with DI water and place in probe storage
-solution (salt solution). (7) Again, if you are doing lots of soil
-samples, make sure that you are waiting only 30 minutes before each
-reading (plan so that your timing is correct by staggering addition of
-water by ~2 minutes).
 
 plant\_root\_simulator
 ======================
@@ -262,27 +216,3 @@ senesce). In this case, estimate the percent cover of these plants as if
 they were at peak biomass. 10. Before you leave a site, confirm that you
 have datasheets for all plots and sub-plots, and that there are no
 duplicates or ambiguous plot labels on your sheet.
-
-annuals\_composition\_2008
-==========================
-
-In the spring of 2008, the estimation of the cover of annuals in the
-study plots was conducted uniquely relative to subsequent years:
-collector SLC allowed for layering within the herbaceous layer so that
-total cover when you summed across species could be &gt; 100%
-(potentially limitless), whereas collector CMC did not allow for
-layering within the herbaceous layer such that the cumulative sum of
-cover of annuals cannot be more than 100%. To facilitate comparison,
-data collected by SLC were relatavized by the total annual cover in the
-study plot (i.e., the percent of the plot covered by annuals) and the
-cumulative sum of the cover of annual species in the study plot (i.e., %
-cover of plant \* (Total Plant Cover in Plot / sum of all species
-(sumSpp))) such that the estimates by both collectors reflect the
-relative cover of each plant taxon. In subsequent years, values reflect
-a collection method that allows for layering. Owing to the requisite
-relativization, data collected by SLC in 2008 were reconstructed from
-original field data sheets. As such, information gained from
-post-processing that resolved the identity of species that were not
-identified in the field was not available resulting in a greater number
-of unidentified species (unknowns and variants) for data collected by
-SLC relative to CMC.

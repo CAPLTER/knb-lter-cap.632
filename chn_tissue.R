@@ -1,5 +1,9 @@
 # README ------------------------------------------------------------------
 
+# 2018-06-05. The data publishing component of this workflow has been moved to
+# knb-lter-cap.632.Rmd. This workflow now is focused only on new data
+# processing.
+
 # Here we are creating a set of clean, easily-interpretable CHN tissue data to
 # publish. I had started out attacking this in a manner similar to the ICP data
 # where the raw data in Excel format would be saved and we would keep appending
@@ -349,107 +353,6 @@ chn_raw <- chn_raw %>%
   mutate(date = replace(date, `Run #` %in% c(56:57), "2015-10-07"))
 insert_raw_chn(chn_raw)
 
-# query db and process results --------------------------------------------
-
-chnDataQuery <- '
-  SELECT
-    site_code,
-    plot_id, 
-    treatment_code,
-    sample_date,
-    season_year, 
-    tissue_type,
-    "Weight",
-    "Comment", 
-    "Carbon %",
-    "Hydrogen %",
-    "Nitrogen %"
-  FROM urbancndep.plant_tissue_chn
-  WHERE 
-    plot_id IS NOT NULL AND
-    (
-    	"Comment" !~* \'need|require\' OR
-    	"Comment" IS NULL
-    );'
-
-chn_data <- dbGetQuery(pg, chnDataQuery)
-
-tissue_chn <- chn_data %>%
-  gather(key = analyte, value = percent_composition, `Carbon %`, `Hydrogen %`, `Nitrogen %`) %>% 
-  select(site_code, plot_id, treatment_code, sample_date, season_year, tissue_type, analyte, Weight, percent_composition, Comment) %>% 
-  mutate(plot_id = as.character(plot_id)) %>% 
-  mutate(site_code = as.factor(site_code)) %>% 
-  mutate(treatment_code = as.factor(treatment_code)) %>% 
-  mutate(tissue_type = as.factor(tissue_type)) %>% 
-  mutate(analyte = as.factor(analyte)) 
-  
- 
-# eml functions  -----------------------------------------------
-source('~/localRepos/reml-helper-tools/writeAttributesFn.R')
-source('~/localRepos/reml-helper-tools/createDataTableFromFileFn.R')
-source('~/localRepos/reml-helper-tools/createFactorsDataframe.R')
-
-
-# generate eml components -------------------------------------------------
-writeAttributes(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
-tissue_chn_desc <- 'CHN (Carbon, Hydrogen, and Nitrogen) elemental analysis of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites.'
-
-site_code <- c(DBG = "core region, Desert Botanical Garden",
-               MVP = "core region, North Mountain",
-               PWP = "core region, Piestewa Peak",
-               SME = "core region, South Mountain Park East",
-               SMW = "core region, South Mountain Park West",
-               LDP = "east region, Lost Dutchman State Park",
-               MCN = "east region, McDowell Mountain Regional north",
-               MCS = "east region, McDowell Mountain Regional south",
-               SRR = "east region, Salt River Recreation Area (Tonto NF)",
-               UMP = "east region, Usery Mountain Regional Park",
-               EME = "west region, Estrella Mountain Regional Park East",
-               EMW = "west region, Estrella Mountain Regional Park West",
-               SNE = "west region, Sonoran Desert National Monument East",
-               SNW = "west region, Sonoran Desert National Monument West",
-               WTM = "west region, White Tanks Mountain Regional Park")
-treatment_code <- c(C1 = "control plot 1",
-                    N = "nitrogen amendment",
-                    P = "phosphorus amendment",
-                    NP = "nitrogen + phosphorus amendment")
-tissue_type <- c(`Larrea tridentata` = "Larrea tridentata leaf tissue",
-                 `Pectocarya recurvata` = "Pectocarya recurvata whole plant tissue")
-analyte <- c(`Carbon %` = "percent carbon",
-             `Hydrogen %` = "percent hydrogen",
-             `Nitrogen %` = "percent nitrogen")
-
-tissue_chn_factors <- factorsToFrame(tissue_chn)
-
-# create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-tissue_chn_DT <- createDTFF(dfname = tissue_chn,
-                            factors = tissue_chn_factors,
-                            description = tissue_chn_desc,
-                            dateRangeField = 'sample_date')
-
-# construct eml -----------------------------------------------------------
-dataset <- new("dataset",
-               dataTable = c(tissue_chn_DT))
-
-# as this is a revision, only the xml for the tables is required
-eml <- new("eml",
-           dataset = dataset)
-
-write_eml(eml, "chn_2017.xml")
-
-
-# send data file to Amazon
-dataToAmz <- function(fileToUpload) {
-  
-  put_object(file = fileToUpload,
-             object = paste0('/datasets/cap/', basename(fileToUpload)),
-             bucket = 'gios-data') 
-  
-}
-
-# sensu:
-dataToAmz('~/Dropbox/development/plant_tissue/CHN/632_tissue_chn_409090f21b80850516a08943f8ecf469.csv')
 
 
 # ARCHIVE: create urbancndep.plant_tissue_chn table ----
