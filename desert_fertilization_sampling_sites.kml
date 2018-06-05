@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="desert_fertilization_sampling_sites" id="desert_fertilization_sampling_sites">
+	<SimpleField name="Name" type="string"></SimpleField>
+</Schema>
+<Folder><name>desert_fertilization_sampling_sites</name>
+  <Placemark>
+	<name>MCS</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.728820856738,33.6482451744194 -111.720820856738,33.6482451744194 -111.720820856738,33.6402451744193 -111.728820856738,33.6402451744193 -111.728820856738,33.6482451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>SMW</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.080820856738,33.3442451744193 -112.072820856738,33.3442451744193 -112.072820856738,33.3362451744193 -112.080820856738,33.3362451744193 -112.080820856738,33.3442451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>WTM</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.504820856738,33.6082451744194 -112.496820856738,33.6082451744194 -112.496820856738,33.6002451744193 -112.504820856738,33.6002451744193 -112.504820856738,33.6082451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>DBG</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.944820856738,33.4642451744193 -111.936820856738,33.4642451744193 -111.936820856738,33.4562451744193 -111.944820856738,33.4562451744193 -111.944820856738,33.4642451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>LDP</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.488820856738,33.4642451744193 -111.480820856738,33.4642451744193 -111.480820856738,33.4562451744193 -111.488820856738,33.4562451744193 -111.488820856738,33.4642451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>MVP</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.080820856738,33.5842451744194 -112.072820856738,33.5842451744194 -112.072820856738,33.5762451744193 -112.080820856738,33.5762451744193 -112.080820856738,33.5842451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>PWP</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.016820856738,33.5682451744194 -112.008820856738,33.5682451744194 -112.008820856738,33.5602451744194 -112.016820856738,33.5602451744194 -112.016820856738,33.5682451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>SRR</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.584820856738,33.5522451744193 -111.576820856738,33.5522451744193 -111.576820856738,33.5442451744193 -111.584820856738,33.5442451744193 -111.584820856738,33.5522451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>MCN</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.696820856738,33.7282451744193 -111.688820856738,33.7282451744193 -111.688820856738,33.7202451744193 -111.696820856738,33.7202451744193 -111.696820856738,33.7282451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>UMP</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.624820856738,33.4722451744193 -111.616820856738,33.4722451744193 -111.616820856738,33.4642451744193 -111.624820856738,33.4642451744193 -111.624820856738,33.4722451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>SNE</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.440820856738,33.0242451744193 -112.432820856738,33.0242451744193 -112.432820856738,33.0162451744193 -112.440820856738,33.0162451744193 -112.440820856738,33.0242451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>EMW</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.376820856738,33.3122451744194 -112.368820856738,33.3122451744194 -112.368820856738,33.3042451744193 -112.376820856738,33.3042451744193 -112.376820856738,33.3122451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>EME</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.312820856738,33.3522451744194 -112.304820856738,33.3522451744194 -112.304820856738,33.3442451744193 -112.312820856738,33.3442451744193 -112.312820856738,33.3522451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>SME</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-111.992820856738,33.3762451744194 -111.984820856738,33.3762451744194 -111.984820856738,33.3682451744194 -111.992820856738,33.3682451744194 -111.992820856738,33.3762451744194</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>SNW</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-112.536820856738,33.0162451744193 -112.528820856738,33.0162451744193 -112.528820856738,33.0082451744193 -112.536820856738,33.0082451744193 -112.536820856738,33.0162451744193</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

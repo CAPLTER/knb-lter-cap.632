@@ -1,0 +1,166 @@
+attributeName,code,definition
+site_code,DBG,"core region, Desert Botanical Garden"
+site_code,EME,"west region, Estrella Mountain Regional Park east"
+site_code,EMW,"west region, Estrella Mountain Regional Park west"
+site_code,LDP,"east region, Lost Dutchman State Park"
+site_code,MCN,"east region, McDowell Mountain Regional north"
+site_code,MCS,"east region, McDowell Mountain Regional south"
+site_code,MVP,"core region, North Mountain"
+site_code,PWP,"core region, Piestewa Peak"
+site_code,SME,"core region, South Mountain Park east"
+site_code,SMW,"core region, South Mountain Park west"
+site_code,SNE,"west region, Sonoran Desert National Monument east"
+site_code,SNW,"west region, Sonoran Desert National Monument west"
+site_code,SRR,"east region, Salt River Recreation Area (Tonto NF)"
+site_code,UMP,"east region, Usery Mountain Regional Park"
+site_code,WTM,"west region, White Tanks Mountain Regional Park"
+treatment_code,C1,control plot 1
+treatment_code,N,nitrogen amendment
+treatment_code,NP,nitrogen + phosphorus amendment
+treatment_code,P,phosphorus amendment
+location_within_plot,IP,subplot located in an interplant space
+location_within_plot,P,subplot features a Larrea tridentata plant
+subplot,1,one of two replicates
+subplot,2,two of two replicates
+cover_type,Ambrosia_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Ambrosia_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Ambrosia_stem,characterizing dead or broken branches of a plant of this type that have fallen into the plot
+cover_type,Amsinckia,Amsinckia
+cover_type,Amsinckia_menziesii,Amsinckia menziesii
+cover_type,Amsinckia_tessellata,Amsinckia tessellata
+cover_type,Aristida_adscensionis,Aristida adscensionis
+cover_type,Asteraceae,Asteraceae
+cover_type,Astragalus,Astragalus
+cover_type,Astragalus_nuttallianus,Astragalus nuttallianus
+cover_type,Baileya_multiradiata,Baileya multiradiata
+cover_type,bare_ground,bare ground
+cover_type,Boraginaceae,Boraginaceae
+cover_type,Bowlesia_incana,Bowlesia incana
+cover_type,Brassicaceae,Brassicaceae
+cover_type,Bromus_rubens,Bromus rubens
+cover_type,Calandrinia_ciliata,Calandrinia ciliata
+cover_type,Camissonia_californica,Camissonia californica
+cover_type,Camissonia_claviformis,Camissonia claviformis
+cover_type,Castilleja_exserta,Castilleja exserta
+cover_type,Caulanthus_lasiophyllus,Caulanthus lasiophyllus
+cover_type,Chaenactis_stevioides,Chaenactis stevioides
+cover_type,Chamaesyce,Chamaesyce
+cover_type,Chamaesyce_albomarginata,Chamaesyce albomarginata
+cover_type,Chamaesyce_polycarpa,Chamaesyce polycarpa
+cover_type,Chorizanthe,Chorizanthe
+cover_type,Chorizanthe_brevicornu,Chorizanthe brevicornu
+cover_type,Chorizanthe_rigida,Chorizanthe rigida
+cover_type,Cistanthe_monandra,Cistanthe monandra
+cover_type,Crassula_connata,Crassula connata
+cover_type,Cryptantha,Cryptantha
+cover_type,Cryptantha_angustifolia,Cryptantha angustifolia
+cover_type,Cryptantha_barbigera,Cryptantha barbigera
+cover_type,Cryptantha_decipiens,Cryptantha decipiens
+cover_type,Cryptantha_maritima,Cryptantha maritima
+cover_type,Cryptantha_pterocarya,Cryptantha pterocarya
+cover_type,Cylindropuntia_acanthocarpa_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Cylindropuntia_acanthocarpa_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Cylindropuntia_bigelovii_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Cylindropuntia_bigelovii_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Cylindropuntia_fulgida_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Cylindropuntia_fulgida_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Daucus_pusillus,Daucus pusillus
+cover_type,Descurainia_pinnata,Descurainia pinnata
+cover_type,Dichelostemma_capitatum,Dichelostemma capitatum
+cover_type,Ditaxis_lanceolata,Ditaxis lanceolata
+cover_type,Ditaxis_neomexicana,Ditaxis neomexicana
+cover_type,Draba_cuneifolia,Draba cuneifolia
+cover_type,Encelia_farinosa_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Encelia_farinosa_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Eremothera_chamaenerioides,Eremothera chamaenerioides
+cover_type,Eriastrum_diffusum,Eriastrum diffusum
+cover_type,Eriastrum_eremicum,Eriastrum eremicum
+cover_type,Eriochloa_aristata,Eriochloa aristata
+cover_type,Eriogonum_thomasii,Eriogonum thomasii
+cover_type,Eriophyllum_lanosum,Eriophyllum lanosum
+cover_type,Erodium_cicutarium,Erodium cicutarium
+cover_type,Erodium_texanum,Erodium texanum
+cover_type,Eschscholzia_californica,Eschscholzia californica
+cover_type,Eucrypta,Eucrypta
+cover_type,Eucrypta_chrysanthemifolia,Eucrypta chrysanthemifolia
+cover_type,Gilia_stellata,Gilia stellata
+cover_type,green,green
+cover_type,Herniaria_hirsuta,Herniaria hirsuta
+cover_type,Hordeum_murinum,Hordeum murinum
+cover_type,Krameria_grayi_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Krameria_grayi_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Lactuca_serriola,Lactuca serriola
+cover_type,Larrea_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Larrea_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Lasthenia_californica,Lasthenia californica
+cover_type,Lepidium_lasiocarpum,Lepidium lasiocarpum
+cover_type,Lesquerella_gordonii,Lesquerella gordonii
+cover_type,Linanthus,Linanthus
+cover_type,Linanthus_bigelovii,Linanthus bigelovii
+cover_type,Linanthus_demissus,Linanthus demissus
+cover_type,litter,litter
+cover_type,Loeflingia_squarrosa,Loeflingia squarrosa
+cover_type,Logfia_arizonica,Logfia arizonica
+cover_type,Logfia_depressa,Logfia depressa
+cover_type,Logfia_filaginoides,Logfia filaginoides
+cover_type,Lotus_humistratus,Lotus humistratus
+cover_type,Lotus_salsuginosus,Lotus salsuginosus
+cover_type,Lotus_strigosus,Lotus strigosus
+cover_type,Lupinus_concinnus,Lupinus concinnus
+cover_type,Lupinus_sparsiflorus,Lupinus sparsiflorus
+cover_type,Lycium_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Lycium_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Mammillaria_grahamii_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Mammillaria_grahamii_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Minuartia_douglasii,Minuartia douglasii
+cover_type,Nemacladus_glanduliferus,Nemacladus glanduliferus
+cover_type,Nemacladus_rigidus,Nemacladus rigidus
+cover_type,Oligomeris_linifolia,Oligomeris linifolia
+cover_type,Oncosiphon_piluliferum,Oncosiphon piluliferum
+cover_type,Orobanche_cooperi,Orobanche cooperi
+cover_type,Orthocarpus_purpurascens,Orthocarpus purpurascens
+cover_type,Parietaria_hespera,Parietaria hespera
+cover_type,Parkinsonia_microphylla_base,base of the trunk of a plant of this type where it enters the ground
+cover_type,Parkinsonia_microphylla_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Pectocarya,Pectocarya
+cover_type,Pectocarya_heterocarpa,Pectocarya heterocarpa
+cover_type,Pectocarya_platycarpa,Pectocarya platycarpa
+cover_type,Pectocarya_recurvata,Pectocarya recurvata
+cover_type,Perityle_emoryi,Perityle emoryi
+cover_type,Phacelia_crenulata,Phacelia crenulata
+cover_type,Phacelia_distans,Phacelia distans
+cover_type,Pholistoma_auritum,Pholistoma auritum
+cover_type,Plagiobothrys_arizonicus,Plagiobothrys arizonicus
+cover_type,Plantago,Plantago
+cover_type,Plantago_ovata,Plantago ovata
+cover_type,Plantago_patagonica,Plantago patagonica
+cover_type,Poa_bigelovii,Poa bigelovii
+cover_type,Polemoniaceae,Polemoniaceae
+cover_type,Pseudognaphalium,Pseudognaphalium
+cover_type,Rafinesquia_neomexicana,Rafinesquia neomexicana
+cover_type,Salsola_tragus,Salsola tragus
+cover_type,Salvia_columbariae,Salvia columbariae
+cover_type,sampled,indicating that the plot was surveyed
+cover_type,Schismus_arabicus,Schismus arabicus
+cover_type,Silene_antirrhina,Silene antirrhina
+cover_type,Simmondsia_chinensis_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,Sisymbrium_irio,Sisymbrium irio
+cover_type,soil_crusts,soil crusts
+cover_type,Sonchus_oleraceus,Sonchus oleraceus
+cover_type,Sphaeralcea_coulteri,Sphaeralcea coulteri
+cover_type,Stylocline_gnaphaloides,Stylocline gnaphaloides
+cover_type,Stylocline_micropoides,Stylocline micropoides
+cover_type,total_shrub_cover,cover of the over story of a plant of this type within the plot or overhanging the subplot
+cover_type,unidentified,unidentified
+cover_type,unidentified_1_2017,unidentified_1_2017
+cover_type,unidentified_1_2018,unidentified_1_2018
+cover_type,unidentified_2_2017,unidentified_2_2017
+cover_type,unidentified_2_2018,unidentified_2_2018
+cover_type,unidentified_3_2017,unidentified_3_2017
+cover_type,unidentified_3_2018,unidentified_3_2018
+cover_type,Uropappus_lindleyi,Uropappus lindleyi
+cover_type,Vulpia_microstachys,Vulpia microstachys
+cover_type,Vulpia_octoflora,Vulpia octoflora
+cover_category,annual,observation referring to a type of plant
+cover_category,plot characteristic,observation referring to characteristic of the plot other than cover of a specific type of annual plant
+cover_category,record_keeping,"entry for record keeping, typically whether the plot was survyed"
