@@ -1,7 +1,7 @@
 ---
 title: "remlTemplate"
 author: "SRE"
-date: "March 14, 2018"
+date: Sys.Date()
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -19,6 +19,10 @@ Note that I moved the tissue CHN publishing code here but the new CHN data proce
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r eml-2.1.1, include=FALSE}
+options("emld_db" = "eml-2.1.1")
+```
+
 ```{r libraries}
 library(EML)
 library(RPostgreSQL)
@@ -28,22 +32,16 @@ library(tools)
 library(readxl)
 library(aws.s3)
 library(capeml)
+library(gioseml)
 ```
 
 ```{r dataset_details}
 projectid <- 632
-packageIdent <- 'knb-lter-cap.632.6'
+packageIdent <- 'knb-lter-cap.632.7'
 pubDate <- as.character(Sys.Date())
 ```
  
 ```{r helper_functions}
-source('~/localRepos/reml-helper-tools/writeAttributesFn.R')
-source('~/localRepos/reml-helper-tools/createDataTableFromFileFn.R')
-source('~/localRepos/reml-helper-tools/createKMLFn.R')
-source('~/localRepos/reml-helper-tools/address_publisher_contact_language_rights.R')
-source('~/localRepos/reml-helper-tools/createOtherEntityFn.R')
-source('~/localRepos/reml-helper-tools/createPeople.R')
-source('~/localRepos/reml-helper-tools/createFactorsDataframe.R')
 source('~/localRepos/reml-helper-tools/amazon_file_upload.R')
 ```
 
@@ -104,7 +102,7 @@ annuals_biomass_desc <- 'Biomass (g) of annual plants harvested from subplots wi
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-annuals_biomass_DT <- createDTFF(dfname = annuals_biomass,
+annuals_biomass_DT <- create_dataTable(dfname = annuals_biomass,
                                  description = annuals_biomass_desc)
 
 ```
@@ -157,7 +155,7 @@ annuals_composition_desc <- 'Composition of annual plants and some other charact
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-annuals_composition_DT <- createDTFF(dfname = annuals_composition,
+annuals_composition_DT <- create_dataTable(dfname = annuals_composition,
                                      description = annuals_composition_desc)
 
 ```
@@ -186,7 +184,7 @@ fertilizer_application_desc <- 'catalog of amounts and timing of nitrogen and ph
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-fertilizer_application_DT <- createDTFF(dfname = fertilizer_application,
+fertilizer_application_DT <- create_dataTable(dfname = fertilizer_application,
                                         description = fertilizer_application_desc,
                                         dateRangeField = 'application_date')
 ```
@@ -249,7 +247,7 @@ stem_growth_desc <- 'Biannual measures of stem growth on five Larrea tridentata 
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-stem_growth_DT <- createDTFF(dfname = stem_growth,
+stem_growth_DT <- create_dataTable(dfname = stem_growth,
                              description = stem_growth_desc,
                              dateRangeField = 'pre_date')
 ```
@@ -301,7 +299,7 @@ plant_root_simulator_desc <- 'Soil ion concentrations as determined with Plant R
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-plant_root_simulator_DT <- createDTFF(dfname = plant_root_simulator,
+plant_root_simulator_DT <- create_dataTable(dfname = plant_root_simulator,
                                       description = plant_root_simulator_desc,
                                       dateRangeField = 'start_date')
 
@@ -360,7 +358,7 @@ tissue_chn_desc <- 'CHN (Carbon, Hydrogen, and Nitrogen) elemental analysis of L
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-tissue_chn_DT <- createDTFF(dfname = tissue_chn,
+tissue_chn_DT <- create_dataTable(dfname = tissue_chn,
                             description = tissue_chn_desc,
                             dateRangeField = 'sample_date')
 
@@ -377,7 +375,7 @@ data_element_desc <- "desc"
 
 # create data table based on metadata provided in the companion csv
 # use createdataTableFn() if attributes and classes are to be passed directly
-data_element_DT <- createDTFF(dfname = data_element,
+data_element_DT <- create_dataTable(dfname = data_element,
                               description = data_element_desc,
                               dateRangeField = 'runoff_datetime')
 
@@ -389,32 +387,36 @@ title <- 'Desert Fertilization Experiment: investigation of Sonoran desert ecosy
 
 ```{r abstract}
 
-abstract <- as(set_TextType("abstract.md"), "abstract") 
+abstract <- set_TextType("abstract.md")
+```
+
+```{r connections::mysql::prod redux, eval=T }
+source('~/Documents/localSettings/mysql_prod.R')
+mysql_prod <- mysql_prod_connect()
 ```
 
 ```{r people}
 
-mysql_prod <- mysql_prod_connect('gios2_production')
 
-jonAllen <- addCreator('jon', 'allen')
-nancyGrimm <- addCreator('n', 'grimm')
-sharonHall <- addCreator('shar', 'hall')
-jasonKaye <- addCreator('jaso', 'kaye')
+jonAllen <- create_role(firstName = 'jon', lastName = 'allen', roleType = 'creator')
+nancyGrimm <- create_role(firstName = 'n', stName = 'grimm', roleType = 'creator')
+sharonHall <- create_role(firstName = 'shar', stName = 'hall', roleType = 'creator')
+jasonKaye <- create_role(firstName = 'jaso', stName = 'kaye', roleType = 'creator')
 
-creators <- c(as(jonAllen, 'creator'),
-              as(nancyGrimm, 'creator'),
-              as(sharonHall, 'creator'),
-              as(jasonKaye, 'creator'))
+creators <- list(jonAllen,
+                 nancyGrimm,
+                 sharonHall,
+                 jasonKaye)
 
-stevanEarl <- addMetadataProvider('s', 'earl')
-marisaMasles <- addMetadataProvider('m', 'masles')
-quincyStewart <- addMetadataProvider('q', 'stewart')
-sallyWittlinger <- addMetadataProvider('s', 'wittlinger')
+stevanEarl <- create_role(firstName = 's', lastName = 'earl', roleType = "metadata")
+marisaMasles <- create_role(firstName = 'm', lastName = 'masles', roleType = "metadata")
+quincyStewart <- create_role(firstName = 'q', lastName = 'stewart', roleType = "metadata")
+sallyWittlinger <- create_role(firstName = 's', lastName = 'wittlinger', roleType = "metadata")
 
-metadataProvider <- c(as(stevanEarl, 'metadataProvider'),
-                      as(marisaMasles, 'metadataProvider'),
-                      as(quincyStewart, 'metadataProvider'),
-                      as(sallyWittlinger, 'metadataProvider'))
+metadataProvider <- list(stevanEarl,
+                         marisaMasles,
+                         quincyStewart,
+                         sallyWittlinger)
 ```
 
 ```{r keywords}
@@ -459,6 +461,18 @@ coverage <- set_coverage(begin = begindate,
                          west = -112.547375174279352, east = -111.482761068522152,
                          north = +33.726771147871851, south = +33.013262396669028)
 ```
+
+New approach for taxonomy is to use taxonomyCleanr to build the
+taxonomicCoverage. Note that at the time of this writing and building,
+taxonomyCleanr had not been ported to rOpenSci EML v2. Using
+caplter::taxonomyCleanr/taxonomy-rEML2 until Colin adapts taxonmyCleanr to
+ropensci EML v2.
+
+*Note* that the `taxa_map.csv` built with the `create_taxa_map()` function and
+resolving taxonomic IDs (i.e., `resolve_comm_taxa()`) only needs to be run once
+per version/session -- the taxonomicCoverage can be built as many times as
+needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated and
+the taxonomic IDs resolved.
 
 ```{r taxonomic_coverage}
 
@@ -510,36 +524,52 @@ coverage@taxonomicCoverage <- c(taxaCoverage)
 
 ```{r construct_dataset}
 
-# from sourced file:
-  # address
-  # publisher
-  # contact
-  # rights
-  # distribution
+# from capeml package:
+# address
+# publisher
+# contact
+# rights
+# distribution
 
 # generate a list of EML dataTables
 listOfDataTables <- lapply(ls(pattern = "_DT"), function(DT) { get(DT) } )
 
-# print list as a safety step
-print(ls(pattern= "_DT"))
+# print list of dataTables as a safety step
+print(ls(pattern = "_DT"))
 
 # DATASET
-dataset <- new("dataset",
-               title = title,
-               creator = creators,
-               pubDate = pubDate,
-               metadataProvider = metadataProvider,
-               # associatedParty = associatedParty,
-               intellectualRights = rights,
-               abstract = abstract,
-               keywordSet = keywords,
-               coverage = coverage,
-               contact = contact,
-               methods = methods,
-               distribution = metadata_dist,
-               dataTable = listOfDataTables,
-               otherEntity = c(desert_fertilization_sites))
+dataset <- EML::eml$dataset(
+  title = title,
+  creator = creators,
+  pubDate = pubDate,
+  metadataProvider = metadataProvider,
+  intellectualRights = capRights,
+  abstract = abstract,
+  keywordSet = keywords,
+  coverage = coverage,
+  contact = capContact, # cap contact
+  publisher = capPublisher, # cap pub
+  # contact = giosContact, # gios contact
+  # publisher = giosPublisher, # gios pub
+  methods = methods,
+  # project = capProject, # cap project
+  distribution = create_distribution(packageIdent),
+  dataTable = listOfDataTables)
 
+# add associatedParty if relevant
+# dataset$associatedParty <- list() 
+
+# add other entities if relevant
+# dataset$otherEntity <- list(otherEntityOne, otherEntityTwo)
+
+# print list of otherEntities as a safety step
+print(ls(pattern = "_OE"))
+
+# generate a list of EML otherEntities
+listOfOtherEntities <- lapply(ls(pattern = "_OE"), function(OE) { get(OE) } )
+
+# add otherEntities to dataset
+dataset$otherEntity <- listOfOtherEntities 
 
 ```
 
@@ -569,22 +599,25 @@ unitList <- set_unitList(custom_units)
 ```{r construct_eml}
 
 if(exists('unitList')) {
-  eml <- new("eml",
-             schemaLocation = "eml://ecoinformatics.org/eml-2.1.1  http://nis.lternet.edu/schemas/EML/eml-2.1.1/eml.xsd",
-             packageId = packageIdent,
-             scope = "system",
-             system = "knb",
-             access = lter_access,
-             dataset = dataset,
-             additionalMetadata = as(unitList, "additionalMetadata"))
+  
+  eml <- EML::eml$eml(
+    access = lterAccess,
+    dataset = dataset,
+    additionalMetadata = unitList,
+    packageId = packageIdent,
+    system = "knb",
+    scope = "system"
+  )
+  
 } else {
-  eml <- new("eml",
-             schemaLocation = "eml://ecoinformatics.org/eml-2.1.1  http://nis.lternet.edu/schemas/EML/eml-2.1.1/eml.xsd",
-             packageId = packageIdent,
-             scope = "system",
-             system = "knb",
-             access = lter_access,
-             dataset = dataset)
+  
+  eml <- EML::eml$eml(
+    access = lterAccess,
+    dataset = dataset,
+    packageId = packageIdent,
+    system = "knb",
+    scope = "system"
+  )
 }
 
 ```
