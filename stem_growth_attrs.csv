@@ -1,13 +1,13 @@
-attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum,missingValueCode,missingValueCodeExplanation
-site_code,,,,,site name abbreviation,factor,,,,
-plot_id,,,,plot id number,plot id number,character,,,,
-treatment_code,,,,,treatment name abbreviation,factor,,,,
-scientific_name,,,,scientific name of plant measured,scientific name of plant measured,character,,,,
-shrub_code,,,,,study plant identifier,factor,,,,
-direction,,,,,direction or quadrant of plant in which measured stem is positioned,factor,,,,
-pre_date,YYYY-MM-DD,,,,date of initial or pre stem-length measurement,Date,,,,
-post_date,YYYY-MM-DD,,,,date of final or post stem-length,Date,,,NA,missing value
-post_note,,,,field note regarding final or post stem-length measurement,field note regarding final or post stem-length measurement,character,,,NA,missing value
-post_measurement,,,,,"boolean indicator denoting whether the measurement is a pre or initial stem-length measurement (FALSE), or a final or post stem-length measurement (TRUE)",factor,,,,
-stem_length,,millimeter,real,,length of stem,numeric,-6,1116.5,NA,missing value
-comment,,,,field note(s) regarding particular shrub or measurement,field note(s) regarding particular shrub or measurement,character,,,NA,missing value
+attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum
+site_code,,,,,site name abbreviation,factor,,
+plot_id,,,,plot id number,plot id number,character,,
+treatment_code,,,,,treatment name abbreviation,factor,,
+scientific_name,,,,scientific name of plant measured,scientific name of plant measured,character,,
+shrub_code,,,,,study plant identifier,factor,,
+direction,,,,,direction or quadrant of plant in which measured stem is positioned,factor,,
+pre_date,YYYY-MM-DD,,,,date of initial or pre stem-length measurement,Date,,
+post_date,YYYY-MM-DD,,,,date of final or post stem-length,Date,,
+post_note,,,,field note regarding final or post stem-length measurement,field note regarding final or post stem-length measurement,character,,
+post_measurement,,,,,"boolean indicator denoting whether the measurement is a pre or initial stem-length measurement (FALSE), or a final or post stem-length measurement (TRUE)",factor,,
+stem_length,,millimeter,real,,length of stem,numeric,-6,1116.5
+comment,,,,field note(s) regarding particular shrub or measurement,field note(s) regarding particular shrub or measurement,character,,

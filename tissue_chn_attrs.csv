@@ -1,11 +1,11 @@
-attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum,missingValueCode,missingValueCodeExplanation
-site_code,,,,,site name abbreviation,factor,,,,
-plot_id,,,,plot identifier,plot identifier,character,,,,
-treatment_code,,,,,treatment name abbreviation,factor,,,,
-sample_date,YYYY-MM-DD,,,,date of leaf (Larrea) or plant (Pectocarya) collection,Date,,,,
-season_year,,,,season and year of collection (for easier sorting),season and year of collection (for easier sorting),character,,,,
-tissue_type,,,,source of tissue material,source of tissue material,factor,,,,
-analyte,,,,,element analyzed,factor,,,,
-Weight,,gram,real,,weight of material used for analysis,numeric,1.772,2.452,,
-percent_composition,,dimensionless,real,,percent composition of analyte,numeric,1.78,53.43,,
-Comment,,,,comment about analytical measurement,comment about analytical measurement,character,,,NA,missing value
+attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum
+site_code,,,,,site name abbreviation,factor,,
+plot_id,,,,plot identifier,plot identifier,character,,
+treatment_code,,,,,treatment name abbreviation,factor,,
+sample_date,YYYY-MM-DD,,,,date of leaf (Larrea) or plant (Pectocarya) collection,Date,,
+season_year,,,,season and year of collection (for easier sorting),season and year of collection (for easier sorting),character,,
+tissue_type,,,,source of tissue material,source of tissue material,factor,,
+analyte,,,,,element analyzed,factor,,
+Weight,,gram,real,,weight of material used for analysis,numeric,1.704,2.452
+percent_composition,,dimensionless,real,,percent composition of analyte,numeric,1.78,53.43
+Comment,,,,comment about analytical measurement,comment about analytical measurement,character,,

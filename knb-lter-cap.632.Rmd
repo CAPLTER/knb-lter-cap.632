@@ -11,9 +11,19 @@ editor_options:
 
 2018-06-05
 
-For 632.6, I moved the workflow to the Rmd template, added the approximate spatial data, and moved the data publication component of tissue CHN to this workflow. A larger change associated with version 6 is that I moved `annuals 2008`, `soil ph (2010 and 2011)` and `biovolume` to new, indepdendent data sets so that those static components of the projet are no longer integrated with the on-going aspects.
+For 632.6, I moved the workflow to the Rmd template, added the approximate
+spatial data, and moved the data publication component of tissue CHN to this
+workflow. A larger change associated with version 6 is that I moved `annuals
+2008`, `soil ph (2010 and 2011)` and `biovolume` to new, indepdendent data sets
+so that those static components of the projet are no longer integrated with the
+on-going aspects.
 
-Note that I moved the tissue CHN publishing code here but the new CHN data processing code is in a separate R file. Note also that the publishing component of ICP is still separate owing to the very different nature of that data entity. For this update and, really, available for all future updates, is to blast through the Rmd chunks for everything, and simply paste the dataTable and otherEntity objects that correspond to ICP into the new 632 XML.
+Note that I moved the tissue CHN publishing code here but the new CHN data
+processing code is in a separate R file. Note also that the publishing component
+of ICP is still separate owing to the very different nature of that data entity.
+For this update and, really, available for all future updates, is to blast
+through the Rmd chunks for everything, and simply paste the dataTable and
+otherEntity objects that correspond to ICP into the new 632 XML.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -95,15 +105,15 @@ annuals_biomass <- annuals_biomass %>%
          plot_id = as.character(plot_id)
   )
 
-# writeAttributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
 
 annuals_biomass_desc <- 'Biomass (g) of annual plants harvested from subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Material is harested from 0.25 square meter quadrats within each subplot. All harvests occur during the spring.'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
 annuals_biomass_DT <- create_dataTable(dfname = annuals_biomass,
-                                 description = annuals_biomass_desc)
+                                       description = annuals_biomass_desc,
+                                       dateRangeField = 'date')
 
 ```
 
@@ -148,15 +158,15 @@ annuals_composition <- annuals_composition %>%
     cover_category = as.factor(cover_category)
   )
 
-# writeAttributes(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
 
 annuals_composition_desc <- 'Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Estimates are based on 0.25 square meter quadrats within each subplot. All measurements collected in the spring.'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
+# do not add date range since early years did not have a full date
 annuals_composition_DT <- create_dataTable(dfname = annuals_composition,
-                                     description = annuals_composition_desc)
+                                           description = annuals_composition_desc)
 
 ```
 
@@ -177,16 +187,15 @@ ORDER BY f.date, s.code
 fertilizer_application <- fertilizer_application  %>%
   mutate(site_code = as.factor(site_code))
 
-# writeAttributes(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
+# write_attributes(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
+# write_factors(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
 
 fertilizer_application_desc <- 'catalog of amounts and timing of nitrogen and phosphorus fertilizer applications to nitrogen (N), phosphorus (P), and nitrogen+phosphorus (N+P) treatment plots'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
 fertilizer_application_DT <- create_dataTable(dfname = fertilizer_application,
-                                        description = fertilizer_application_desc,
-                                        dateRangeField = 'application_date')
+                                              description = fertilizer_application_desc,
+                                              dateRangeField = 'application_date')
 ```
 
 
@@ -240,16 +249,15 @@ stem_growth <- stem_growth %>%
          post_note = gsub('[\r\n]', "", post_note)
   )
 
-# writeAttributes(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
+# write_factors(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
 
 stem_growth_desc <- 'Biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
 stem_growth_DT <- create_dataTable(dfname = stem_growth,
-                             description = stem_growth_desc,
-                             dateRangeField = 'pre_date')
+                                   description = stem_growth_desc,
+                                   dateRangeField = 'pre_date')
 ```
 
 ```{r PRS}
@@ -276,32 +284,33 @@ ORDER BY pa.start_date;')
 # standardize sample type names
 plant_root_simulator <- plant_root_simulator %>%
   filter(!grepl("NH4", location_within_plot)) %>% # remove the washing experiment samples
-  mutate(location_within_plot = replace(location_within_plot, location_within_plot == 'between plants', 'between_plant'),
-         location_within_plot = tolower(location_within_plot),
-         location_within_plot = gsub(" ", "_", location_within_plot),
-         location_within_plot = gsub("-", "_", location_within_plot),
-         analyte = gsub(" ", "-", analyte)
+  mutate(
+    location_within_plot = replace(location_within_plot, location_within_plot == 'between plants', 'between_plant'),
+    location_within_plot = tolower(location_within_plot),
+    location_within_plot = gsub(" ", "_", location_within_plot),
+    location_within_plot = gsub("-", "_", location_within_plot),
+    analyte = gsub(" ", "-", analyte)
   )
 
 # change column types as appropriate
 plant_root_simulator <- plant_root_simulator %>%
-  mutate(site_code = as.factor(site_code),
-         treatment_code = as.factor(treatment_code),
-         analyte = as.factor(analyte),
-         location_within_plot = as.factor(location_within_plot),
-         plot_id = as.character(plot_id)
+  mutate(
+    site_code = as.factor(site_code),
+    treatment_code = as.factor(treatment_code),
+    analyte = as.factor(analyte),
+    location_within_plot = as.factor(location_within_plot),
+    plot_id = as.character(plot_id)
   )
 
-# writeAttributes(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
 
 plant_root_simulator_desc <- 'Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+).'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
 plant_root_simulator_DT <- create_dataTable(dfname = plant_root_simulator,
-                                      description = plant_root_simulator_desc,
-                                      dateRangeField = 'start_date')
+                                            description = plant_root_simulator_desc,
+                                            dateRangeField = 'start_date')
 
 ```
 
@@ -344,23 +353,23 @@ tissue_chn <- dbGetQuery(pg, chnDataQuery)
 tissue_chn <- tissue_chn %>%
   gather(key = analyte, value = percent_composition, `Carbon %`, `Hydrogen %`, `Nitrogen %`) %>% 
   select(site_code, plot_id, treatment_code, sample_date, season_year, tissue_type, analyte, Weight, percent_composition, Comment) %>% 
-  mutate(plot_id = as.character(plot_id),
-         site_code = as.factor(site_code),
-         treatment_code = as.factor(treatment_code),
-         tissue_type = as.factor(tissue_type),
-         analyte = as.factor(analyte)
+  mutate(
+    plot_id = as.character(plot_id),
+    site_code = as.factor(site_code),
+    treatment_code = as.factor(treatment_code),
+    tissue_type = as.factor(tissue_type),
+    analyte = as.factor(analyte)
   ) 
 
-# writeAttributes(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
 
 tissue_chn_desc <- 'CHN (Carbon, Hydrogen, and Nitrogen) elemental analysis of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites.'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
 tissue_chn_DT <- create_dataTable(dfname = tissue_chn,
-                            description = tissue_chn_desc,
-                            dateRangeField = 'sample_date')
+                                  description = tissue_chn_desc,
+                                  dateRangeField = 'sample_date')
 
 ```
 
@@ -368,16 +377,15 @@ tissue_chn_DT <- create_dataTable(dfname = tissue_chn,
 
 # see icp_tissue.R
 
-# writeAttributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(data_element) # write data frame attributes to a csv in current dir to edit metadata
+# write_attributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
+# write_factors(data_element) # write data frame attributes to a csv in current dir to edit metadata
 
-data_element_desc <- "desc"
+# data_element_desc <- "desc"
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-data_element_DT <- create_dataTable(dfname = data_element,
-                              description = data_element_desc,
-                              dateRangeField = 'runoff_datetime')
+# data_element_DT <- create_dataTable(dfname = data_element,
+#                                     description = data_element_desc,
+#                                     dateRangeField = 'runoff_datetime')
 
 ```
 
