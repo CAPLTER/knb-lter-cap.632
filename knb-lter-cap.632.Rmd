@@ -1,7 +1,7 @@
 ---
 title: "remlTemplate"
 author: "SRE"
-date: "March 14, 2018"
+date: Sys.Date()
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -9,14 +9,55 @@ editor_options:
 
 # README
 
+2019-07-01
+
+Version 632.7 features updated annuals, PRS, stems, and CHN data. The updated
+data were pulled from the database and built into the resulting EML. EML for
+other data items that were not updated (e.g., fertilizer application, GIS,
+tissue ICP, zipped ICP files) were copied from a previous version (632.6). For
+taxonomy, I used the newer taxonomyCleanr approach.
+
+Encountered a bizarre error with this round: building the PRS DT sensu below did
+not work, it generated the csv but did not create the DT element. Seems that
+create_dataTable was getting hung up on the units for final value
+(microgramPerTenSquareCentimeterPerBurialLength). The error was not actually
+with my code but something in the rEML package set_attributes() function.
+Investigated for quite some time without resolution, and it only occurred with
+this particular table and attribute. As a result, I left the unit for
+final_value empty in the plant_root_simulator_attrs.csv then manually added that
+unit back into the resulting EML file.
+
+plant_root_simulator_DT <- create_dataTable(dfname = plant_root_simulator,
+                                            description = plant_root_simulator_desc,
+                                            dateRangeField = 'start_date')
+
+
+In addition, rEML again did not properly construct the customUnits list, and
+that XML had to be modified by hand.
+
+
 2018-06-05
 
-For 632.6, I moved the workflow to the Rmd template, added the approximate spatial data, and moved the data publication component of tissue CHN to this workflow. A larger change associated with version 6 is that I moved `annuals 2008`, `soil ph (2010 and 2011)` and `biovolume` to new, indepdendent data sets so that those static components of the projet are no longer integrated with the on-going aspects.
+For 632.6, I moved the workflow to the Rmd template, added the approximate
+spatial data, and moved the data publication component of tissue CHN to this
+workflow. A larger change associated with version 6 is that I moved 'annuals
+2008', 'soil ph (2010 and 2011)' and 'biovolume' to new, indepdendent data sets
+so that those static components of the projet are no longer integrated with the
+on-going aspects.
 
-Note that I moved the tissue CHN publishing code here but the new CHN data processing code is in a separate R file. Note also that the publishing component of ICP is still separate owing to the very different nature of that data entity. For this update and, really, available for all future updates, is to blast through the Rmd chunks for everything, and simply paste the dataTable and otherEntity objects that correspond to ICP into the new 632 XML.
+Note that I moved the tissue CHN publishing code here but the new CHN data
+processing code is in a separate R file. Note also that the publishing component
+of ICP is still separate owing to the very different nature of that data entity.
+For this update and, really, available for all future updates, is to blast
+through the Rmd chunks for everything, and simply paste the dataTable and
+otherEntity objects that correspond to ICP into the new 632 XML.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eml-2.1.1, include=FALSE}
+options("emld_db" = "eml-2.1.1")
 ```
 
 ```{r libraries}
@@ -28,22 +69,16 @@ library(tools)
 library(readxl)
 library(aws.s3)
 library(capeml)
+library(gioseml)
 ```
 
 ```{r dataset_details}
 projectid <- 632
-packageIdent <- 'knb-lter-cap.632.6'
+packageIdent <- 'knb-lter-cap.632.7'
 pubDate <- as.character(Sys.Date())
 ```
  
 ```{r helper_functions}
-source('~/localRepos/reml-helper-tools/writeAttributesFn.R')
-source('~/localRepos/reml-helper-tools/createDataTableFromFileFn.R')
-source('~/localRepos/reml-helper-tools/createKMLFn.R')
-source('~/localRepos/reml-helper-tools/address_publisher_contact_language_rights.R')
-source('~/localRepos/reml-helper-tools/createOtherEntityFn.R')
-source('~/localRepos/reml-helper-tools/createPeople.R')
-source('~/localRepos/reml-helper-tools/createFactorsDataframe.R')
 source('~/localRepos/reml-helper-tools/amazon_file_upload.R')
 ```
 
@@ -97,15 +132,15 @@ annuals_biomass <- annuals_biomass %>%
          plot_id = as.character(plot_id)
   )
 
-# writeAttributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
 
 annuals_biomass_desc <- 'Biomass (g) of annual plants harvested from subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Material is harested from 0.25 square meter quadrats within each subplot. All harvests occur during the spring.'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-annuals_biomass_DT <- createDTFF(dfname = annuals_biomass,
-                                 description = annuals_biomass_desc)
+annuals_biomass_DT <- create_dataTable(dfname = annuals_biomass,
+                                       description = annuals_biomass_desc,
+                                       dateRangeField = 'date')
 
 ```
 
@@ -150,15 +185,15 @@ annuals_composition <- annuals_composition %>%
     cover_category = as.factor(cover_category)
   )
 
-# writeAttributes(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(annuals_composition) # write data frame attributes to a csv in current dir to edit metadata
 
 annuals_composition_desc <- 'Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Estimates are based on 0.25 square meter quadrats within each subplot. All measurements collected in the spring.'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-annuals_composition_DT <- createDTFF(dfname = annuals_composition,
-                                     description = annuals_composition_desc)
+# do not add date range since early years did not have a full date
+annuals_composition_DT <- create_dataTable(dfname = annuals_composition,
+                                           description = annuals_composition_desc)
 
 ```
 
@@ -179,58 +214,57 @@ ORDER BY f.date, s.code
 fertilizer_application <- fertilizer_application  %>%
   mutate(site_code = as.factor(site_code))
 
-# writeAttributes(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
+# write_attributes(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
+# write_factors(fertilizer_application) # write data frame attributes to a csv in current dir to edit metadata
 
 fertilizer_application_desc <- 'catalog of amounts and timing of nitrogen and phosphorus fertilizer applications to nitrogen (N), phosphorus (P), and nitrogen+phosphorus (N+P) treatment plots'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-fertilizer_application_DT <- createDTFF(dfname = fertilizer_application,
-                                        description = fertilizer_application_desc,
-                                        dateRangeField = 'application_date')
+fertilizer_application_DT <- create_dataTable(dfname = fertilizer_application,
+                                              description = fertilizer_application_desc,
+                                              dateRangeField = 'application_date')
 ```
 
 
 ```{r stems}
 
 stem_growth <- dbGetQuery(pg,"
-      SELECT
-        s.code AS site_code,
-        p.id AS plot_id,
-        t.code AS treatment_code,
-        sp.scientific_name,
-        sh.code AS shrub_code,
-        st.direction,
-        st.pre_date,
-        st.post_date,
-        st.post_note,
-        sl.post_measurement,
-        sl.length_in_mm as stem_length,
-        sc.comment
-      FROM urbancndep.stems st
-      JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
-      JOIN urbancndep.plots p ON sh.plot_id = p.id
-      JOIN urbancndep.sites s ON p.site_id = s.id
-      JOIN urbancndep.treatments t ON p.treatment_id = t.id
-      JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
-      LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
-      LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
-      WHERE
-      	NOT (
-            -- omit post data not collected when smart sampling was implemented
-        		EXTRACT (YEAR FROM st.pre_date) = 2016 AND
-        		EXTRACT (MONTH FROM st.pre_date) = 10 AND
-        		st.post_date IS NULL
-      	) AND
-        NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
-        NOT (p.id = 12 AND st.pre_date = '2010-05-11')
-      ORDER BY
-        st.pre_date,
-        p.id,
-        sl.post_measurement,
-        sh.code,
-        st.direction;")
+SELECT
+  s.code AS site_code,
+  p.id AS plot_id,
+  t.code AS treatment_code,
+  sp.scientific_name,
+  sh.code AS shrub_code,
+  st.direction,
+  st.pre_date,
+  st.post_date,
+  st.post_note,
+  sl.post_measurement,
+  sl.length_in_mm as stem_length,
+  sc.comment
+FROM urbancndep.stems st
+JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
+JOIN urbancndep.plots p ON sh.plot_id = p.id
+JOIN urbancndep.sites s ON p.site_id = s.id
+JOIN urbancndep.treatments t ON p.treatment_id = t.id
+JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
+LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
+LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
+WHERE
+	NOT (
+      -- omit post data not collected when smart sampling was implemented
+  		EXTRACT (YEAR FROM st.pre_date) = 2016 AND
+  		EXTRACT (MONTH FROM st.pre_date) = 10 AND
+  		st.post_date IS NULL
+	) AND
+  NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
+  NOT (p.id = 12 AND st.pre_date = '2010-05-11')
+ORDER BY
+  st.pre_date,
+  p.id,
+  sl.post_measurement,
+  sh.code,
+  st.direction;")
 
 stem_growth <- stem_growth %>%
   mutate(site_code = as.factor(site_code),
@@ -242,16 +276,15 @@ stem_growth <- stem_growth %>%
          post_note = gsub('[\r\n]', "", post_note)
   )
 
-# writeAttributes(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
+# write_factors(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
 
 stem_growth_desc <- 'Biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-stem_growth_DT <- createDTFF(dfname = stem_growth,
-                             description = stem_growth_desc,
-                             dateRangeField = 'pre_date')
+stem_growth_DT <- create_dataTable(dfname = stem_growth,
+                                   description = stem_growth_desc,
+                                   dateRangeField = 'pre_date')
 ```
 
 ```{r PRS}
@@ -278,32 +311,33 @@ ORDER BY pa.start_date;')
 # standardize sample type names
 plant_root_simulator <- plant_root_simulator %>%
   filter(!grepl("NH4", location_within_plot)) %>% # remove the washing experiment samples
-  mutate(location_within_plot = replace(location_within_plot, location_within_plot == 'between plants', 'between_plant'),
-         location_within_plot = tolower(location_within_plot),
-         location_within_plot = gsub(" ", "_", location_within_plot),
-         location_within_plot = gsub("-", "_", location_within_plot),
-         analyte = gsub(" ", "-", analyte)
+  mutate(
+    location_within_plot = replace(location_within_plot, location_within_plot == 'between plants', 'between_plant'),
+    location_within_plot = tolower(location_within_plot),
+    location_within_plot = gsub(" ", "_", location_within_plot),
+    location_within_plot = gsub("-", "_", location_within_plot),
+    analyte = gsub(" ", "-", analyte)
   )
 
 # change column types as appropriate
 plant_root_simulator <- plant_root_simulator %>%
-  mutate(site_code = as.factor(site_code),
-         treatment_code = as.factor(treatment_code),
-         analyte = as.factor(analyte),
-         location_within_plot = as.factor(location_within_plot),
-         plot_id = as.character(plot_id)
+  mutate(
+    site_code = as.factor(site_code),
+    treatment_code = as.factor(treatment_code),
+    analyte = as.factor(analyte),
+    location_within_plot = as.factor(location_within_plot),
+    plot_id = as.character(plot_id)
   )
 
-# writeAttributes(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(plant_root_simulator) # write data frame attributes to a csv in current dir to edit metadata
 
 plant_root_simulator_desc <- 'Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+).'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-plant_root_simulator_DT <- createDTFF(dfname = plant_root_simulator,
-                                      description = plant_root_simulator_desc,
-                                      dateRangeField = 'start_date')
+plant_root_simulator_DT <- create_dataTable(dfname = plant_root_simulator,
+                                            description = plant_root_simulator_desc,
+                                            dateRangeField = 'start_date')
 
 ```
 
@@ -346,23 +380,23 @@ tissue_chn <- dbGetQuery(pg, chnDataQuery)
 tissue_chn <- tissue_chn %>%
   gather(key = analyte, value = percent_composition, `Carbon %`, `Hydrogen %`, `Nitrogen %`) %>% 
   select(site_code, plot_id, treatment_code, sample_date, season_year, tissue_type, analyte, Weight, percent_composition, Comment) %>% 
-  mutate(plot_id = as.character(plot_id),
-         site_code = as.factor(site_code),
-         treatment_code = as.factor(treatment_code),
-         tissue_type = as.factor(tissue_type),
-         analyte = as.factor(analyte)
+  mutate(
+    plot_id = as.character(plot_id),
+    site_code = as.factor(site_code),
+    treatment_code = as.factor(treatment_code),
+    tissue_type = as.factor(tissue_type),
+    analyte = as.factor(analyte)
   ) 
 
-# writeAttributes(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
+write_attributes(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(tissue_chn) # write data frame attributes to a csv in current dir to edit metadata
 
 tissue_chn_desc <- 'CHN (Carbon, Hydrogen, and Nitrogen) elemental analysis of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites.'
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-tissue_chn_DT <- createDTFF(dfname = tissue_chn,
-                            description = tissue_chn_desc,
-                            dateRangeField = 'sample_date')
+tissue_chn_DT <- create_dataTable(dfname = tissue_chn,
+                                  description = tissue_chn_desc,
+                                  dateRangeField = 'sample_date')
 
 ```
 
@@ -370,16 +404,15 @@ tissue_chn_DT <- createDTFF(dfname = tissue_chn,
 
 # see icp_tissue.R
 
-# writeAttributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
-# factorsToFrame(data_element) # write data frame attributes to a csv in current dir to edit metadata
+# write_attributes(annuals_biomass) # write data frame attributes to a csv in current dir to edit metadata
+# write_factors(data_element) # write data frame attributes to a csv in current dir to edit metadata
 
-data_element_desc <- "desc"
+# data_element_desc <- "desc"
 
 # create data table based on metadata provided in the companion csv
-# use createdataTableFn() if attributes and classes are to be passed directly
-data_element_DT <- createDTFF(dfname = data_element,
-                              description = data_element_desc,
-                              dateRangeField = 'runoff_datetime')
+# data_element_DT <- create_dataTable(dfname = data_element,
+#                                     description = data_element_desc,
+#                                     dateRangeField = 'runoff_datetime')
 
 ```
 
@@ -389,32 +422,38 @@ title <- 'Desert Fertilization Experiment: investigation of Sonoran desert ecosy
 
 ```{r abstract}
 
-abstract <- as(set_TextType("abstract.md"), "abstract") 
+abstract <- set_TextType("abstract.md")
+```
+
+```{r connections::mysql::prod redux, eval=T }
+source('~/Documents/localSettings/mysql_prod.R')
+mysql_prod <- mysql_prod_connect()
 ```
 
 ```{r people}
 
-mysql_prod <- mysql_prod_connect('gios2_production')
 
-jonAllen <- addCreator('jon', 'allen')
-nancyGrimm <- addCreator('n', 'grimm')
-sharonHall <- addCreator('shar', 'hall')
-jasonKaye <- addCreator('jaso', 'kaye')
+jonAllen <- create_role(firstName = 'jon', lastName = 'allen', roleType = 'creator')
+nancyGrimm <- create_role(firstName = 'n', lastName = 'grimm', roleType = 'creator')
+sharonHall <- create_role(firstName = 'shar', lastName = 'hall', roleType = 'creator')
+jasonKaye <- create_role(firstName = 'jaso', lastName = 'kaye', roleType = 'creator')
+dan <- create_role(firstName = 'dan', lastName = 'child', roleType = 'creator')
 
-creators <- c(as(jonAllen, 'creator'),
-              as(nancyGrimm, 'creator'),
-              as(sharonHall, 'creator'),
-              as(jasonKaye, 'creator'))
+creators <- list(jonAllen,
+                 nancyGrimm,
+                 sharonHall,
+                 jasonKaye,
+                 dan)
 
-stevanEarl <- addMetadataProvider('s', 'earl')
-marisaMasles <- addMetadataProvider('m', 'masles')
-quincyStewart <- addMetadataProvider('q', 'stewart')
-sallyWittlinger <- addMetadataProvider('s', 'wittlinger')
+stevanEarl <- create_role(firstName = 's', lastName = 'earl', roleType = "metadata")
+marisaMasles <- create_role(firstName = 'm', lastName = 'masles', roleType = "metadata")
+quincyStewart <- create_role(firstName = 'q', lastName = 'stewart', roleType = "metadata")
+sallyWittlinger <- create_role(firstName = 's', lastName = 'wittlinger', roleType = "metadata")
 
-metadataProvider <- c(as(stevanEarl, 'metadataProvider'),
-                      as(marisaMasles, 'metadataProvider'),
-                      as(quincyStewart, 'metadataProvider'),
-                      as(sallyWittlinger, 'metadataProvider'))
+metadataProvider <- list(stevanEarl,
+                         marisaMasles,
+                         quincyStewart,
+                         sallyWittlinger)
 ```
 
 ```{r keywords}
@@ -460,86 +499,110 @@ coverage <- set_coverage(begin = begindate,
                          north = +33.726771147871851, south = +33.013262396669028)
 ```
 
-```{r taxonomic_coverage}
+New approach for taxonomy is to use taxonomyCleanr to build the
+taxonomicCoverage. Note that at the time of this writing and building,
+taxonomyCleanr had not been ported to rOpenSci EML v2. Using
+caplter::taxonomyCleanr/taxonomy-rEML2 until Colin adapts taxonmyCleanr to
+ropensci EML v2.
 
-# option 1: get all taxa names from the DB
-annuals_taxa <- dbGetQuery(pg,"
-SELECT
-  DISTINCT(cover_type)
-FROM urbancndep.cover_types
-WHERE cover_category LIKE 'annual';")
+*Note* that the `taxa_map.csv` built with the `create_taxa_map()` function and
+resolving taxonomic IDs (i.e., `resolve_comm_taxa()`) only needs to be run once
+per version/session -- the taxonomicCoverage can be built as many times as
+needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated and
+the taxonomic IDs resolved.
 
-# option 2
-annualsTaxa <- annuals_composition %>% 
-  select(cover_type) %>% 
-  mutate(
-    cover_type = as.character(cover_type),
-    cover_type = gsub("_", " ", cover_type)
-  ) %>%
-  filter(
-    !str_detect(cover_type, "unident"),
-    !str_detect(cover_type, "cover"),
-    !str_detect(cover_type, "base"),
-    !str_detect(cover_type, "litter"),
-    !str_detect(cover_type, "green"),
-    !str_detect(cover_type, "crusts"),
-    !str_detect(cover_type, "total"),
-    !str_detect(cover_type, "sampled"),
-    !str_detect(cover_type, "ground")
-  ) %>% 
-  distinct(cover_type) %>% 
-  pull(cover_type)
+```{r taxonomyCleanr, eval=TRUE}
 
-# I had used option 2 above to get the list of annuals taxa but rediscovered
-# option 1 after the fact - that would probably be better
+devtools::load_all('~/localRepos/taxonomyCleanr/')
+library(taxonomyCleanr)
 
-otherTaxa <- c('Larrea tridentata', 'Ambrosia dumosa', 'Ambrosia deltoidea', 'Pectocarya recurvata', 'Amsinckia menziesii', 'Schismus arabicus')
+my_path <- getwd() # taxonomyCleanr requires a path (to build the taxa_map)
 
-dataset_taxa <- unique(c(annualsTaxa, otherTaxa))
-```
+# get dataset taxa
+dataset_taxa <- dbGetQuery(pg,"
+  SELECT
+    DISTINCT(cover_type)
+  FROM urbancndep.cover_types
+  WHERE cover_category LIKE 'annual';"
+) %>% 
+  mutate(cover_type = gsub("_", " ", cover_type)) %>%
+  filter(!str_detect(cover_type, "unident")) %>% 
+  # annuals taxa above, additional taxa below
+  add_row(cover_type = 'Larrea tridentata') %>% 
+  add_row(cover_type = 'Ambrosia dumosa') %>% 
+  add_row(cover_type = 'Ambrosia deltoidea') %>% 
+  add_row(cover_type = 'Pectocarya recurvata') %>% 
+  add_row(cover_type = 'Amsinckia menziesii') %>% 
+  add_row(cover_type = 'Schismus arabicus') %>% 
+  distinct(cover_type)
 
-```{r set_taxonomic_coverage}
+# create or update map. A taxa_map.csv is the heart of taxonomyCleanr. This
+# function will build the taxa_map.csv and put it in the path identified with
+# my_path.
+create_taxa_map(path = my_path, x = dataset_taxa, col = "cover_type") 
 
-all_taxa <- identify_resolvable_taxa(dataset_taxa)
-resolved_taxa <- c(all_taxa[!is.na(all_taxa$resolve),]$taxon)
-taxaCoverage <- set_taxonomicCoverage(resolved_taxa, expand = T, db = 'itis')
+# resolve taxa by attempting to match the taxon's In this case, data.source 3 is
+# ITIS (which, by the way, is the only authority taxonomyCleanr will allow for
+# common names).
+# resolve_comm_taxa(path = my_path, data.sources = 3) # in this case, 3 is ITIS
+resolve_sci_taxa(path = my_path, data.sources = 3) # in this case, 3 is ITIS
 
-# set taxonomicCoverage element
-coverage@taxonomicCoverage <- c(taxaCoverage)
+# build the EML taxonomomic coverage
+taxaCoverage <- make_taxonomicCoverage(path = my_path)
+
+# add taxonomic to other coverages
+coverage$taxonomicCoverage <- taxaCoverage
+
 ```
 
 ```{r construct_dataset}
 
-# from sourced file:
-  # address
-  # publisher
-  # contact
-  # rights
-  # distribution
+# from capeml package:
+# address
+# publisher
+# contact
+# rights
+# distribution
 
 # generate a list of EML dataTables
 listOfDataTables <- lapply(ls(pattern = "_DT"), function(DT) { get(DT) } )
 
-# print list as a safety step
-print(ls(pattern= "_DT"))
+# print list of dataTables as a safety step
+print(ls(pattern = "_DT"))
 
 # DATASET
-dataset <- new("dataset",
-               title = title,
-               creator = creators,
-               pubDate = pubDate,
-               metadataProvider = metadataProvider,
-               # associatedParty = associatedParty,
-               intellectualRights = rights,
-               abstract = abstract,
-               keywordSet = keywords,
-               coverage = coverage,
-               contact = contact,
-               methods = methods,
-               distribution = metadata_dist,
-               dataTable = listOfDataTables,
-               otherEntity = c(desert_fertilization_sites))
+dataset <- EML::eml$dataset(
+  title = title,
+  creator = creators,
+  pubDate = pubDate,
+  metadataProvider = metadataProvider,
+  intellectualRights = capRights,
+  abstract = abstract,
+  keywordSet = keywords,
+  coverage = coverage,
+  contact = capContact, # cap contact
+  publisher = capPublisher, # cap pub
+  # contact = giosContact, # gios contact
+  # publisher = giosPublisher, # gios pub
+  methods = methods,
+  project = capProject, # cap project
+  distribution = create_distribution(packageIdent),
+  dataTable = listOfDataTables)
 
+# add associatedParty if relevant
+# dataset$associatedParty <- list() 
+
+# add other entities if relevant
+# dataset$otherEntity <- list(otherEntityOne, otherEntityTwo)
+
+# print list of otherEntities as a safety step
+print(ls(pattern = "_OE"))
+
+# generate a list of EML otherEntities
+listOfOtherEntities <- lapply(ls(pattern = "_OE"), function(OE) { get(OE) } )
+
+# add otherEntities to dataset
+dataset$otherEntity <- listOfOtherEntities 
 
 ```
 
@@ -556,7 +619,7 @@ custom_units <- rbind(
   data.frame(id = "microgramPerTenSquareCentimeterPerBurialLength",
              unitType = "unknown",
              parentSI = "unknown",
-             multiplierToSI = "unknown",
+             multiplierToSI = NA,
              description = "net rate of nutrient ion adsorption by the PRS® Probe expressed as the weight of nutrient adsorbed per surface area of ion-exchange membrane over time"),
   data.frame(id = "milligramPerKilogram",
              unitType = "massPerMass",
@@ -569,22 +632,25 @@ unitList <- set_unitList(custom_units)
 ```{r construct_eml}
 
 if(exists('unitList')) {
-  eml <- new("eml",
-             schemaLocation = "eml://ecoinformatics.org/eml-2.1.1  http://nis.lternet.edu/schemas/EML/eml-2.1.1/eml.xsd",
-             packageId = packageIdent,
-             scope = "system",
-             system = "knb",
-             access = lter_access,
-             dataset = dataset,
-             additionalMetadata = as(unitList, "additionalMetadata"))
+  
+  eml <- EML::eml$eml(
+    access = lterAccess,
+    dataset = dataset,
+    additionalMetadata = unitList,
+    packageId = packageIdent,
+    system = "knb",
+    scope = "system"
+  )
+  
 } else {
-  eml <- new("eml",
-             schemaLocation = "eml://ecoinformatics.org/eml-2.1.1  http://nis.lternet.edu/schemas/EML/eml-2.1.1/eml.xsd",
-             packageId = packageIdent,
-             scope = "system",
-             system = "knb",
-             access = lter_access,
-             dataset = dataset)
+  
+  eml <- EML::eml$eml(
+    access = lterAccess,
+    dataset = dataset,
+    packageId = packageIdent,
+    system = "knb",
+    scope = "system"
+  )
 }
 
 ```

@@ -1,6 +1,18 @@
+
 # README ------------------------------------------------------------------
 
-# 2018-06-05. The data publishing component of this workflow has been moved to
+# 2019-07-01
+
+# Seems that CHN output is not entirely consistent. For example, in previous
+# runs, Comments was Comment, there was a Messages column, and Weight (mg) was
+# just Weight. These differences all require(d) minor adjustments to the insert
+# statement of the insert_raw_chn function. Adjust as needed, and be sure sure
+# to do trial runs on dev before attempting to upload to prod.
+
+
+# 2018-06-05
+
+# The data publishing component of this workflow has been moved to
 # knb-lter-cap.632.Rmd. This workflow now is focused only on new data
 # processing.
 
@@ -208,7 +220,7 @@ insert_raw_chn <- function(processed_chn) {
     "Hydrogen",
     "Nitrogen",
     "Seconds",
-    "Messages",
+    --"Messages",
     plot_id, 
     site_code,
     treatment_code,
@@ -221,10 +233,10 @@ insert_raw_chn <- function(processed_chn) {
     SELECT
       "Sample ID",
       "Run #",
-      "Weight",
+      "Weight (mg)",
       "Created on",
       "Mode",
-      "Comment", 
+      "Comments", 
       "Carbon %",
       "Hydrogen %",
       "Nitrogen %",
@@ -236,7 +248,7 @@ insert_raw_chn <- function(processed_chn) {
       "Hydrogen",
       "Nitrogen",
       "Seconds",
-      "Messages",
+      --"Messages",
       plot_id, 
       site_code,
       treatment_code,
@@ -264,6 +276,13 @@ insert_raw_chn <- function(processed_chn) {
 
 
 # data processing (cumulative record) ------------------------------------------
+
+chn_raw <- chn_to_raw(dataFile = 'CHN_Larrea_Spring 2018.xls',
+                      tissueType = "larrea",
+                      surveyYear = 2018,
+                      season = "spr")
+insert_raw_chn(chn_raw)
+
 
 chn_raw <- chn_to_raw(dataFile = 'CHN_Larrea_Fall 2015.xls',
                       tissueType = "larrea",
