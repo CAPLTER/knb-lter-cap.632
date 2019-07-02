@@ -9,12 +9,39 @@ editor_options:
 
 # README
 
+2019-07-01
+
+Version 632.7 features updated annuals, PRS, stems, and CHN data. The updated
+data were pulled from the database and built into the resulting EML. EML for
+other data items that were not updated (e.g., fertilizer application, GIS,
+tissue ICP, zipped ICP files) were copied from a previous version (632.6). For
+taxonomy, I used the newer taxonomyCleanr approach.
+
+Encountered a bizarre error with this round: building the PRS DT sensu below did
+not work, it generated the csv but did not create the DT element. Seems that
+create_dataTable was getting hung up on the units for final value
+(microgramPerTenSquareCentimeterPerBurialLength). The error was not actually
+with my code but something in the rEML package set_attributes() function.
+Investigated for quite some time without resolution, and it only occurred with
+this particular table and attribute. As a result, I left the unit for
+final_value empty in the plant_root_simulator_attrs.csv then manually added that
+unit back into the resulting EML file.
+
+plant_root_simulator_DT <- create_dataTable(dfname = plant_root_simulator,
+                                            description = plant_root_simulator_desc,
+                                            dateRangeField = 'start_date')
+
+
+In addition, rEML again did not properly construct the customUnits list, and
+that XML had to be modified by hand.
+
+
 2018-06-05
 
 For 632.6, I moved the workflow to the Rmd template, added the approximate
 spatial data, and moved the data publication component of tissue CHN to this
-workflow. A larger change associated with version 6 is that I moved `annuals
-2008`, `soil ph (2010 and 2011)` and `biovolume` to new, indepdendent data sets
+workflow. A larger change associated with version 6 is that I moved 'annuals
+2008', 'soil ph (2010 and 2011)' and 'biovolume' to new, indepdendent data sets
 so that those static components of the projet are no longer integrated with the
 on-going aspects.
 
@@ -202,42 +229,42 @@ fertilizer_application_DT <- create_dataTable(dfname = fertilizer_application,
 ```{r stems}
 
 stem_growth <- dbGetQuery(pg,"
-      SELECT
-        s.code AS site_code,
-        p.id AS plot_id,
-        t.code AS treatment_code,
-        sp.scientific_name,
-        sh.code AS shrub_code,
-        st.direction,
-        st.pre_date,
-        st.post_date,
-        st.post_note,
-        sl.post_measurement,
-        sl.length_in_mm as stem_length,
-        sc.comment
-      FROM urbancndep.stems st
-      JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
-      JOIN urbancndep.plots p ON sh.plot_id = p.id
-      JOIN urbancndep.sites s ON p.site_id = s.id
-      JOIN urbancndep.treatments t ON p.treatment_id = t.id
-      JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
-      LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
-      LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
-      WHERE
-      	NOT (
-            -- omit post data not collected when smart sampling was implemented
-        		EXTRACT (YEAR FROM st.pre_date) = 2016 AND
-        		EXTRACT (MONTH FROM st.pre_date) = 10 AND
-        		st.post_date IS NULL
-      	) AND
-        NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
-        NOT (p.id = 12 AND st.pre_date = '2010-05-11')
-      ORDER BY
-        st.pre_date,
-        p.id,
-        sl.post_measurement,
-        sh.code,
-        st.direction;")
+SELECT
+  s.code AS site_code,
+  p.id AS plot_id,
+  t.code AS treatment_code,
+  sp.scientific_name,
+  sh.code AS shrub_code,
+  st.direction,
+  st.pre_date,
+  st.post_date,
+  st.post_note,
+  sl.post_measurement,
+  sl.length_in_mm as stem_length,
+  sc.comment
+FROM urbancndep.stems st
+JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
+JOIN urbancndep.plots p ON sh.plot_id = p.id
+JOIN urbancndep.sites s ON p.site_id = s.id
+JOIN urbancndep.treatments t ON p.treatment_id = t.id
+JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
+LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
+LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
+WHERE
+	NOT (
+      -- omit post data not collected when smart sampling was implemented
+  		EXTRACT (YEAR FROM st.pre_date) = 2016 AND
+  		EXTRACT (MONTH FROM st.pre_date) = 10 AND
+  		st.post_date IS NULL
+	) AND
+  NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
+  NOT (p.id = 12 AND st.pre_date = '2010-05-11')
+ORDER BY
+  st.pre_date,
+  p.id,
+  sl.post_measurement,
+  sh.code,
+  st.direction;")
 
 stem_growth <- stem_growth %>%
   mutate(site_code = as.factor(site_code),
@@ -407,14 +434,16 @@ mysql_prod <- mysql_prod_connect()
 
 
 jonAllen <- create_role(firstName = 'jon', lastName = 'allen', roleType = 'creator')
-nancyGrimm <- create_role(firstName = 'n', stName = 'grimm', roleType = 'creator')
-sharonHall <- create_role(firstName = 'shar', stName = 'hall', roleType = 'creator')
-jasonKaye <- create_role(firstName = 'jaso', stName = 'kaye', roleType = 'creator')
+nancyGrimm <- create_role(firstName = 'n', lastName = 'grimm', roleType = 'creator')
+sharonHall <- create_role(firstName = 'shar', lastName = 'hall', roleType = 'creator')
+jasonKaye <- create_role(firstName = 'jaso', lastName = 'kaye', roleType = 'creator')
+dan <- create_role(firstName = 'dan', lastName = 'child', roleType = 'creator')
 
 creators <- list(jonAllen,
                  nancyGrimm,
                  sharonHall,
-                 jasonKaye)
+                 jasonKaye,
+                 dan)
 
 stevanEarl <- create_role(firstName = 's', lastName = 'earl', roleType = "metadata")
 marisaMasles <- create_role(firstName = 'm', lastName = 'masles', roleType = "metadata")
@@ -482,52 +511,48 @@ per version/session -- the taxonomicCoverage can be built as many times as
 needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated and
 the taxonomic IDs resolved.
 
-```{r taxonomic_coverage}
+```{r taxonomyCleanr, eval=TRUE}
 
-# option 1: get all taxa names from the DB
-annuals_taxa <- dbGetQuery(pg,"
-SELECT
-  DISTINCT(cover_type)
-FROM urbancndep.cover_types
-WHERE cover_category LIKE 'annual';")
+devtools::load_all('~/localRepos/taxonomyCleanr/')
+library(taxonomyCleanr)
 
-# option 2
-annualsTaxa <- annuals_composition %>% 
-  select(cover_type) %>% 
-  mutate(
-    cover_type = as.character(cover_type),
-    cover_type = gsub("_", " ", cover_type)
-  ) %>%
-  filter(
-    !str_detect(cover_type, "unident"),
-    !str_detect(cover_type, "cover"),
-    !str_detect(cover_type, "base"),
-    !str_detect(cover_type, "litter"),
-    !str_detect(cover_type, "green"),
-    !str_detect(cover_type, "crusts"),
-    !str_detect(cover_type, "total"),
-    !str_detect(cover_type, "sampled"),
-    !str_detect(cover_type, "ground")
-  ) %>% 
-  distinct(cover_type) %>% 
-  pull(cover_type)
+my_path <- getwd() # taxonomyCleanr requires a path (to build the taxa_map)
 
-# I had used option 2 above to get the list of annuals taxa but rediscovered
-# option 1 after the fact - that would probably be better
+# get dataset taxa
+dataset_taxa <- dbGetQuery(pg,"
+  SELECT
+    DISTINCT(cover_type)
+  FROM urbancndep.cover_types
+  WHERE cover_category LIKE 'annual';"
+) %>% 
+  mutate(cover_type = gsub("_", " ", cover_type)) %>%
+  filter(!str_detect(cover_type, "unident")) %>% 
+  # annuals taxa above, additional taxa below
+  add_row(cover_type = 'Larrea tridentata') %>% 
+  add_row(cover_type = 'Ambrosia dumosa') %>% 
+  add_row(cover_type = 'Ambrosia deltoidea') %>% 
+  add_row(cover_type = 'Pectocarya recurvata') %>% 
+  add_row(cover_type = 'Amsinckia menziesii') %>% 
+  add_row(cover_type = 'Schismus arabicus') %>% 
+  distinct(cover_type)
 
-otherTaxa <- c('Larrea tridentata', 'Ambrosia dumosa', 'Ambrosia deltoidea', 'Pectocarya recurvata', 'Amsinckia menziesii', 'Schismus arabicus')
+# create or update map. A taxa_map.csv is the heart of taxonomyCleanr. This
+# function will build the taxa_map.csv and put it in the path identified with
+# my_path.
+create_taxa_map(path = my_path, x = dataset_taxa, col = "cover_type") 
 
-dataset_taxa <- unique(c(annualsTaxa, otherTaxa))
-```
+# resolve taxa by attempting to match the taxon's In this case, data.source 3 is
+# ITIS (which, by the way, is the only authority taxonomyCleanr will allow for
+# common names).
+# resolve_comm_taxa(path = my_path, data.sources = 3) # in this case, 3 is ITIS
+resolve_sci_taxa(path = my_path, data.sources = 3) # in this case, 3 is ITIS
 
-```{r set_taxonomic_coverage}
+# build the EML taxonomomic coverage
+taxaCoverage <- make_taxonomicCoverage(path = my_path)
 
-all_taxa <- identify_resolvable_taxa(dataset_taxa)
-resolved_taxa <- c(all_taxa[!is.na(all_taxa$resolve),]$taxon)
-taxaCoverage <- set_taxonomicCoverage(resolved_taxa, expand = T, db = 'itis')
+# add taxonomic to other coverages
+coverage$taxonomicCoverage <- taxaCoverage
 
-# set taxonomicCoverage element
-coverage@taxonomicCoverage <- c(taxaCoverage)
 ```
 
 ```{r construct_dataset}
@@ -560,7 +585,7 @@ dataset <- EML::eml$dataset(
   # contact = giosContact, # gios contact
   # publisher = giosPublisher, # gios pub
   methods = methods,
-  # project = capProject, # cap project
+  project = capProject, # cap project
   distribution = create_distribution(packageIdent),
   dataTable = listOfDataTables)
 
@@ -594,7 +619,7 @@ custom_units <- rbind(
   data.frame(id = "microgramPerTenSquareCentimeterPerBurialLength",
              unitType = "unknown",
              parentSI = "unknown",
-             multiplierToSI = "unknown",
+             multiplierToSI = NA,
              description = "net rate of nutrient ion adsorption by the PRS® Probe expressed as the weight of nutrient adsorbed per surface area of ion-exchange membrane over time"),
   data.frame(id = "milligramPerKilogram",
              unitType = "massPerMass",

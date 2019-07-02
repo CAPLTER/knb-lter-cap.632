@@ -5,7 +5,7 @@ treatment_code,,,,,treatment name abbreviation,factor,,
 location_within_plot,,,,,habitat within plot where probes were deployed,factor,,
 subplot,,,,,subplot number (one of two replicates),factor,,
 date,YYYY-MM-DD,,,,date of data collection,Date,,
-year,YYYY,,,,year of data collection,numeric,2009,2019
+year,YYYY,,,,year of data collection,Date,2009,2019
 collector,,,,initials of subplot surveyors,initials of subplot surveyors,character,,
 cover_type,,,,,"taxon of annual plant, plot characteristic, or logistical note",factor,,
 cover_category,,,,,"nature of the observation (taxonomic, general plot characteristic, logistical)",factor,,

@@ -5,7 +5,7 @@ treatment_code,,,,,treatment name abbreviation,factor,,
 start_date,YYYY-MM-DD,,,,date of probe deployment,Date,,
 end_date,YYYY-MM-DD,,,,date of probe extraction,Date,,
 analyte,,,,,analyte measured,factor,,
-final_value,,microgramPerTenSquareCentimeterPerBurialLength,real,,analyte concentration,numeric,-0.2,3829.9
+final_value,,,real,,analyte concentration,numeric,-0.2,3829.9
 flag,,,,data quality flag,data quality flag,character,,
 location_within_plot,,,,,habitat within plot where probes were deployed,factor,,
 num_cation_probes,,number,natural,,number of probes designated for analysis of cations recovered (of four),numeric,1,5

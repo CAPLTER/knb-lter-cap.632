@@ -1,0 +1,115 @@
+taxa_raw,taxa_trimmed,taxa_replacement,taxa_removed,taxa_clean,rank,authority,authority_id,score,difference
+Astragalus,NA,NA,NA,Astragalus,Genus,ITIS,25392,0.75,NA
+Chorizanthe,NA,NA,NA,Chorizanthe,Genus,ITIS,21003,0.75,NA
+Astragalus nuttallianus,NA,NA,NA,Astragalus nuttallianus,Species,ITIS,25607,0.988,NA
+Cistanthe monandra,NA,NA,NA,Cistanthe monandra,Species,ITIS,501560,0.988,NA
+Lotus salsuginosus,NA,NA,NA,Lotus salsuginosus,Species,ITIS,26402,0.988,NA
+Eriogonum thomasii,NA,NA,NA,Eriogonum thomasii,Species,ITIS,21256,0.988,NA
+Pectocarya heterocarpa,NA,NA,NA,Pectocarya heterocarpa,Species,ITIS,31971,0.988,NA
+Cryptantha angustifolia,NA,NA,NA,Cryptantha angustifolia,Species,ITIS,31784,0.988,NA
+Plantago,NA,NA,NA,Plantago,Genus,ITIS,32870,0.75,NA
+Monolepis nuttalliana,NA,NA,NA,Monolepis nuttalliana,Species,ITIS,20700,0.988,NA
+Plantago patagonica,NA,NA,NA,Plantago patagonica,Species,ITIS,32907,0.988,NA
+Ditaxis lanceolata,NA,NA,NA,Ditaxis lanceolata,Species,ITIS,512393,0.988,NA
+Eschscholzia californica,NA,NA,NA,Eschscholzia californica,Species,ITIS,18956,0.988,NA
+Pseudognaphalium,NA,NA,NA,Pseudognaphalium,Genus,ITIS,500903,0.75,NA
+Mirabilis bigelovii,NA,NA,NA,Mirabilis bigelovii,Species,ITIS,19628,0.988,NA
+Orobanche cooperi,NA,NA,NA,Orobanche cooperi,Species,ITIS,34286,0.988,NA
+Sisymbrium irio,NA,NA,NA,Sisymbrium irio,Species,ITIS,23314,0.988,NA
+Erodium texanum,NA,NA,NA,Erodium texanum,Species,ITIS,29153,0.988,NA
+Lotus humistratus,NA,NA,NA,Lotus humistratus,Species,ITIS,26385,0.988,NA
+Vulpia microstachys,NA,NA,NA,Vulpia microstachys,Species,ITIS,42262,0.988,NA
+Boraginaceae,NA,NA,NA,Boraginaceae,Family,ITIS,31633,0.75,NA
+Physaria gordonii,NA,NA,NA,Physaria gordonii,Species,ITIS,823240,0.988,NA
+Rafinesquia neomexicana,NA,NA,NA,Rafinesquia neomexicana,Species,ITIS,38331,0.988,NA
+Eriastrum diffusum,NA,NA,NA,Eriastrum diffusum,Species,ITIS,31059,0.988,NA
+Lotus strigosus,NA,NA,NA,Lotus strigosus,Species,ITIS,26405,0.988,NA
+Chorizanthe rigida,NA,NA,NA,Chorizanthe rigida,Species,ITIS,21026,0.988,NA
+Phacelia distans,NA,NA,NA,Phacelia distans,Species,ITIS,31485,0.988,NA
+Cryptantha barbigera,NA,NA,NA,Cryptantha barbigera,Species,ITIS,31787,0.988,NA
+Orthocarpus purpurascens,NA,NA,NA,Orthocarpus purpurascens,Species,ITIS,517972,0.988,NA
+Nemacladus rigidus,NA,NA,NA,Nemacladus rigidus,Species,ITIS,34596,0.988,NA
+Nemacladus glanduliferus,NA,NA,NA,Nemacladus glanduliferus,Species,ITIS,34589,0.988,NA
+Physaria tenella,NA,NA,NA,Physaria tenella,Species,ITIS,823170,0.988,NA
+Pholistoma auritum,NA,NA,NA,Pholistoma auritum,Species,ITIS,31612,0.988,NA
+Bromus rubens,NA,NA,NA,Bromus rubens,Species,ITIS,40518,0.988,NA
+Salsola tragus,NA,NA,NA,Salsola tragus,Species,ITIS,520950,0.988,NA
+Lupinus sparsiflorus,NA,NA,NA,Lupinus sparsiflorus,Species,ITIS,26121,0.988,NA
+Lepidium lasiocarpum,NA,NA,NA,Lepidium lasiocarpum,Species,ITIS,22967,0.988,NA
+Eremothera chamaenerioides,NA,NA,NA,Eremothera chamaenerioides,Species,ITIS,836029,0.988,NA
+Brassicaceae,NA,NA,NA,Brassicaceae,Family,ITIS,22669,0.75,NA
+Pectocarya,NA,NA,NA,Pectocarya,Genus,ITIS,31970,0.75,NA
+Plagiobothrys arizonicus,NA,NA,NA,Plagiobothrys arizonicus,Species,ITIS,31980,0.988,NA
+Stylocline micropoides,NA,NA,NA,Stylocline micropoides,Species,ITIS,38473,0.988,NA
+Logfia depressa,NA,NA,NA,Logfia depressa,Species,ITIS,780425,0.988,NA
+Cryptantha pterocarya,NA,NA,NA,Cryptantha pterocarya,Species,ITIS,31856,0.988,NA
+Eriastrum eremicum,NA,NA,NA,Eriastrum eremicum,Species,ITIS,31060,0.988,NA
+Baileya multiradiata,NA,NA,NA,Baileya multiradiata,Species,ITIS,36799,0.988,NA
+Eucrypta,NA,NA,NA,Eucrypta,Genus,ITIS,31376,0.75,NA
+Eriophyllum lanosum,NA,NA,NA,Eriophyllum lanosum,Species,ITIS,513166,0.988,NA
+Polemoniaceae,NA,NA,NA,Polemoniaceae,Family,ITIS,30896,0.75,NA
+Eriochloa aristata,NA,NA,NA,Eriochloa aristata,Species,ITIS,41719,0.988,NA
+Linanthus,NA,NA,NA,Linanthus,Genus,ITIS,31241,0.75,NA
+Cryptantha,NA,NA,NA,Cryptantha,Genus,ITIS,31765,0.75,NA
+Nicotiana obtusifolia,NA,NA,NA,Nicotiana obtusifolia,Species,ITIS,508057,0.988,NA
+Plantago ovata,NA,NA,NA,Plantago ovata,Species,ITIS,504438,0.988,NA
+Minuartia douglasii,NA,NA,NA,Minuartia douglasii,Species,ITIS,19991,0.988,NA
+Oncosiphon piluliferum,NA,NA,NA,Oncosiphon piluliferum,Species,ITIS,565331,0.988,NA
+Logfia arizonica,NA,NA,NA,Logfia arizonica,Species,ITIS,780424,0.988,NA
+Schismus arabicus,NA,NA,NA,Schismus arabicus,Species,ITIS,42065,0.988,NA
+Hordeum murinum,NA,NA,NA,Hordeum murinum,Species,ITIS,40881,0.988,NA
+Sphaeralcea coulteri,NA,NA,NA,Sphaeralcea coulteri,Species,ITIS,21924,0.988,NA
+Chamaesyce polycarpa,NA,NA,NA,Chamaesyce polycarpa,Species,ITIS,501452,0.988,NA
+Descurainia pinnata,NA,NA,NA,Descurainia pinnata,Species,ITIS,22826,0.988,NA
+Asteraceae,NA,NA,NA,Asteraceae,Family,ITIS,35420,0.75,NA
+Amsinckia tessellata,NA,NA,NA,Amsinckia tessellata,Species,ITIS,31706,0.988,NA
+Chamaesyce albomarginata,NA,NA,NA,Chamaesyce albomarginata,Species,ITIS,501400,0.988,NA
+Vulpia octoflora,NA,NA,NA,Vulpia octoflora,Species,ITIS,42264,0.988,NA
+Conyza canadensis,NA,NA,NA,Conyza canadensis,Species,ITIS,37113,0.988,NA
+Cryptantha maritima,NA,NA,NA,Cryptantha maritima,Species,ITIS,31833,0.988,NA
+Ditaxis neomexicana,NA,NA,NA,Ditaxis neomexicana,Species,ITIS,512395,0.988,NA
+Gilia stellata,NA,NA,NA,Gilia stellata,Species,ITIS,31177,0.988,NA
+Camissonia californica,NA,NA,NA,Camissonia californica,Species,ITIS,27479,0.988,NA
+Lactuca serriola,NA,NA,NA,Lactuca serriola,Species,ITIS,36608,0.988,NA
+Bowlesia incana,NA,NA,NA,Bowlesia incana,Species,ITIS,29601,0.988,NA
+Caulanthus lasiophyllus,NA,NA,NA,Caulanthus lasiophyllus,Species,ITIS,23088,0.988,NA
+Houstonia,NA,NA,NA,Houstonia,Genus,ITIS,35033,0.75,NA
+Erodium cicutarium,NA,NA,NA,Erodium cicutarium,Species,ITIS,29147,0.988,NA
+Calandrinia ciliata,NA,NA,NA,Calandrinia ciliata,Species,ITIS,20464,0.988,NA
+Pectocarya platycarpa,NA,NA,NA,Pectocarya platycarpa,Species,ITIS,31973,0.988,NA
+Silene antirrhina,NA,NA,NA,Silene antirrhina,Species,ITIS,20045,0.988,NA
+Aristida adscensionis,NA,NA,NA,Aristida adscensionis,Species,ITIS,41401,0.988,NA
+Stylocline gnaphaloides,NA,NA,NA,Stylocline gnaphaloides,Species,ITIS,780520,0.988,NA
+Oligomeris linifolia,NA,NA,NA,Oligomeris linifolia,Species,ITIS,504012,0.988,NA
+Phacelia crenulata,NA,NA,NA,Phacelia crenulata,Species,ITIS,31478,0.988,NA
+Pectocarya recurvata,NA,NA,NA,Pectocarya recurvata,Species,ITIS,31975,0.988,NA
+Amsinckia menziesii,NA,NA,NA,Amsinckia menziesii,Species,ITIS,31711,0.988,NA
+Uropappus lindleyi,NA,NA,NA,Uropappus lindleyi,Species,ITIS,565589,0.988,NA
+Parietaria hespera,NA,NA,NA,Parietaria hespera,Species,ITIS,19166,0.988,NA
+Cryptantha decipiens,NA,NA,NA,Cryptantha decipiens,Species,ITIS,31802,0.988,NA
+Chaenactis stevioides,NA,NA,NA,Chaenactis stevioides,Species,ITIS,36998,0.988,NA
+Castilleja exserta,NA,NA,NA,Castilleja exserta,Species,ITIS,506880,0.988,NA
+Camissonia claviformis,NA,NA,NA,Camissonia claviformis,Species,ITIS,27490,0.988,NA
+Crassula connata,NA,NA,NA,Crassula connata,Species,ITIS,501661,0.988,NA
+Loeflingia squarrosa,NA,NA,NA,Loeflingia squarrosa,Species,ITIS,20304,0.988,NA
+Lupinus concinnus,NA,NA,NA,Lupinus concinnus,Species,ITIS,25989,0.988,NA
+Dichelostemma capitatum,NA,NA,NA,Dichelostemma capitatum,Species,ITIS,502046,0.988,NA
+Perityle emoryi,NA,NA,NA,Perityle emoryi,Species,ITIS,38211,0.988,NA
+Daucus pusillus,NA,NA,NA,Daucus pusillus,Species,ITIS,29478,0.988,NA
+Draba cuneifolia,NA,NA,NA,Draba cuneifolia,Species,ITIS,22874,0.988,NA
+Herniaria hirsuta,NA,NA,NA,Herniaria hirsuta,Species,ITIS,502957,0.988,NA
+Salvia columbariae,NA,NA,NA,Salvia columbariae,Species,ITIS,32707,0.988,NA
+Logfia filaginoides,NA,NA,NA,Logfia filaginoides,Species,ITIS,780426,0.988,NA
+Eucrypta chrysanthemifolia,NA,NA,NA,Eucrypta chrysanthemifolia,Species,ITIS,31377,0.988,NA
+Poa bigelovii,NA,NA,NA,Poa bigelovii,Species,ITIS,41112,0.988,NA
+Sonchus oleraceus,NA,NA,NA,Sonchus oleraceus,Species,ITIS,38427,0.988,NA
+Chamaesyce,NA,NA,NA,Chamaesyce,Genus,ITIS,28244,0.75,NA
+Mentzelia affinis,NA,NA,NA,Mentzelia affinis,Species,ITIS,503755,0.988,NA
+Amsinckia,NA,NA,NA,Amsinckia,Genus,ITIS,31700,0.75,NA
+Linanthus bigelovii,NA,NA,NA,Linanthus bigelovii,Species,ITIS,31292,0.988,NA
+Chorizanthe brevicornu,NA,NA,NA,Chorizanthe brevicornu,Species,ITIS,21007,0.988,NA
+Lasthenia californica,NA,NA,NA,Lasthenia californica,Species,ITIS,503335,0.988,NA
+Linanthus demissus,NA,NA,NA,Linanthus demissus,Species,ITIS,31297,0.988,NA
+Larrea tridentata,NA,NA,NA,Larrea tridentata,Species,ITIS,29051,0.988,NA
+Ambrosia dumosa,NA,NA,NA,Ambrosia dumosa,Species,ITIS,36506,0.988,NA
+Ambrosia deltoidea,NA,NA,NA,Ambrosia deltoidea,Species,ITIS,36505,0.988,NA
