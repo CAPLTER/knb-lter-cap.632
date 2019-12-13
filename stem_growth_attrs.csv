@@ -10,4 +10,5 @@ post_date,YYYY-MM-DD,,,,date of final or post stem-length,Date,,
 post_note,,,,field note regarding final or post stem-length measurement,field note regarding final or post stem-length measurement,character,,
 post_measurement,,,,,"boolean indicator denoting whether the measurement is a pre or initial stem-length measurement (FALSE), or a final or post stem-length measurement (TRUE)",factor,,
 stem_length,,millimeter,real,,length of stem,numeric,-6,1116.5
-comment,,,,field note(s) regarding particular shrub or measurement,field note(s) regarding particular shrub or measurement,character,,
+stem_comment,,,,field note(s) regarding particular shrub or measurement,field note(s) regarding particular shrub or measurement,character,,
+plot_comment,,,,field note(s) regarding particular the plot or site,field note(s) regarding particular the plot or site,character,,
