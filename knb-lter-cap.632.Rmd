@@ -9,6 +9,22 @@ editor_options:
 
 # README
 
+2019-12-12 (version 632.8)
+ 
+* updated stems and fertilizer data
+* adds plots notes to stems data
+* moved Jon Allen to end of author list
+* updated workflow to use new create_spatialVector function for site locations
+* features updated LTER intellectualRights
+
+Instead of piece-mealing the workflow, I ran all chunks regardless of whether
+there was new data to push. This worked very well with the only hiccup being the
+very complicated icp data. Revisit that workflow so that we can get this to a
+point where we can have push-button updates to the entire data set.
+
+The problem noted with the PRS probes in the previous round did occur this
+round.
+
 2019-07-01
 
 Version 632.7 features updated annuals, PRS, stems, and CHN data. The updated
@@ -70,11 +86,12 @@ library(readxl)
 library(aws.s3)
 library(capeml)
 library(gioseml)
+library(sf)
 ```
 
 ```{r dataset_details}
 projectid <- 632
-packageIdent <- 'knb-lter-cap.632.7'
+packageIdent <- 'knb-lter-cap.632.8'
 pubDate <- as.character(Sys.Date())
 ```
  
@@ -240,8 +257,9 @@ SELECT
   st.post_date,
   st.post_note,
   sl.post_measurement,
-  sl.length_in_mm as stem_length,
-  sc.comment
+  sl.length_in_mm AS stem_length,
+  sc.comment AS stem_comment,
+  agg_plot_notes.plot_comment
 FROM urbancndep.stems st
 JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
 JOIN urbancndep.plots p ON sh.plot_id = p.id
@@ -250,6 +268,14 @@ JOIN urbancndep.treatments t ON p.treatment_id = t.id
 JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
 LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
 LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
+LEFT JOIN (
+	SELECT
+		plot_id,
+		survey_date,
+		string_agg(distinct plot_notes, '; ') AS plot_comment
+	FROM urbancndep.stem_plot_notes
+	GROUP BY plot_id, survey_date
+) agg_plot_notes ON (agg_plot_notes.plot_id = p.id AND agg_plot_notes.survey_date = st.post_date)
 WHERE
 	NOT (
       -- omit post data not collected when smart sampling was implemented
@@ -264,7 +290,8 @@ ORDER BY
   p.id,
   sl.post_measurement,
   sh.code,
-  st.direction;")
+  st.direction;
+")
 
 stem_growth <- stem_growth %>%
   mutate(site_code = as.factor(site_code),
@@ -277,7 +304,7 @@ stem_growth <- stem_growth %>%
   )
 
 write_attributes(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
-# write_factors(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
+write_factors(stem_growth) # write data frame attributes to a csv in current dir to edit metadata
 
 stem_growth_desc <- 'Biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots'
 
@@ -343,11 +370,43 @@ plant_root_simulator_DT <- create_dataTable(dfname = plant_root_simulator,
 
 ```{r generalized study locations}
 
-desert_fertilization_sites <- create_KML(
-  kmlFile = "desert_fertilization_sampling_sites.kml",
-  description = "approximate location of desert fertilization long-term study sites")
-
+# desert_fertilization_sites <- create_KML(
+#   kmlFile = "desert_fertilization_sampling_sites.kml",
+#   description = "approximate location of desert fertilization long-term study sites")
 # write_eml(desert_fertilization_sites, 'desert_fertilization_sites.xml')
+
+# read the vector using the sf package
+desert_fertilization_sampling_sites <- read_sf(dsn = 'desert_fertilization_sampling_sites.kml')
+
+# assign Name to the column that is the site identifier (Name in this example);
+# strip irrelevant or unpopulated columns and remove geometry to write
+# attribute tabls
+desert_fertilization_sampling_sites <- desert_fertilization_sampling_sites %>%
+  select(Name) %>%
+  st_drop_geometry()
+
+# write the atttributes to a csv template and add metadata - this file will be
+# read when the EML object is build
+write_attributes(desert_fertilization_sampling_sites)
+
+# reimport kml to write spatial vector object
+
+colsToKeep <- read_sf(dsn = "desert_fertilization_sampling_sites.kml") %>%
+  discard(~all(is.na(.x))) %>%
+  map_df(~.x) %>%
+  colnames()
+
+desert_fertilization_sampling_sites <- read_sf(dsn = "desert_fertilization_sampling_sites.kml") %>%
+  dplyr::select(one_of(colsToKeep))
+
+desert_fertilization_sampling_sites_desc <- "approximate location of desert fertilization long-term study sites"
+
+desert_fertilization_sampling_sites_SV <- create_spatialVector(svname = desert_fertilization_sampling_sites,
+                                                               description = desert_fertilization_sampling_sites_desc,
+                                                               projectNaming = TRUE)
+
+# The resulting spatialVector entity can be added to a EML dataset
+# dataset <- EML::eml$dataset(spatialVector = NAIP_grid_map_SV)
 
 ```
 
@@ -439,11 +498,13 @@ sharonHall <- create_role(firstName = 'shar', lastName = 'hall', roleType = 'cre
 jasonKaye <- create_role(firstName = 'jaso', lastName = 'kaye', roleType = 'creator')
 dan <- create_role(firstName = 'dan', lastName = 'child', roleType = 'creator')
 
-creators <- list(jonAllen,
-                 nancyGrimm,
-                 sharonHall,
-                 jasonKaye,
-                 dan)
+creators <- list(
+  nancyGrimm,
+  sharonHall,
+  jasonKaye,
+  jonAllen,
+  dan
+)
 
 stevanEarl <- create_role(firstName = 's', lastName = 'earl', roleType = "metadata")
 marisaMasles <- create_role(firstName = 'm', lastName = 'masles', roleType = "metadata")
@@ -564,12 +625,6 @@ coverage$taxonomicCoverage <- taxaCoverage
 # rights
 # distribution
 
-# generate a list of EML dataTables
-listOfDataTables <- lapply(ls(pattern = "_DT"), function(DT) { get(DT) } )
-
-# print list of dataTables as a safety step
-print(ls(pattern = "_DT"))
-
 # DATASET
 dataset <- EML::eml$dataset(
   title = title,
@@ -586,23 +641,67 @@ dataset <- EML::eml$dataset(
   # publisher = giosPublisher, # gios pub
   methods = methods,
   project = capProject, # cap project
-  distribution = create_distribution(packageIdent),
-  dataTable = listOfDataTables)
+  distribution = create_distribution(packageIdent))
 
 # add associatedParty if relevant
 # dataset$associatedParty <- list() 
 
-# add other entities if relevant
-# dataset$otherEntity <- list(otherEntityOne, otherEntityTwo)
+```
 
-# print list of otherEntities as a safety step
+```{r dataSet$dataTable}
+
+# add dataTables if relevant
+
+print(ls(pattern = "_DT"))
+
+if (length(ls(pattern = "_DT")) > 0) {
+  
+  listOfDataTables <- lapply(ls(pattern = "_DT"), function(DT) { get(DT) } )
+  
+  dataset$dataTable  <- listOfDataTables  
+  
+}
+
+# or add manually
+# dataset$dataTable <- list(dataTableOne, dataTableTwo)
+
+```
+
+```{r dataSet$otherEntity}
+
+# add other entities if relevant
+
 print(ls(pattern = "_OE"))
 
-# generate a list of EML otherEntities
-listOfOtherEntities <- lapply(ls(pattern = "_OE"), function(OE) { get(OE) } )
+if (length(ls(pattern = "_OE")) > 0) {
+  
+  listOfOtherEntities <- lapply(ls(pattern = "_OE"), function(OE) { get(OE) } )
+  
+  dataset$otherEntity <- listOfOtherEntities 
+  
+}
 
-# add otherEntities to dataset
-dataset$otherEntity <- listOfOtherEntities 
+# or add manually
+# dataset$otherEntity <- list(otherEntityOne, otherEntityTwo)
+
+```
+
+```{r dataSet$spatialVector}
+
+# add spatial vectors if relevant
+
+print(ls(pattern = "_SV"))
+
+if (length(ls(pattern = "_SV")) > 0) {
+  
+  listOfSpatialVectors <- lapply(ls(pattern = "_SV"), function(SV) { get(SV) } )
+  
+  dataset$spatialVector  <- listOfSpatialVectors  
+  
+}
+
+# or add manually
+# dataset$spatialVector <- list(spatialVectorOne, spatialVectorTwo)
 
 ```
 
@@ -626,7 +725,9 @@ custom_units <- rbind(
              parentSI = "gramsPerGram",
              multiplierToSI = 0.000001,
              description = "millgram of isotope per kilogram of plant tissue"))
-unitList <- set_unitList(custom_units)
+
+unitList <- set_unitList(custom_units,
+                         as_metadata = TRUE)
 ```
 
 ```{r construct_eml}
