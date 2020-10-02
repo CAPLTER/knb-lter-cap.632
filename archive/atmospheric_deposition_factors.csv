@@ -1,0 +1,100 @@
+attributeName,code,definition
+field_id,BLK.BLK,field blank
+field_id,BLK.BLK1,field blank replicate number 1
+field_id,BLK.BLK2,field blank replicate number 2
+field_id,BLK.BLK3,field blank replicate number 3
+field_id,DBG.IP CNTL1,Desert Botanical Garden inter-plant control repliate number 1
+field_id,DBG.IP CNTL2,Desert Botanical Garden inter-plant control repliate number 2
+field_id,DBG.IP CNTL3,Desert Botanical Garden inter-plant control repliate number 3
+field_id,DBG.IP1,Desert Botanical Garden inter-plant replicate number 1
+field_id,DBG.IP1.6MONTH,Desert Botanical Garden inter-plant collected at a 6-month interval replicate number 1
+field_id,DBG.IP2,Desert Botanical Garden inter-plant replicate number 2
+field_id,DBG.IP2.6MONTH,Desert Botanical Garden inter-plant collected at a 6-month interval replicate number 2
+field_id,DBG.LATR CNTL1,Desert Botanical Garden under Larrea tridendata control replicate number 1
+field_id,DBG.LATR CNTL2,Desert Botanical Garden under Larrea tridendata control replicate number 2
+field_id,DBG.LATR CNTL3,Desert Botanical Garden under Larrea tridendata control replicate number 3
+field_id,DBG.LATR1,Desert Botanical Garden under Larrea tridendata replicate number 1
+field_id,DBG.LATR2,Desert Botanical Garden under Larrea tridendata replicate number 2
+field_id,EME.IP1,Estrella Mountain Park east inter-plant replicate number 1
+field_id,EME.IP2,Estrella Mountain Park east inter-plant replicate number 2
+field_id,EME.LATR1,Estrella Mountain Park east under Larrea tridendata replicate number 1
+field_id,EME.LATR2,Estrella Mountain Park east under Larrea tridendata replicate number 2
+field_id,EMW.IP1,Estrella Mountain Park east inter-plant replicate number 1
+field_id,EMW.IP2,Estrella Mountain Park east inter-plant replicate number 2
+field_id,EMW.LATR1,Estrella Mountain Park east under Larrea tridendata replicate number 1
+field_id,EMW.LATR2,Estrella Mountain Park east under Larrea tridendata replicate number 2
+field_id,GTW IP1 (Gateway/Thompson),McDowell Sonoran Preserve Gateway Thompson Peak inter-plant replicate number 1
+field_id,GTW IP2 (Gateway/Thompson),McDowell Sonoran Preserve Gateway Thompson Peak inter-plant replicate number 2
+field_id,LAB.BLK.1,lab blank replicate number 1
+field_id,LAB.BLK.2,lab blank replicate number 2
+field_id,LAB.BLK.3,lab blank replicate number 3
+field_id,LDP.IP CNTL1,Lost Dutchman State Park inter-plant control replicate number 1
+field_id,LDP.IP CNTL2,Lost Dutchman State Park inter-plant control replicate number 2
+field_id,LDP.IP CNTL3,Lost Dutchman State Park inter-plant control replicate number 3
+field_id,LDP.IP1,Lost Dutchman State Park inter-plant replicate number 1
+field_id,LDP.IP2,Lost Dutchman State Park inter-plant replicate number 2
+field_id,LDP.LATR CNTL1,Lost Dutchman State Park under Larrea tridendata control replicate number 1
+field_id,LDP.LATR CNTL2,Lost Dutchman State Park under Larrea tridendata control replicate number 2
+field_id,LDP.LATR CNTL3,Lost Dutchman State Park under Larrea tridendata control replicate number 3
+field_id,LDP.LATR1,Lost Dutchman State Park under Larrea tridendata replicate number 1
+field_id,LDP.LATR2,Lost Dutchman State Park under Larrea tridendata replicate number 2
+field_id,LVE IP3 104th&Bell Levytrail,McDowell Sonoran Preserve Bell Road inter-plant replicate number 3
+field_id,LVE IP4 104th&Bell Levytrail,McDowell Sonoran Preserve Bell Road inter-plant replicate number 4
+field_id,MCN.IP1,McDowell Mountain Park north inter-plant replicate number 1
+field_id,MCN.IP2,McDowell Mountain Park north inter-plant replicate number 2
+field_id,MCN.LATR1,McDowell Mountain Park north under Larrea tridendata replicate number 1
+field_id,MCN.LATR2,McDowell Mountain Park north under Larrea tridendata replicate number 2
+field_id,MCS.IP1,McDowell Mountain Park south inter-plant replicate number 1
+field_id,MCS.IP1.6MONTH,McDowell Mountain Park south inter-plant collected at a 6-month interval replicate number 1
+field_id,MCS.IP2,McDowell Mountain Park south inter-plant replicate number 2
+field_id,MCS.IP2.6MONTH,McDowell Mountain Park south inter-plant collected at a 6-month interval replicate number 2
+field_id,MCS.LATR1,McDowell Mountain Park south under Larrea tridendata replicate number 1
+field_id,MCS.LATR2,McDowell Mountain Park south under Larrea tridendata replicate number 2
+field_id,PWP.IP1,Piestewa Peak inter-plant replicate number 1
+field_id,PWP.IP2,Piestewa Peak inter-plant replicate number 2
+field_id,PWP.LATR1,Piestewa Peak under Larrea tridendata replicate number 1
+field_id,PWP.LATR2,Piestewa Peak under Larrea tridendata replicate number 2
+field_id,SME.IP1,South Mountain east inter-plant replicate number 1
+field_id,SME.IP2,South Mountain east inter-plant replicate number 2
+field_id,SME.LATR1,South Mountain east under Larrea tridendata replicate number 1
+field_id,SME.LATR2,South Mountain east under Larrea tridendata replicate number 2
+field_id,SMW.IP CNTL1,South Mountain west inter-plant control replicate number 1
+field_id,SMW.IP CNTL2,South Mountain west inter-plant control replicate number 2
+field_id,SMW.IP CNTL3,South Mountain west inter-plant control replicate number 3
+field_id,SMW.IP1,South Mountain west inter-plant replicate number 1
+field_id,SMW.IP2,South Mountain west inter-plant replicate number 2
+field_id,SMW.LATR CNTL1,South Mountain west under Larrea tridendata control replicate number 1
+field_id,SMW.LATR CNTL2,South Mountain west under Larrea tridendata control replicate number 2
+field_id,SMW.LATR CNTL3,South Mountain west under Larrea tridendata control replicate number 3
+field_id,SMW.LATR1,South Mountain west under Larrea tridendata replicate number 1
+field_id,SMW.LATR2,South Mountain west under Larrea tridendata replicate number 2
+field_id,SNE.IP1,Sonoran Monument east inter-plant replicate number 1
+field_id,SNE.IP2,Sonoran Monument east inter-plant replicate number 2
+field_id,SNE.LATR1,Sonoran Monument east under Larrea tridendata replicate number 1
+field_id,SNE.LATR2,Sonoran Monument east under Larrea tridendata replicate number 2
+field_id,SNW.IP1,Sonoran Monument west inter-plant replicate number 1
+field_id,SNW.IP2,Sonoran Monument west inter-plant replicate number 2
+field_id,SNW.LATR1,Sonoran Monument west under Larrea tridendata replicate number 1
+field_id,SNW.LATR2,Sonoran Monument west under Larrea tridendata replicate number 2
+field_id,SRR.IP1,Salt River Recreation area inter-plant replicate number 1
+field_id,SRR.IP2,Salt River Recreation area inter-plant replicate number 2
+field_id,SRR.LATR1,Salt River Recreation area under Larrea tridendata replicate number 1
+field_id,SRR.LATR2,Salt River Recreation area under Larrea tridendata replicate number 2
+field_id,UMP.IP1,Usury Mountain Park inter-plant replicate number 1
+field_id,UMP.IP2,Usury Mountain Park inter-plant replicate number 2
+field_id,UMP.LATR1,Usury Mountain Park under Larrea tridendata replicate number 1
+field_id,UMP.LATR2,Usury Mountain Park under Larrea tridendata replicate number 2
+field_id,WTM.IP CNTL1,White Tank Mountain Park inter-plant control replicate number 1
+field_id,WTM.IP CNTL2,White Tank Mountain Park inter-plant control replicate number 2
+field_id,WTM.IP CNTL3,White Tank Mountain Park inter-plant control replicate number 3
+field_id,WTM.IP1,White Tank Mountain Park inter-plant replicate number 1
+field_id,WTM.IP1.6MONTH,White Tank Mountain Park inter-plant collected at a 6-month interval replicate number 1
+field_id,WTM.IP2,White Tank Mountain Park inter-plant replicate number 2
+field_id,WTM.IP2.6MONTH,White Tank Mountain Park inter-plant collected at a 6-month interval replicate number 2
+field_id,WTM.LATR CNTL1,White Tank Mountain Park under Larrea tridendata control replicate number 1
+field_id,WTM.LATR CNTL2,White Tank Mountain Park under Larrea tridendata control replicate number 2
+field_id,WTM.LATR CNTL3,White Tank Mountain Park under Larrea tridendata control replicate number 3
+field_id,WTM.LATR1,White Tank Mountain Park under Larrea tridendata replicate number 1
+field_id,WTM.LATR2,White Tank Mountain Park under Larrea tridendata replicate number 2
+analyte_name,Ammonia,ammonium-nitrogen
+analyte_name,NItrate/Nitrite,nitrate-nitrogen

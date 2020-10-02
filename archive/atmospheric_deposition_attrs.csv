@@ -1,0 +1,6 @@
+"attributeName","formatString","unit","numberType","definition","attributeDefinition","columnClasses","minimum","maximum"
+"field_id","","","",,sample identifer that includes details of the sample location and type,"factor","",""
+"collection_date",YYYY-MM-DD,"","","",date collector was collected from the field,"Date","",""
+"notes","","","",technician notes regarding sample collection or processing,technician notes regarding sample collection or processing,"character","",""
+"analyte_name","","","","",name of analyte assessed,"factor","",""
+"concentration","",milligramPerLiter,"real","",concentration of analyte assessed,"numeric","-0.733000","375.000000"
