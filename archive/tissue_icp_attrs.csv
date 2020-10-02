@@ -1,0 +1,11 @@
+attributeName,formatString,unit,numberType,definition,attributeDefinition,columnClasses,minimum,maximum,missingValueCode,missingValueCodeExplanation
+site_code,,,,,site name abbreviation,factor,,,,
+plot_id,,,,plot identifier,plot identifier,character,,,,
+treatment_code,,,,,treatment name abbreviation,factor,,,,
+sample_date,YYYY-MM-DD,,,,date of leaf (Larrea) or plant (Pectocarya) collection,Date,,,,
+season_year,,,,season and year of collection (for easier sorting),season and year of collection (for easier sorting),character,,,,
+tissue_type,,,,,source of tissue material,factor,,,,
+instrument,,,,,instrument employed for tissue analysis,factor,,,,
+isotope_element,,,,"isotope atomic mass and element symbol, except Sulfur (S; element symbol only)","isotope atomic mass and element symbol, except Sulfur (S; element symbol only)",character,,,,
+concentration,,milligramPerKilogram,real,,mass of isotope_element per mass of leaf material,numeric,-4.344,46286.837,,
+source_file,,,,file name corresponding to raw data for the observation (raw data available as another entity in this data set),file name corresponding to raw data for the observation (raw data available as another entity in this data set),character,,,,

@@ -15,17 +15,7 @@ site_code,SRR,"east region: Salt River Recreation Area (Tonto NF)"
 site_code,UMP,"east region: Usery Mountain Regional Park"
 site_code,WTM,"west region: White Tanks Mountain Regional Park"
 treatment_code,C1,control plot 1
-treatment_code,N,nitrogen amendment
-treatment_code,NP,nitrogen + phosphorus amendment
-treatment_code,P,phosphorus amendment
-shrub_code,L1,Larrea tridentata study plant #1
-shrub_code,L2,Larrea tridentata study plant #2
-shrub_code,L3,Larrea tridentata study plant #3
-shrub_code,L4,Larrea tridentata study plant #4
-shrub_code,L5,Larrea tridentata study plant #5
-direction,East,stem in east quadrant of plant
-direction,North,stem in north quadrant of plant
-direction,South,stem in south quadrant of plant
-direction,West,stem in west quadrant of plant
-post_measurement,FALSE,initial: pre stem-length measurement
-post_measurement,TRUE,final: post stem-length measurement
+tissue_type,Larrea tridentata,Larrea tridentata leaf tissue
+tissue_type,Pectocarya spp.,Pectocarya spp. whole-plant tissue
+instrument,ICP-MS,Inductively Coupled Plasma Mass Spectrometer
+instrument,ICP-OES,Inductively Coupled Plasma Optical Emission Spectrometer

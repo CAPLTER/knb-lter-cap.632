@@ -1,4 +1,20 @@
-# README ----
+
+# README -----------------------------------------------------------------------
+
+# 2020-09-30
+
+# B. Ball identified an error where spring 2010 Larrea were incorrectly labeled
+# as fall_2010. The error was fixed in this code but, in keeping with the
+# approach of building from the already-constructed data (csv), the fix was
+# addressed at a later step.
+
+# While addressing the above error identified by B. Ball, another error was
+# identified in which the instrument and isotope element for fall 2015 data was
+# misidentified. As with the above, the error was fixed in this code but, in
+# keeping with the approach of building from the already-constructed data
+# (csv), the fix was addressed at a later step.
+
+# overview
 
 # Here we are creating a set of clean, easily-interpretable ICP tissue data to
 # publish; will include the raw data (as unmolested .xlsm/.xls files) as an
@@ -15,12 +31,9 @@
 # existing set of data by simply appending new data (modified to fit) to the
 # corpus of already processed data. In this sense, we are essentially using the
 # CSV of processed data as a database and just adding to it. Because the
-# workflow below reflected re-processing the entire corpus of data, the workflow
-# of appending to an existing corpus is not reflected - but that is where you
-# will pick up with the next set of ICP data.
-
-# project id ----
-projectid <- '632'
+# workflow below reflected re-processing the entire corpus of data, the
+# workflow of appending to an existing corpus is not reflected - but that is
+# where you will pick up with the next set of ICP data.
 
 # libraries ----
 library(tools)
@@ -128,8 +141,9 @@ dataToAmz('~/Dropbox/development/plant_tissue/ICP/632_icp_raw_data_7ee5a125f39c4
 
 # data processing ---------------------------------------------------------
 
-# get sample collection dates from stems and annuals collections ----
-# get dates from stems for larrea tissue ----
+# get sample collection dates from stems and annuals collections get dates from
+# stems for larrea tissue edit params as needed
+
 stemsDates <- dbGetQuery(pg,
   "SELECT
     sh.plot_id,
@@ -142,7 +156,7 @@ stemsDates <- dbGetQuery(pg,
   JOIN urbancndep.treatments t ON pl.treatment_id = t.id
   JOIN urbancndep.sites s ON pl.site_id = s.id
   WHERE
-    EXTRACT (YEAR FROM st.post_date) = 2016 AND
+    EXTRACT (YEAR FROM st.post_date) = 2015 AND
     EXTRACT (MONTH FROM st.post_date) = 10 AND
     st.post_date IS NOT NULL AND
     t.code LIKE 'C1'
@@ -151,7 +165,8 @@ stemsDates <- dbGetQuery(pg,
   mutate(tissue_type = 'Larrea tridentata') %>%
   rename(date = post_date)
 
-oct_16_stems <- stemsDates 
+oct_16_stems <- stemsDates
+oct_15_stems <- stemsDates
 
 # get dates from annuals biomass for pectocarya tissue ----
 annualsDates <- dbGetQuery(pg,
@@ -176,9 +191,9 @@ spring_15_anns <- annualsDates
 
 # RUN: Larrea: May, Oct 2009; May 2010; Oct 2013 ----
 
-may_oct_09_may_10_oct_13 <- read_excel('./marisa_corrected/Cndep_ICP_MS_02252014 _(Corrected on 11302017).xlsm')
+may_oct_09_may_10_oct_13 <- read_excel("raw_icp/Cndep_ICP_MS_02252014 _(Corrected on 11302017).xlsm")
 may_oct_09_may_10_oct_13 <- may_oct_09_may_10_oct_13 %>%
-  separate(`Orig Conc.`, into = c("site_code", "plot_id", "treatment_code"), sep = "-") %>% 
+  separate(`Orig Conc.`, into = c("site_code", "plot_id", "treatment_code"), sep = "-") %>%
   select(-`45Sc-CCT`, -`45Sc`, -`72Ge-CCT`, -`72Ge`, -`89Y-H2`, -`89Y`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`)
 
 # Larrea May 2009
@@ -207,7 +222,7 @@ may_10_larrea <- may_oct_09_may_10_oct_13 %>%
   slice(56:70) %>% 
   mutate(plot_id = as.integer(plot_id)) %>% 
   inner_join(may_10_stems, by = c("plot_id")) %>% 
-  mutate(season_year = "fall_2010")
+  mutate(season_year = "spring_2010")
 
 # Oct 2013
 
@@ -255,27 +270,38 @@ oct_10_larrea <- oct_10 %>%
 
 # RUN: Larrea: Oct 2015 (includes Sulfur) ----
 
-oct_15 <- read_excel('./from_repo/raw_icp/CNDep_Larrea_Metals_Oct2015.xlsm')
-oct_15 <- oct_15  %>%
-  separate(`Orig Conc.`, into = c("site_code", "treatment_code"), sep = "-") %>% 
-  select(-`72Ge-CCT`, -`72Ge`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`) %>% 
-  select(-contains("X__"))
+oct_15 <- read_excel("raw_icp/CNDep_Larrea_Metals_Oct2015.xlsm")
+oct_15 <- oct_15 %>%
+  separate(`Orig Conc.`, into = c("site_code", "treatment_code"), sep = "-") %>%
+  dplyr::select(-`72Ge-CCT`, -`72Ge`, -`115In-NH3`, -`115In`, -`209Bi-NH3`, -`209Bi`) %>%
+  dplyr::select(-contains("X__"))
 
 oct_15_larrea <- oct_15 %>%
-  slice(14:28) %>% 
-  # mutate(plot_id = as.integer(plot_id)) %>% 
-  inner_join(oct_15_stems, by = c("site_code" = "site")) %>% 
+  slice(14:28) %>%
+  # mutate(plot_id = as.integer(plot_id)) %>%
+  inner_join(oct_15_stems, by = c("site_code" = "site")) %>%
   mutate(treatment_code = "C1") %>%
-  select(-trt) %>%
-  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>% 
-  mutate(instrument = "ICP-MS") %>%
+  dplyr::select(-trt) %>%
+  gather(key = isotope_element, value = concentration, -site_code, -plot_id, -treatment_code, -date, -tissue_type) %>%
+  mutate(
+    instrument = "ICP-MS",
+    season_year = "fall_2015",
+    source_file = grep("Oct2015", list.files("raw_icp/"), value = T)
+    ) %>%
   mutate(instrument = replace(instrument, isotope_element == "S_182.0", "ICP-OES")) %>%
-  mutate(instrument = replace(isotope_element, isotope_element == "S_182.0", "S")) %>%
-  mutate(season_year = "fall_2015") %>% 
-  mutate(source_file = grep("Oct2015",
-                            list.files("./from_repo/raw_icp/"),
-                            value=T)) %>% 
-  select(site_code, plot_id, treatment_code, sample_date = date, season_year, tissue_type, instrument, isotope_element, concentration, source_file)
+  mutate(isotope_element = replace(isotope_element, isotope_element == "S_182.0", "S")) %>%
+  dplyr::select(
+    site_code,
+    plot_id,
+    treatment_code,
+    sample_date = date,
+    season_year,
+    tissue_type,
+    instrument,
+    isotope_element,
+    concentration,
+    source_file
+  )
 
 
 # RUN: Larrea: May 2016, Oct 2016; Pecto: spring 2015, 2016 ----

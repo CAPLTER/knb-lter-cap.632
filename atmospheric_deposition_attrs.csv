@@ -1,0 +1,7 @@
+"attributeName","formatString","unit","numberType","definition","attributeDefinition","columnClasses","minimum","maximum"
+"run_id","","","",unique identifer of Lachat run (provided primarily to allow users to associate blanks with samples),unique identifer of Lachat run provided primarily to allow users to associate blanks with samples,"character","",""
+"field_id","","","",,sample identifer,"factor","",""
+"collection_date",YYYY-MM-DD,"","",,date collectors are extracted from their deployment in the field,"Date","",""
+"notes","","","",technician notes regarding conditions in the field or sample processing,technician notes regarding conditions in the field or sample processing,"character","",""
+"analyte_name","","","",,nitrogen species measured (ammonium-nitrogen or nitrate-nitrogen),"factor","",""
+"concentration","",milligramPerLiter,"real","",concentration of nitrogen species measured as ammonium-nitrogen or nitrate-nitrogen,"numeric","-0.733000","375.000000"

@@ -1,2 +1,3 @@
 "attributeName","formatString","unit","numberType","definition","attributeDefinition","columnClasses","minimum","maximum"
 "Name","","","",site name abbreviation,site name abbreviation,"character","",""
+"description","","","",study site location description,study site location description,"character","",""
