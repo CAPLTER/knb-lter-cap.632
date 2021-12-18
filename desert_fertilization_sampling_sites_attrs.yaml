@@ -1,0 +1,11 @@
+|
+  site:
+    attributeName: site
+    attributeDefinition: 'site name abbreviation'
+    columnClasses: character
+    definition: ''
+  description:
+    attributeName: description
+    attributeDefinition: 'study site location description'
+    columnClasses: character
+    definition: ''

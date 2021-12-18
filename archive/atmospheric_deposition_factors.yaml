@@ -1,0 +1,236 @@
+|
+  - attribute:
+      attributeName: field_id
+      levels:
+      - code: DBG.IP CNTL1
+        definition: metadata_not_provided
+      - code: DBG.IP CNTL2
+        definition: metadata_not_provided
+      - code: DBG.IP CNTL3
+        definition: metadata_not_provided
+      - code: DBG.IP1
+        definition: metadata_not_provided
+      - code: DBG.IP1.6MONTH
+        definition: metadata_not_provided
+      - code: DBG.IP2
+        definition: metadata_not_provided
+      - code: DBG.IP2.6MONTH
+        definition: metadata_not_provided
+      - code: DBG.LATR CNTL1
+        definition: metadata_not_provided
+      - code: DBG.LATR CNTL2
+        definition: metadata_not_provided
+      - code: DBG.LATR CNTL3
+        definition: metadata_not_provided
+      - code: DBG.LATR1
+        definition: metadata_not_provided
+      - code: DBG.LATR2
+        definition: metadata_not_provided
+      - code: EME.IP1
+        definition: metadata_not_provided
+      - code: EME.IP2
+        definition: metadata_not_provided
+      - code: EME.LATR1
+        definition: metadata_not_provided
+      - code: EME.LATR2
+        definition: metadata_not_provided
+      - code: EMW.IP1
+        definition: metadata_not_provided
+      - code: EMW.IP2
+        definition: metadata_not_provided
+      - code: EMW.LATR1
+        definition: metadata_not_provided
+      - code: EMW.LATR2
+        definition: metadata_not_provided
+      - code: GTW IP1 (Gateway/Thompson)
+        definition: metadata_not_provided
+      - code: GTW IP2 (Gateway/Thompson)
+        definition: metadata_not_provided
+      - code: KCl_blank
+        definition: metadata_not_provided
+      - code: LDP.IP CNTL1
+        definition: metadata_not_provided
+      - code: LDP.IP CNTL2
+        definition: metadata_not_provided
+      - code: LDP.IP CNTL3
+        definition: metadata_not_provided
+      - code: LDP.IP1
+        definition: metadata_not_provided
+      - code: LDP.IP2
+        definition: metadata_not_provided
+      - code: LDP.LATR CNTL1
+        definition: metadata_not_provided
+      - code: LDP.LATR CNTL2
+        definition: metadata_not_provided
+      - code: LDP.LATR CNTL3
+        definition: metadata_not_provided
+      - code: LDP.LATR1
+        definition: metadata_not_provided
+      - code: LDP.LATR2
+        definition: metadata_not_provided
+      - code: LVE IP3 104th&Bell Levytrail
+        definition: metadata_not_provided
+      - code: LVE IP4 104th&Bell Levytrail
+        definition: metadata_not_provided
+      - code: MCN.IP1
+        definition: metadata_not_provided
+      - code: MCN.IP2
+        definition: metadata_not_provided
+      - code: MCN.LATR1
+        definition: metadata_not_provided
+      - code: MCN.LATR2
+        definition: metadata_not_provided
+      - code: MCS.IP1
+        definition: metadata_not_provided
+      - code: MCS.IP1.6MONTH
+        definition: metadata_not_provided
+      - code: MCS.IP2
+        definition: metadata_not_provided
+      - code: MCS.IP2.6MONTH
+        definition: metadata_not_provided
+      - code: MCS.LATR1
+        definition: metadata_not_provided
+      - code: MCS.LATR2
+        definition: metadata_not_provided
+      - code: PWP.IP1
+        definition: metadata_not_provided
+      - code: PWP.IP2
+        definition: metadata_not_provided
+      - code: PWP.LATR1
+        definition: metadata_not_provided
+      - code: PWP.LATR2
+        definition: metadata_not_provided
+      - code: resin.KCl.1
+        definition: metadata_not_provided
+      - code: resin.KCl.2
+        definition: metadata_not_provided
+      - code: resin.KCl.3
+        definition: metadata_not_provided
+      - code: SME.IP1
+        definition: metadata_not_provided
+      - code: SME.IP2
+        definition: metadata_not_provided
+      - code: SME.LATR1
+        definition: metadata_not_provided
+      - code: SME.LATR2
+        definition: metadata_not_provided
+      - code: SMW.IP CNTL1
+        definition: metadata_not_provided
+      - code: SMW.IP CNTL2
+        definition: metadata_not_provided
+      - code: SMW.IP CNTL3
+        definition: metadata_not_provided
+      - code: SMW.IP1
+        definition: metadata_not_provided
+      - code: SMW.IP2
+        definition: metadata_not_provided
+      - code: SMW.LATR CNTL1
+        definition: metadata_not_provided
+      - code: SMW.LATR CNTL2
+        definition: metadata_not_provided
+      - code: SMW.LATR CNTL3
+        definition: metadata_not_provided
+      - code: SMW.LATR1
+        definition: metadata_not_provided
+      - code: SMW.LATR2
+        definition: metadata_not_provided
+      - code: SNE.IP1
+        definition: metadata_not_provided
+      - code: SNE.IP2
+        definition: metadata_not_provided
+      - code: SNE.LATR1
+        definition: metadata_not_provided
+      - code: SNE.LATR2
+        definition: metadata_not_provided
+      - code: SNW.IP1
+        definition: metadata_not_provided
+      - code: SNW.IP2
+        definition: metadata_not_provided
+      - code: SNW.LATR1
+        definition: metadata_not_provided
+      - code: SNW.LATR2
+        definition: metadata_not_provided
+      - code: SRR.IP1
+        definition: metadata_not_provided
+      - code: SRR.IP2
+        definition: metadata_not_provided
+      - code: SRR.LATR1
+        definition: metadata_not_provided
+      - code: SRR.LATR2
+        definition: metadata_not_provided
+      - code: UMP.IP1
+        definition: metadata_not_provided
+      - code: UMP.IP2
+        definition: metadata_not_provided
+      - code: UMP.LATR1
+        definition: metadata_not_provided
+      - code: UMP.LATR2
+        definition: metadata_not_provided
+      - code: WTM.IP CNTL1
+        definition: metadata_not_provided
+      - code: WTM.IP CNTL2
+        definition: metadata_not_provided
+      - code: WTM.IP CNTL3
+        definition: metadata_not_provided
+      - code: WTM.IP1
+        definition: metadata_not_provided
+      - code: WTM.IP1.6MONTH
+        definition: metadata_not_provided
+      - code: WTM.IP2
+        definition: metadata_not_provided
+      - code: WTM.IP2.6MONTH
+        definition: metadata_not_provided
+      - code: WTM.LATR CNTL1
+        definition: metadata_not_provided
+      - code: WTM.LATR CNTL2
+        definition: metadata_not_provided
+      - code: WTM.LATR CNTL3
+        definition: metadata_not_provided
+      - code: WTM.LATR1
+        definition: metadata_not_provided
+      - code: WTM.LATR2
+        definition: metadata_not_provided
+  - attribute:
+      attributeName: analyte_name
+      levels:
+      - code: Ammonia
+        definition: metadata_not_provided
+      - code: NItrate/Nitrite
+        definition: metadata_not_provided
+  - attribute:
+      attributeName: site_code
+      levels:
+      - code: DBG
+        definition: metadata_not_provided
+      - code: EME
+        definition: metadata_not_provided
+      - code: EMW
+        definition: metadata_not_provided
+      - code: GTW
+        definition: metadata_not_provided
+      - code: LDP
+        definition: metadata_not_provided
+      - code: LVE
+        definition: metadata_not_provided
+      - code: MCN
+        definition: metadata_not_provided
+      - code: MCS
+        definition: metadata_not_provided
+      - code: PWP
+        definition: metadata_not_provided
+      - code: resin
+        definition: metadata_not_provided
+      - code: SME
+        definition: metadata_not_provided
+      - code: SMW
+        definition: metadata_not_provided
+      - code: SNE
+        definition: metadata_not_provided
+      - code: SNW
+        definition: metadata_not_provided
+      - code: SRR
+        definition: metadata_not_provided
+      - code: UMP
+        definition: metadata_not_provided
+      - code: WTM
+        definition: metadata_not_provided

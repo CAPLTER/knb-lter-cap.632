@@ -1,8 +1,4 @@
 attributeName,code,definition
-field_id,BLK.BLK,field blank
-field_id,BLK.BLK1,field blank replicate number 1
-field_id,BLK.BLK2,field blank replicate number 2
-field_id,BLK.BLK3,field blank replicate number 3
 field_id,DBG.IP CNTL1,Desert Botanical Garden inter-plant control repliate number 1
 field_id,DBG.IP CNTL2,Desert Botanical Garden inter-plant control repliate number 2
 field_id,DBG.IP CNTL3,Desert Botanical Garden inter-plant control repliate number 3
@@ -25,9 +21,7 @@ field_id,EMW.LATR1,Estrella Mountain Park east under Larrea tridendata replicate
 field_id,EMW.LATR2,Estrella Mountain Park east under Larrea tridendata replicate number 2
 field_id,GTW IP1 (Gateway/Thompson),McDowell Sonoran Preserve Gateway Thompson Peak inter-plant replicate number 1
 field_id,GTW IP2 (Gateway/Thompson),McDowell Sonoran Preserve Gateway Thompson Peak inter-plant replicate number 2
-field_id,LAB.BLK.1,lab blank replicate number 1
-field_id,LAB.BLK.2,lab blank replicate number 2
-field_id,LAB.BLK.3,lab blank replicate number 3
+field_id,KCl_blank,solution blanks of the 0.2 M KCl extract solution that is run through a filter; this solution is used to construct the standard curves
 field_id,LDP.IP CNTL1,Lost Dutchman State Park inter-plant control replicate number 1
 field_id,LDP.IP CNTL2,Lost Dutchman State Park inter-plant control replicate number 2
 field_id,LDP.IP CNTL3,Lost Dutchman State Park inter-plant control replicate number 3
@@ -54,6 +48,9 @@ field_id,PWP.IP1,Piestewa Peak inter-plant replicate number 1
 field_id,PWP.IP2,Piestewa Peak inter-plant replicate number 2
 field_id,PWP.LATR1,Piestewa Peak under Larrea tridendata replicate number 1
 field_id,PWP.LATR2,Piestewa Peak under Larrea tridendata replicate number 2
+field_id,resin.KCl.1,run blank constructed by performing the complete extraction procedure on an aliquot of clean resin material that was not deployed in the field or otherwise used in any way replicate 1
+field_id,resin.KCl.2,run blank constructed by performing the complete extraction procedure on an aliquot of clean resin material that was not deployed in the field or otherwise used in any way replicate 1
+field_id,resin.KCl.3,run blank constructed by performing the complete extraction procedure on an aliquot of clean resin material that was not deployed in the field or otherwise used in any way replicate 1
 field_id,SME.IP1,South Mountain east inter-plant replicate number 1
 field_id,SME.IP2,South Mountain east inter-plant replicate number 2
 field_id,SME.LATR1,South Mountain east under Larrea tridendata replicate number 1
@@ -98,3 +95,18 @@ field_id,WTM.LATR1,White Tank Mountain Park under Larrea tridendata replicate nu
 field_id,WTM.LATR2,White Tank Mountain Park under Larrea tridendata replicate number 2
 analyte_name,Ammonia,ammonium-nitrogen
 analyte_name,NItrate/Nitrite,nitrate-nitrogen
+site_code,DBG,"core region: Desert Botanical Garden"
+site_code,EME,"west region: Estrella Mountain Regional Park east"
+site_code,EMW,"west region: Estrella Mountain Regional Park west"
+site_code,LDP,"east region: Lost Dutchman State Park"
+site_code,MCN,"east region: McDowell Mountain Regional north"
+site_code,MCS,"east region: McDowell Mountain Regional south"
+site_code,MVP,"core region: North Mountain"
+site_code,PWP,"core region: Piestewa Peak"
+site_code,SME,"core region: South Mountain Park east"
+site_code,SMW,"core region: South Mountain Park west"
+site_code,SNE,"west region: Sonoran Desert National Monument east"
+site_code,SNW,"west region: Sonoran Desert National Monument west"
+site_code,SRR,"east region: Salt River Recreation Area (Tonto NF)"
+site_code,UMP,"east region: Usery Mountain Regional Park"
+site_code,WTM,"west region: White Tanks Mountain Regional Park"

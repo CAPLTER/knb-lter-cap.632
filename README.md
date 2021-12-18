@@ -14,6 +14,14 @@ repository should be able to be ignored going forward. 'cndep' had also held
 the data, but those are all now moved to the cndep folder of the department
 drive.
 
+### knb-lter-cap.632.109 *2021-12-17*
+
+- added site code to atm deposition per [#18](https://github.com/CAPLTER/knb-lter-cap.632/issues/18)
+- added maintenance to config.yaml
+- code cleaning: namespace functions, R pipe
+- enhanced description of fertilizer per [#18](https://github.com/CAPLTER/knb-lter-cap.632/issues/18)
+
+
 ### knb-lter-cap.632.9 *2020-10-02*
 
 * data refresh
