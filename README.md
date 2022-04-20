@@ -14,13 +14,19 @@ repository should be able to be ignored going forward. 'cndep' had also held
 the data, but those are all now moved to the cndep folder of the department
 drive.
 
-### knb-lter-cap.632.109 *2021-12-17*
+### knb-lter-cap.632.11 *2022-04-20*
+
+- data refresh with a focus on PRS data
+- fixed an error in PRS data discovered by B. Ball
+- changed geographic coverage from a single polygon spanning all points to
+  site-specific polygons per [19](https://github.com/CAPLTER/knb-lter-cap.632/issues/19)
+
+### knb-lter-cap.632.10 *2021-12-17*
 
 - added site code to atm deposition per [#18](https://github.com/CAPLTER/knb-lter-cap.632/issues/18)
 - added maintenance to config.yaml
 - code cleaning: namespace functions, R pipe
 - enhanced description of fertilizer per [#18](https://github.com/CAPLTER/knb-lter-cap.632/issues/18)
-
 
 ### knb-lter-cap.632.9 *2020-10-02*
 

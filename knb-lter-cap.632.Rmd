@@ -110,7 +110,7 @@ annuals_composition_desc <- "Composition of annual plants and some other charact
 annuals_composition_DT <- capeml::create_dataTable(
   dfname      = annuals_composition,
   description = annuals_composition_desc,
-  overwrite      = TRUE
+  overwrite   = TRUE
 )
 
 ```
@@ -685,18 +685,40 @@ getMaxDate <- function() {
   
 }
 
-begindate <- "2005-12-07"
-enddate   <- as.character(getMaxDate())
-geographicDescription <- "desert and desert-remnant regional parks in the CAP LTER study encompassing the greater Phoenix metropolitan area and surrounding Sonoran desert region"
-coverage <- EML::set_coverage(
-  begin                 = begindate,
-  end                   = enddate,
-  geographicDescription = geographicDescription,
-  west                  = -112.547375174279352,
-  east                  = -111.482761068522152,
-  north                 = +33.726771147871851,
-  south                 = +33.013262396669028
-)
+
+geographic_coverage <- split(
+  x = desert_fertilization_sampling_sites,
+  f = desert_fertilization_sampling_sites$site
+) |>
+{\(site) purrr::map(.x = site, ~ capeml::create_geographic_coverage(.x,
+description = .x$site))}() |> unname()
+
+coverage <- list(
+  temporalCoverage = list(
+    rangeOfDates = list(
+      beginDate = list(
+        calendarDate = "2005-12-07"
+        ),
+      endDate = list(
+        calendarDate = as.character(getMaxDate())
+      )
+    )
+  ), # close temporalCoverage
+geographicCoverage = geographic_coverage
+) # close coverage
+
+# begindate <- "2005-12-07"
+# enddate   <- as.character(getMaxDate())
+# geographicDescription <- "desert and desert-remnant regional parks in the CAP LTER study encompassing the greater Phoenix metropolitan area and surrounding Sonoran desert region"
+# coverage <- EML::set_coverage(
+#   begin                 = begindate,
+#   end                   = enddate,
+#   geographicDescription = geographicDescription,
+#   west                  = -112.547375174279352,
+#   east                  = -111.482761068522152,
+#   north                 = +33.726771147871851,
+#   south                 = +33.013262396669028
+# )
 
 ```
 
@@ -869,48 +891,94 @@ source("~/Documents/localSettings/aws.s3")
 lapply(list.files(pattern = paste0(packageNum, "_")), gioseml::data_to_amz)
 ```
 
-```{r clean_up}
-
-# remove data files
-dataFilesToRemove <- dir(pattern = paste0(packageNum, "_"))
-file.remove(dataFilesToRemove)
-
-# EML to S3
-gioseml::eml_to_amz(list.files(pattern = "knb.+xml"))
-
-# EML to cap-data-eml and remove file from project
-file.copy(list.files(pattern = "knb.+xml"), "/home/srearl/localRepos/cap-metadata/cap-data-eml/")
-file.remove(list.files(pattern = "knb.+xml"))
-```
 
 # EDI
 
+## EDI: login
+
+```{r edi-login, eval=TRUE, echo=TRUE, message=TRUE}
+
+EDIutils::login(
+  userId   = keyring::key_get("edi_user"),
+  userPass = keyring::key_get("edi_pass")
+)
+
+```
+
 ## EDI: evaluate
 
-```{r evaluate, eval=TRUE, echo=TRUE, message=TRUE}
+```{r edi-evaluate, eval=TRUE, echo=TRUE, message=TRUE}
 
-EDIutils::api_evaluate_data_package(
-  path        = getwd(),
-  package.id  = packageIdent,
-  environment = "production",
-  user.id     = "CAP",
-  user.pass   = keyring::key_get("EDI"),
-  affiliation = "EDI"
+evaluation <- EDIutils::evaluate_data_package(
+  eml         = paste0(packageIdent, ".xml"),
+  useChecksum = TRUE,
+  env         = "staging"
 )
+
+Sys.sleep(8)
+
+eval_status <- EDIutils::check_status_evaluate(
+  transaction = evaluation,
+  env         = "staging"
+)
+
+if (eval_status) {
+
+  # evaluation summary
+
+  EDIutils::read_evaluate_report_summary(
+    transaction = evaluation,
+    env         = "staging"
+  )
+
+}
+
+# evaluation detailed
+
+# EDIutils::read_evaluate_report(
+#   transaction = evaluation,
+#   env         = "staging"
+# )
 
 ```
 
 ## EDI: update
 
-```{r update, eval=TRUE, echo=TRUE, message=TRUE}
+```{r edi-update, eval=TRUE, echo=TRUE, message=TRUE}
 
-EDIutils::api_update_data_package(
-  path        = getwd(),
-  package.id  = packageIdent,
-  environment = "production",
-  user.id     = "CAP",
-  user.pass   = keyring::key_get("EDI"),
-  affiliation = "EDI"
+EDIutils::update_data_package(
+  eml         = paste0(packageIdent, ".xml"),
+  useChecksum = TRUE,
+  env         = "production"
 )
 
+```
+
+## EDI: logout
+
+```{r edi-logout, eval=TRUE, echo=TRUE, message=TRUE}
+
+EDIutils::logout()
+
+```
+
+
+# post processing
+
+remove data files (if desired)
+
+```{r delete-data-files}
+
+dataFilesToRemove <- dir(pattern = paste0(packageNum, "_"))
+file.remove(dataFilesToRemove)
+```
+
+XML/EML file to Amazon and cap-metadata
+
+```{r delete-data-files}
+
+gioseml::eml_to_amz(list.files(pattern = "knb.+xml"))
+
+file.copy(list.files(pattern = "knb.+xml"), "/home/srearl/localRepos/cap-metadata/cap-data-eml/")
+file.remove(list.files(pattern = "knb.+xml"))
 ```
