@@ -241,7 +241,8 @@ SELECT
    pa.flag,
    pa.location_within_plot,
    pa.num_cation_probes,
-   pa.num_anion_probes
+   pa.num_anion_probes,
+   pa.notes
  FROM urbancndep.sites s
    JOIN urbancndep.plots p ON s.id = p.site_id
    JOIN urbancndep.treatments t ON p.treatment_id = t.id
@@ -269,8 +270,10 @@ plant_root_simulator <- plant_root_simulator |>
     plot_id              = as.character(plot_id)
   )
 
-# write_attributes(plant_root_simulator)
-# write_factors(plant_root_simulator)
+try({
+  capeml::write_attributes(plant_root_simulator, overwrite = FALSE)
+  capeml::write_factors(plant_root_simulator, overwrite = FALSE)
+})
 
 plant_root_simulator_desc <- "Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+)."
 

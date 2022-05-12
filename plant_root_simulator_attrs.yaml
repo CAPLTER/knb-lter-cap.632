@@ -1,0 +1,66 @@
+|
+  site_code:
+    attributeName: site_code
+    attributeDefinition: 'site name abbreviation'
+    columnClasses: factor
+  plot_id:
+    attributeName: plot_id
+    attributeDefinition: 'plot id number'
+    columnClasses: character
+    definition: ''
+  treatment_code:
+    attributeName: treatment_code
+    attributeDefinition: 'treatment name abbreviation'
+    columnClasses: factor
+  start_date:
+    attributeName: start_date
+    attributeDefinition: 'date of probe deployment'
+    columnClasses: Date
+    formatString: YYYY-MM-DD
+  end_date:
+    attributeName: end_date
+    attributeDefinition: 'date of probe extraction'
+    columnClasses: Date
+    formatString: YYYY-MM-DD
+  analyte:
+    attributeName: analyte
+    attributeDefinition: 'analyte measured'
+    columnClasses: factor
+  final_value:
+    attributeName: final_value
+    attributeDefinition: 'analyte concentration'
+    unit: 'microgramPerTenSquareCentimeterPerBurialLength'
+    numberType: real
+    minimum: -0.2
+    maximum: 3938.84
+    columnClasses: numeric
+  flag:
+    attributeName: flag
+    attributeDefinition: 'data quality flag'
+    columnClasses: character
+    definition: ''
+  location_within_plot:
+    attributeName: location_within_plot
+    attributeDefinition: 'habitat within plot where probes were deployed'
+    columnClasses: factor
+  num_cation_probes:
+    attributeName: num_cation_probes
+    attributeDefinition: 'number of probes designated for analysis of cations recovered (of four)'
+    unit: 'number'
+    numberType: natural
+    minimum: 1.0
+    maximum: 5.0
+    columnClasses: numeric
+  num_anion_probes:
+    attributeName: num_anion_probes
+    attributeDefinition: 'number of probes designated for analysis of anions recovered (of four)'
+    unit: 'number'
+    numberType: natural
+    minimum: 1.0
+    maximum: 5.0
+    columnClasses: numeric
+  notes:
+    attributeName: notes
+    attributeDefinition: 'notes pertaining to the deployment or analysis of the probes'
+    columnClasses: character
+    definition: ''

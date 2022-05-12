@@ -1,0 +1,95 @@
+|
+  - attribute:
+      attributeName: site_code
+      levels:
+      - code: BLK
+        definition: 'refers to a blank for chemistry data'
+      - code: DBG
+        definition: 'core region: Desert Botanical Garden'
+      - code: EME
+        definition: 'west region: Estrella Mountain Regional Park east'
+      - code: EMW
+        definition: 'west region: Estrella Mountain Regional Park west'
+      - code: LDP
+        definition: 'east region: Lost Dutchman State Park'
+      - code: MCN
+        definition: 'east region: McDowell Mountain Regional north'
+      - code: MCS
+        definition: 'east region: McDowell Mountain Regional south'
+      - code: MVP
+        definition: 'core region: North Mountain'
+      - code: PWP
+        definition: 'core region: Piestewa Peak'
+      - code: SME
+        definition: 'core region: South Mountain Park east'
+      - code: SMW
+        definition: 'core region: South Mountain Park west'
+      - code: SNE
+        definition: 'west region: Sonoran Desert National Monument east'
+      - code: SNW
+        definition: 'west region: Sonoran Desert National Monument west'
+      - code: SRR
+        definition: 'east region: Salt River Recreation Area (Tonto NF)'
+      - code: UMP
+        definition: 'east region: Usery Mountain Regional Park'
+      - code: WTM
+        definition: 'west region: White Tanks Mountain Regional Park'
+  - attribute:
+      attributeName: treatment_code
+      levels:
+      - code: C1
+        definition: 'control plot 1'
+      - code: C2
+        definition: 'control plot 2'
+      - code: 'N'
+        definition: 'nitrogen amendment'
+      - code: NP
+        definition: 'nitrogen + phosphorus amendment'
+      - code: P
+        definition: 'phosphorus amendment'
+  - attribute:
+      attributeName: analyte
+      levels:
+      - code: Al
+        definition: aluminum
+      - code: B
+        definition: boron
+      - code: Ca
+        definition: calcium
+      - code: Cd
+        definition: cadmium
+      - code: Cu
+        definition: copper
+      - code: Fe
+        definition: iron
+      - code: K
+        definition: potassium
+      - code: Mg
+        definition: magnesium
+      - code: Mn
+        definition: manganese
+      - code: NH4-N
+        definition: 'ammonium-nitrogen'
+      - code: NO3-N
+        definition: 'nitrate-nitrogen'
+      - code: P
+        definition: phosphorus
+      - code: Pb
+        definition: lead
+      - code: S
+        definition: sulfur
+      - code: Total-N
+        definition: 'sum of NO3-N and NH4-N'
+      - code: Zn
+        definition: zinc
+  - attribute:
+      attributeName: location_within_plot
+      levels:
+      - code: between_plant
+        definition: 'probes buried between plant canopies'
+      - code: blank
+        definition: 'field blank: probe stored in a clean container under refrigeration during the deployment period'
+      - code: blk_washed
+        definition: 'field blank (washed): probe stored in a clean container under refrigeration during the deployment period, and washed as per sample probes'
+      - code: under_plant
+        definition: 'probes buried beneath the canopy of Larrea tridentata'

@@ -14,6 +14,12 @@ repository should be able to be ignored going forward. 'cndep' had also held
 the data, but those are all now moved to the cndep folder of the department
 drive.
 
+### knb-lter-cap.632.12 *2022-05-12*
+
+- data refresh with a focus on PRS data
+- PRS data now includes notes
+- annuals composition
+
 ### knb-lter-cap.632.11 *2022-04-20*
 
 - data refresh with a focus on PRS data
