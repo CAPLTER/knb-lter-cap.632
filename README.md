@@ -14,6 +14,12 @@ repository should be able to be ignored going forward. 'cndep' had also held
 the data, but those are all now moved to the cndep folder of the department
 drive.
 
+### knb-lter-cap.632.13 *2022-06-02*
+
+- fixing an error in the dates assigned to PRS probe blanks in the most recent deployment
+- update config.yaml to newest format
+
+
 ### knb-lter-cap.632.12 *2022-05-12*
 
 - data refresh with a focus on PRS data

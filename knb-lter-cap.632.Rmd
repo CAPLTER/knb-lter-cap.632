@@ -870,13 +870,13 @@ if (!file.exists("config.yaml")) {
   stop("config.yaml not found")
 }
 packageIdent <- yaml::yaml.load_file("config.yaml")$packageIdent
-packageNum <- yaml::yaml.load_file("config.yaml")$packageNum
+identifier   <- yaml::yaml.load_file("config.yaml")$identifier
 ```
 
 ```{r preview_data_file_to_upload}
 
 # preview data set files that will be uploaded to S3
-list.files(pattern = paste0(packageNum, "_"))
+list.files(pattern = paste0(identifier, "_"))
 ```
 
 Move data and final xml files to respective ASU locations.
@@ -891,7 +891,7 @@ source("~/Documents/localSettings/aws.s3")
 ```{r upload_data_S3}
 
 # upload files to S3
-lapply(list.files(pattern = paste0(packageNum, "_")), gioseml::data_to_amz)
+lapply(list.files(pattern = paste0(identifier, "_")), gioseml::data_to_amz)
 ```
 
 
@@ -913,8 +913,8 @@ EDIutils::login(
 ```{r edi-evaluate, eval=TRUE, echo=TRUE, message=TRUE}
 
 evaluation <- EDIutils::evaluate_data_package(
-  eml         = paste0(packageIdent, ".xml"),
-  useChecksum = TRUE,
+  eml         = paste0(eml[["packageId"]], ".xml"),
+  useChecksum = FALSE,
   env         = "staging"
 )
 
@@ -950,7 +950,7 @@ if (eval_status) {
 ```{r edi-update, eval=TRUE, echo=TRUE, message=TRUE}
 
 EDIutils::update_data_package(
-  eml         = paste0(packageIdent, ".xml"),
+  eml         = paste0(eml[["packageId"]], ".xml"),
   useChecksum = TRUE,
   env         = "production"
 )
@@ -972,7 +972,7 @@ remove data files (if desired)
 
 ```{r delete-data-files}
 
-dataFilesToRemove <- dir(pattern = paste0(packageNum, "_"))
+dataFilesToRemove <- dir(pattern = paste0(identifier, "_"))
 file.remove(dataFilesToRemove)
 ```
 

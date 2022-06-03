@@ -1,9 +1,7 @@
-packageNum: 632
-packageIdent: knb-lter-cap.632.12
+scope: knb-lter-cap
+identifier: 632
 baseURL: https://data.gios.asu.edu/datasets/cap/
 project: lter
+title: 'Desert Fertilization Experiment: investigation of Sonoran desert ecosystem response to atmospheric deposition and experimental nutrient addition, ongoing since 2006'
 maintenance: regular
-title: "Desert Fertilization Experiment: investigation of Sonoran desert ecosystem response to atmospheric deposition and experimental nutrient addition, ongoing since 2006"
-geographicCoverage:
-  geographicDescription: 'CAP LTER study area: greater Phoenix, Arizona (USA) metropolitan
-    area and surrounding Sonoran desert region'
+geographic_description: 'CAP LTER study area: greater Phoenix, Arizona (USA) metropolitan area and surrounding Sonoran desert region'
