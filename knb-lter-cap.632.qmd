@@ -11,7 +11,7 @@ content moved to project README.md
 
 ```{r annuals-biomass, eval=TRUE}
 
-annuals_biomass <- dbGetQuery(pg,"
+annuals_biomass <- DBI::dbGetQuery(pg,"
 SELECT
   s.code as site_code,
   ab.plot_id,
@@ -28,7 +28,14 @@ FROM
   JOIN urbancndep.plots p ON (ab.plot_id = p.id)
   JOIN urbancndep.sites s ON (s.id = p.site_id)
   JOIN urbancndep.treatments t ON (t.id = p.treatment_id)
-ORDER BY year, plot_id, location_within_plot, subplot, subquad_orientation;")
+ORDER BY
+  year,
+  plot_id,
+  location_within_plot,
+  subplot,
+  subquad_orientation
+;
+")
 
 # change column types as appropriate
 annuals_biomass <- annuals_biomass |>
@@ -43,9 +50,10 @@ annuals_biomass <- annuals_biomass |>
 # write_attributes(annuals_biomass)
 # write_factors(annuals_biomass)
 
+capeml::update_attributes(annuals_biomass)
+
 annuals_biomass_desc <- "Biomass (g) of annual plants harvested from subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Material is harvested from 0.25 square meter quadrats within each subplot. All harvests occur during the spring."
 
-# create data table based on metadata provided in the companion csv
 annuals_biomass_DT <- capeml::create_dataTable(
   dfname         = annuals_biomass,
   description    = annuals_biomass_desc,
@@ -62,7 +70,7 @@ annuals_biomass_DT <- capeml::create_dataTable(
 # add filter to remove 2008 data from publication
 # add filter to remove total comparable annual cover from publication (could be removed from DB as well)
 
-annuals_composition <- dbGetQuery(pg,"
+annuals_composition <- DBI::dbGetQuery(pg, "
 SELECT
   s.code as site_code,
   ce.plot as plot_id,
@@ -85,7 +93,13 @@ FROM
 WHERE
   ce.year > 2008 AND
   ct.cover_type != 'total_comparable_annual_cover'
-ORDER BY year, plot, location_within_plot, subplot, cover_type;
+ORDER BY
+  year,
+  plot,
+  location_within_plot,
+  subplot,
+  cover_type
+;
 ")
 
 # change column types as appropriate
@@ -102,10 +116,10 @@ annuals_composition <- annuals_composition |>
 
 # write_attributes(annuals_composition)
 # write_factors(annuals_composition)
+capeml::update_attributes(annuals_composition)
 
 annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
 
-# create data table based on metadata provided in the companion csv
 # do not add date range since early years did not have a full date
 annuals_composition_DT <- capeml::create_dataTable(
   dfname      = annuals_composition,
@@ -119,7 +133,7 @@ annuals_composition_DT <- capeml::create_dataTable(
 
 ```{r fertilizer, eval=TRUE}
 
-fertilizer_application <- dbGetQuery(pg,'
+fertilizer_application <- DBI::dbGetQuery(pg, '
 SELECT
   s.code as site_code,
   f.date as application_date,
@@ -127,8 +141,12 @@ SELECT
   f."P" as phosphorus
 FROM urbancndep.fertilizer_applications f
   JOIN urbancndep.sites s ON (f.site_id = s.id)
-ORDER BY f.date, s.code
-;')
+ORDER BY
+  f.date,
+  s.code
+;
+'
+)
 
 # change column types as appropriate
 fertilizer_application <- fertilizer_application |>
@@ -136,6 +154,7 @@ fertilizer_application <- fertilizer_application |>
 
 # write_attributes(fertilizer_application)
 # write_factors(fertilizer_application)
+capeml::update_attributes(fertilizer_application)
 
 fertilizer_application_desc <- "catalog of amounts and timing of nitrogen and phosphorus fertilizer applications to nitrogen (N), phosphorus (P), and nitrogen+phosphorus (N+P) treatment plots - applications are delivered to the respective plot at the site that receives either N, P, or an N+P addition, except control sites (n = 2) that do not receive a fertilizer amendment"
 
@@ -152,7 +171,7 @@ fertilizer_application_DT <- capeml::create_dataTable(
 
 ```{r stems, eval=TRUE}
 
-stem_growth <- dbGetQuery(pg,"
+stem_growth <- DBI::dbGetQuery(pg, "
 SELECT
   s.code AS site_code,
   p.id AS plot_id,
@@ -197,7 +216,8 @@ ORDER BY
   p.id,
   sl.post_measurement,
   sh.code,
-  st.direction;
+  st.direction
+  ;
 ")
 
 stem_growth <- stem_growth |>
@@ -213,6 +233,7 @@ stem_growth <- stem_growth |>
 
 # write_attributes(stem_growth)
 # write_factors(stem_growth)
+capeml::update_attributes(stem_growth)
 
 stem_growth_desc <- "Biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots"
 
@@ -229,7 +250,7 @@ stem_growth_DT <- capeml::create_dataTable(
 
 ```{r PRS, eval=TRUE}
 
-plant_root_simulator <- dbGetQuery(pg,'
+plant_root_simulator <- DBI::dbGetQuery(pg, '
 SELECT
    s.code AS site_code,
    p.id AS plot_id,
@@ -247,7 +268,10 @@ SELECT
    JOIN urbancndep.plots p ON s.id = p.site_id
    JOIN urbancndep.treatments t ON p.treatment_id = t.id
    JOIN urbancndep.prs_analysis pa ON p.id = pa.plot_id
-ORDER BY pa.start_date;')
+ORDER BY
+  pa.start_date
+;
+')
 
 # standardize sample type names
 plant_root_simulator <- plant_root_simulator |>
@@ -270,10 +294,11 @@ plant_root_simulator <- plant_root_simulator |>
     plot_id              = as.character(plot_id)
   )
 
-try({
-  capeml::write_attributes(plant_root_simulator, overwrite = FALSE)
-  capeml::write_factors(plant_root_simulator, overwrite = FALSE)
-})
+# try({
+#   capeml::write_attributes(plant_root_simulator, overwrite = FALSE)
+#   capeml::write_factors(plant_root_simulator, overwrite = FALSE)
+# })
+capeml::update_attributes(plant_root_simulator)
 
 plant_root_simulator_desc <- "Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+)."
 
@@ -322,7 +347,8 @@ dplyr::select(
   geometry
 )
 
-try(capeml::write_attributes(desert_fertilization_sampling_sites, overwrite = FALSE))
+# try(capeml::write_attributes(desert_fertilization_sampling_sites, overwrite = FALSE))
+# capeml::update_attributes(desert_fertilization_sampling_sites)
 
 desert_fertilization_sampling_sites_desc <- "approximate location of desert fertilization long-term study sites"
 
@@ -340,7 +366,7 @@ desert_fertilization_sampling_sites_SV <- capemlGIS::create_vector(
 
 ```{r tissue CHN}
 
-chnDataQuery <- '
+tissue_chn <- DBI::dbGetQuery(pg, '
   SELECT
     site_code,
     plot_id, 
@@ -357,27 +383,43 @@ chnDataQuery <- '
   WHERE 
     plot_id IS NOT NULL AND
     (
-    	"Comment" !~* \'need|require\' OR
-    	"Comment" IS NULL
-    );'
-
-tissue_chn <- dbGetQuery(pg, chnDataQuery)
+      "Comment" !~* \'need|require\' OR
+      "Comment" IS NULL
+    )
+  ;
+  ')
 
 tissue_chn <- tissue_chn |>
-  tidyr::gather(key = analyte, value = percent_composition, `Carbon %`, `Hydrogen %`, `Nitrogen %`) |>
-  dplyr::select(
-    site_code, plot_id, treatment_code, sample_date, season_year, tissue_type, analyte, Weight, percent_composition, Comment
+tidyr::pivot_longer(
+    cols      = tidyselect::contains("%"),
+    names_to  = "analyte",
+    values_to = "percent_composition"
     ) |>
-  dplyr::mutate(
+dplyr::select(
+    site_code,
+    plot_id,
+    treatment_code,
+    sample_date,
+    season_year,
+    tissue_type,
+    analyte,
+    Weight,
+    percent_composition,
+    Comment
+    ) |>
+dplyr::mutate(
     plot_id        = as.character(plot_id),
     site_code      = as.factor(site_code),
     treatment_code = as.factor(treatment_code),
     tissue_type    = as.factor(tissue_type),
     analyte        = as.factor(analyte)
-  ) 
+    ) 
 
-  # write_attributes(tissue_chn)
-  # write_factors(tissue_chn) 
+# write_attributes(tissue_chn)
+# write_factors(tissue_chn) 
+
+# no need to edit until we upload new data
+# capeml::update_attributes(tissue_chn)
 
 tissue_chn_desc <- "CHN (Carbon, Hydrogen, and Nitrogen) elemental analysis of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites."
 
@@ -392,11 +434,7 @@ tissue_chn_DT <- capeml::create_dataTable(
 
 # tissue_icp
 
-Owing to the complexity of the workflow and the infrequency of new data of this
-type, the initial ICP tissue data processing is isolated in a separate workflow
-(`icp_tissue.R`). For DesFert updates that do not include new tissue ICP data,
-xml for the tissue icp dt and other entity are recycled from earlier versions
-of the knb-lter-cap.632 xml/eml.
+Owing to the complexity of the workflow and the infrequency of new data of this type, the initial ICP tissue data processing is isolated in a separate workflow (`icp_tissue.R`). For DesFert updates that do not include new tissue ICP data, xml for the tissue icp dt and other entity are recycled from earlier versions of the knb-lter-cap.632 xml/eml.
 
 ```{r tissue-icp, eval=TRUE}
 
@@ -460,24 +498,11 @@ icp_raw_data_OE <- capeml::create_otherEntity(
 
 # atmospheric deposition
 
-There is a sharp contrast in the structure of the Lachat data where dilutions
-are not calculuted in an earlier method but are calculated by the method in
-later years. Among the resin data, the transition occurs between 2012 and 2014.
-The workflow below included steps to calculate the concentration factoring in
-the dilution where needed for earlier data.
+There is a sharp contrast in the structure of the Lachat data where dilutions are not calculated in an earlier method but are calculated by the method in later years. Among the resin data, the transition occurs between 2012 and 2014. The workflow below included steps to calculate the concentration factoring in the dilution where needed for earlier data.
 
-Careful that the transition between the Lachat format occurs in 2013 for the
-set of data available for knb-lter-cap.632.9 but that may not always be the
-case as new data are added from historic runs. For example, it is unclear when
-exactly the method changed. This will not be an issue once we have addressed
-all of the historic data, but the data should be examined until that time.
+Careful that the transition between the Lachat format occurs in 2013 for the set of data available for knb-lter-cap.632.9 but that may not always be the case as new data are added from historic runs. For example, it is unclear when exactly the method changed. This will not be an issue once we have addressed all of the historic data, but the data should be examined until that time.
 
-We add a unique run_id for each Lachat run. This is needed so that a user can
-associate a blanks with the corresponding samples in an analytical run,
-espcially since there are not collection dates on blanks. Here I use a simple
-integer for the run_id instead of somthing like the Lachat run_file_name from
-which the run_id is generated just as something a bit simpler and more
-digestible to a user.
+We add a unique run_id for each Lachat run. This is needed so that a user can associate a blanks with the corresponding samples in an analytical run, especially since there are not collection dates on blanks. Here I use a simple integer for the run_id instead of something like the Lachat run_file_name from which the run_id is generated just as something a bit simpler and more digestible to a user.
 
 For atmospheric deposition blanks:
 
@@ -575,10 +600,11 @@ dplyr::mutate(
   site_code = as.factor(site_code) 
 )
 
-try({
-  capeml::write_attributes(atmospheric_deposition, overwrite = FALSE)
-  capeml::write_factors(atmospheric_deposition, overwrite = FALSE)
-})
+# try({
+#   capeml::write_attributes(atmospheric_deposition, overwrite = FALSE)
+#   capeml::write_factors(atmospheric_deposition, overwrite = FALSE)
+# })
+capeml::update_attributes(atmospheric_deposition)
 
 atmospheric_deposition_desc <- "ammonium-nitrogen and nitrate-nitrogen as measured by ion exchange resin (IER) collectors that are used to measure bulk (wet) deposition in interplant open spaces and throughfall (wet and dry) deposition under the dominant shrub"
 
@@ -595,73 +621,88 @@ atmospheric_deposition_DT <- capeml::create_dataTable(
 
 ```{r people, eval=TRUE}
 
-jonAllen <- gioseml::create_role(
-  firstName = "jon",
+ds <- "~/Dropbox/floating/cap_authors.csv"
+
+## creators
+
+jon_allen <- gioseml::create_role(
   lastName  = "allen",
+  firstName = "jon",
+  dataSource = ds,
   roleType  = "creator"
 )
 
-nancyGrimm <- gioseml::create_role(
-  firstName = "n",
+nancy <- gioseml::create_role(
   lastName  = "grimm",
+  firstName = "n",
+  dataSource = ds,
   roleType  = "creator"
 )
 
-sharonHall <- gioseml::create_role(
-  firstName = "shar",
+sharon <- gioseml::create_role(
   lastName  = "hall",
+  firstName = "shar",
+  dataSource = ds,
   roleType  = "creator"
 )
 
-jasonKaye <- gioseml::create_role(
-  firstName = "jaso",
+jason <- gioseml::create_role(
   lastName  = "kaye",
+  firstName = "jaso",
+  dataSource = ds,
   roleType  = "creator"
 )
 
 creators <- list(
-  nancyGrimm,
-  sharonHall,
-  jasonKaye,
-  jonAllen
+  nancy,
+  sharon,
+  jason,
+  jon_allen
 )
 
-stevanEarl <- gioseml::create_role(
-  firstName = "s",
+## metadata providers
+
+stevan <- gioseml::create_role(
   lastName  = "earl",
+  firstName = "s",
+  dataSource = ds,
   roleType  = "metadata"
 )
 
-marisaMasles <- gioseml::create_role(
+marisa <- gioseml::create_role(
   firstName = "m",
   lastName  = "masles",
+  dataSource = ds,
   roleType  = "metadata"
 )
 
-quincyStewart <- gioseml::create_role(
+quincy <- gioseml::create_role(
   firstName = "q",
   lastName  = "stewart",
+  dataSource = ds,
   roleType  = "metadata"
 )
 
-sallyWittlinger <- gioseml::create_role(
-  firstName = "s",
+sally <- gioseml::create_role(
   lastName  = "wittlinger",
+  firstName = "s",
+  dataSource = ds,
   roleType  = "metadata"
 )
 
 cook <- gioseml::create_role(
-  giosPersonId = 7045,
-  #   firstName = "elizabeth",
-  #   lastName = "cook",
+  lastName = "cook",
+  firstName = "elizabeth",
+  # giosPersonId = 7045,
+  dataSource = ds,
   roleType     = "metadata"
 )
 
 metadataProvider <- list(
-  stevanEarl,
-  marisaMasles,
-  quincyStewart,
-  sallyWittlinger,
+  stevan,
+  marisa,
+  quincy,
+  sally,
   cook
 )
 
@@ -675,11 +716,11 @@ getMaxDate <- function() {
   
   maxDates <- data.frame()
   maxDates <- rbind(
-    dbGetQuery(pg, 'SELECT MAX(sample_date) FROM urbancndep.cover_events;'),
-    dbGetQuery(pg, 'SELECT MAX(date) FROM urbancndep.annuals_biomass;'),
-    dbGetQuery(pg, 'SELECT MAX(date) FROM urbancndep.fertilizer_applications;'),
-    dbGetQuery(pg, 'SELECT MAX(post_date) FROM urbancndep.stems;'),
-    dbGetQuery(pg, 'SELECT MAX(end_date) FROM urbancndep.prs_analysis;')
+    DBI::dbGetQuery(pg, 'SELECT MAX(sample_date) FROM urbancndep.cover_events;'),
+    DBI::dbGetQuery(pg, 'SELECT MAX(date) FROM urbancndep.annuals_biomass;'),
+    DBI::dbGetQuery(pg, 'SELECT MAX(date) FROM urbancndep.fertilizer_applications;'),
+    DBI::dbGetQuery(pg, 'SELECT MAX(post_date) FROM urbancndep.stems;'),
+    DBI::dbGetQuery(pg, 'SELECT MAX(end_date) FROM urbancndep.prs_analysis;')
   )
  
   theMaxDate <- max(maxDates$max)
@@ -727,44 +768,39 @@ geographicCoverage = geographic_coverage
 
 ## taxonomic coverage
 
-*Note* that the `taxa_map.csv` built with the `create_taxa_map()` function and
-resolving taxonomic IDs (i.e., `resolve_comm_taxa()`) only needs to be run once
-per version/session -- the taxonomicCoverage can be built as many times as
-needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated and
-the taxonomic IDs resolved.
+*Note* that the `taxa_map.csv` built with the `create_taxa_map()` function and resolving taxonomic IDs (i.e., `resolve_comm_taxa()`) only needs to be run once per version/session -- the taxonomicCoverage can be built as many times as needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated and the taxonomic IDs resolved.
 
 ```{r taxonomyCleanr, eval=TRUE}
 
 my_path <- getwd() # taxonomyCleanr requires a path (to build the taxa_map)
 
 # get dataset taxa
-dataset_taxa <- dbGetQuery(pg,"
-  SELECT
-  DISTINCT(cover_type)
-  FROM urbancndep.cover_types
-  WHERE cover_category LIKE 'annual';"
-  ) |> 
+
+dataset_taxa <- DBI::dbGetQuery(pg, "
+    SELECT
+      DISTINCT(cover_type)
+    FROM
+      urbancndep.cover_types
+    WHERE
+      cover_category LIKE 'annual'
+    ;
+    ") |> 
 dplyr::mutate(cover_type = gsub("_", " ", cover_type)) |>
 dplyr::filter(!stringr::str_detect(cover_type, "unident")) |> 
-# annuals taxa above, additional taxa below
-tibble::add_row(cover_type = 'Larrea tridentata') |> 
-tibble::add_row(cover_type = 'Ambrosia dumosa') |> 
-tibble::add_row(cover_type = 'Ambrosia deltoidea') |> 
-tibble::add_row(cover_type = 'Pectocarya recurvata') |> 
-tibble::add_row(cover_type = 'Amsinckia menziesii') |> 
-tibble::add_row(cover_type = 'Schismus arabicus') |> 
+tibble::add_row(
+    cover_type = c(
+      'Larrea tridentata',
+      'Ambrosia dumosa',
+      'Ambrosia deltoidea',
+      'Pectocarya recurvata',
+      'Amsinckia menziesii',
+      'Schismus arabicus'
+      )
+    ) |> 
 dplyr::distinct(cover_type)
 
-# create or update map. A taxa_map.csv is the heart of taxonomyCleanr. This
-# function will build the taxa_map.csv and put it in the path identified with
-# my_path.
-taxonomyCleanr::create_taxa_map(path = my_path, x = dataset_taxa, col = "cover_type") 
-
-# resolve taxa by attempting to match the taxon's In this case, data.source 3 is
-# ITIS (which, by the way, is the only authority taxonomyCleanr will allow for
-# common names).
-# resolve_comm_taxa(path = my_path, data.sources = 3) # in this case, 3 is ITIS
-taxonomyCleanr::resolve_sci_taxa(path = my_path, data.sources = 3) # in this case, 3 is ITIS
+# taxonomyCleanr::create_taxa_map(path = my_path, x = dataset_taxa, col = "cover_type") 
+taxonomyCleanr::resolve_sci_taxa(path = my_path, data.sources = 3) # 3 ~ ITIS
 
 # build the EML taxonomomic coverage
 taxaCoverage <- taxonomyCleanr::make_taxonomicCoverage(path = my_path)
@@ -778,7 +814,6 @@ coverage$taxonomicCoverage <- taxaCoverage
 
 ```{r literature-cited, eval=TRUE}
 
-# cook <- create_citation("https://doi.org/10.1016/j.envpol.2018.04.013")
 fenn   <- capeml::create_citation("https://doi.org/10.2134/jeq2004.2007")
 simkin <- capeml::create_citation("https://doi.org/10.1023/B:WATE.0000019958.59277.ed")
 
@@ -788,15 +823,10 @@ citations <- list(
     simkin 
   ) # close list of citations
 ) # close citation
-
-# dataset$literatureCited <- citations
-
 ```
 
 # dataset
 
-Optionally, provide: scope, abstract, methods, keywords, publication date.
-Projects scopes include lter (default), urex, ltreb, and som.
 
 ```{r construct-dataset}
 
@@ -807,10 +837,7 @@ dataset <- capeml::create_dataset()
 
 ```{r custom-units, eval=TRUE}
 
-# standardUnits <- get_unitList()
-# unique(standardUnits$unitTypes$id) # unique unit types
-
-# the PRS data does include a custom unit but creating this is not required if
+# the PRS data do include a custom unit but creating this is not required if
 # you are recycling previously constructed EML/XML with just updated data, but
 # this will be required if you recreate 632 from scratch.
 
@@ -831,7 +858,7 @@ custom_units <- rbind(
 )
 
 unitList <- EML::set_unitList(
-  custom_units,
+  units       = custom_units,
   as_metadata = TRUE
 )
 
@@ -902,8 +929,8 @@ lapply(list.files(pattern = paste0(identifier, "_")), gioseml::data_to_amz)
 ```{r edi-login, eval=TRUE, echo=TRUE, message=TRUE}
 
 EDIutils::login(
-  userId   = keyring::key_get("edi_user"),
-  userPass = keyring::key_get("edi_pass")
+  userId   = keyring::key_get("edi_user", keyring = "edi"),
+  userPass = keyring::key_get("edi_pass", keyring = "edi")
 )
 
 ```

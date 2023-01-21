@@ -1,0 +1,56 @@
+|
+  site_code:
+    attributeName: site_code
+    attributeDefinition: site name abbreviation
+    columnClasses: factor
+  plot_id:
+    attributeName: plot_id
+    attributeDefinition: plot id number
+    definition: plot id number
+    columnClasses: character
+  treatment_code:
+    attributeName: treatment_code
+    attributeDefinition: treatment name abbreviation
+    columnClasses: factor
+  location_within_plot:
+    attributeName: location_within_plot
+    attributeDefinition: habitat within plot where probes were deployed
+    columnClasses: factor
+  subplot:
+    attributeName: subplot
+    attributeDefinition: subplot number (one of two replicates)
+    columnClasses: factor
+  date:
+    attributeName: date
+    attributeDefinition: date of data collection
+    formatString: YYYY-MM-DD
+    columnClasses: Date
+  year:
+    attributeName: year
+    attributeDefinition: year of data collection
+    formatString: YYYY
+    minimum: 2009.0
+    maximum: 2022.0
+    columnClasses: Date
+  collector:
+    attributeName: collector
+    attributeDefinition: initials of subplot surveyors
+    definition: initials of subplot surveyors
+    columnClasses: character
+  cover_type:
+    attributeName: cover_type
+    attributeDefinition: taxon of annual plant, plot characteristic, or logistical note
+    columnClasses: factor
+  cover_category:
+    attributeName: cover_category
+    attributeDefinition: nature of the observation (taxonomic, general plot characteristic,
+      logistical)
+    columnClasses: factor
+  cover_amount:
+    attributeName: cover_amount
+    attributeDefinition: proportion of subplot as a decimal fraction of this type
+    minimum: 0.001
+    maximum: 7.0
+    unit: dimensionless
+    numberType: real
+    columnClasses: numeric

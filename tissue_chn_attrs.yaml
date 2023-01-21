@@ -1,0 +1,53 @@
+|
+  site_code:
+    attributeName: site_code
+    attributeDefinition: site name abbreviation
+    columnClasses: factor
+  plot_id:
+    attributeName: plot_id
+    attributeDefinition: plot identifier
+    definition: plot identifier
+    columnClasses: character
+  treatment_code:
+    attributeName: treatment_code
+    attributeDefinition: treatment name abbreviation
+    columnClasses: factor
+  sample_date:
+    attributeName: sample_date
+    attributeDefinition: date of leaf (Larrea) or plant (Pectocarya) collection
+    formatString: YYYY-MM-DD
+    columnClasses: Date
+  season_year:
+    attributeName: season_year
+    attributeDefinition: season and year of collection (for easier sorting)
+    definition: season and year of collection (for easier sorting)
+    columnClasses: character
+  tissue_type:
+    attributeName: tissue_type
+    attributeDefinition: source of tissue material
+    columnClasses: factor
+  analyte:
+    attributeName: analyte
+    attributeDefinition: element analyzed
+    columnClasses: factor
+  Weight:
+    attributeName: Weight
+    attributeDefinition: weight of material used for analysis
+    unit: gram
+    numberType: real
+    minimum: 1.704
+    maximum: 2.452
+    columnClasses: numeric
+  percent_composition:
+    attributeName: percent_composition
+    attributeDefinition: percent composition of analyte
+    unit: dimensionless
+    numberType: real
+    minimum: 1.78
+    maximum: 53.43
+    columnClasses: numeric
+  Comment:
+    attributeName: Comment
+    attributeDefinition: comment about analytical measurement
+    definition: comment about analytical measurement
+    columnClasses: character

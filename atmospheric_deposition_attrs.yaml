@@ -1,36 +1,41 @@
 |
   run_id:
     attributeName: run_id
-    attributeDefinition: 'unique identifer of Lachat run provided primarily to allow users to associate blanks with samples'
+    attributeDefinition: unique identifer of Lachat run provided primarily to allow
+      users to associate blanks with samples
+    definition: unique identifer of Lachat run provided primarily to allow users to
+      associate blanks with samples
     columnClasses: character
-    definition: ''
   field_id:
     attributeName: field_id
-    attributeDefinition: 'sample identifer'
+    attributeDefinition: sample identifer
     columnClasses: factor
   collection_date:
     attributeName: collection_date
-    attributeDefinition: 'date collectors are extracted from their deployment in the field'
-    columnClasses: Date
+    attributeDefinition: date collectors are extracted from their deployment in the
+      field
     formatString: YYYY-MM-DD
+    columnClasses: Date
   notes:
     attributeName: notes
-    attributeDefinition: 'technician notes regarding conditions in the field or sample processing'
+    attributeDefinition: technician notes regarding conditions in the field or sample
+      processing
+    definition: technician notes regarding conditions in the field or sample processing
     columnClasses: character
-    definition: ''
   analyte_name:
     attributeName: analyte_name
-    attributeDefinition: 'nitrogen species measured (ammonium-nitrogen or nitrate-nitrogen)'
+    attributeDefinition: nitrogen species measured (ammonium-nitrogen or nitrate-nitrogen)
     columnClasses: factor
   concentration:
     attributeName: concentration
-    attributeDefinition: 'concentration of nitrogen species measured as ammonium-nitrogen or nitrate-nitrogen'
-    unit: 'milligramPerLiter'
+    attributeDefinition: concentration of nitrogen species measured as ammonium-nitrogen
+      or nitrate-nitrogen
+    unit: milligramPerLiter
     numberType: real
     minimum: -0.733
     maximum: 375.0
     columnClasses: numeric
   site_code:
     attributeName: site_code
-    attributeDefinition: 'site name abbreviation'
+    attributeDefinition: site name abbreviation
     columnClasses: factor

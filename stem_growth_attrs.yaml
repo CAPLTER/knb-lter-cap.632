@@ -1,0 +1,66 @@
+|
+  site_code:
+    attributeName: site_code
+    attributeDefinition: site name abbreviation
+    columnClasses: factor
+  plot_id:
+    attributeName: plot_id
+    attributeDefinition: plot id number
+    definition: plot id number
+    columnClasses: character
+  treatment_code:
+    attributeName: treatment_code
+    attributeDefinition: treatment name abbreviation
+    columnClasses: factor
+  scientific_name:
+    attributeName: scientific_name
+    attributeDefinition: scientific name of plant measured
+    definition: scientific name of plant measured
+    columnClasses: character
+  shrub_code:
+    attributeName: shrub_code
+    attributeDefinition: study plant identifier
+    columnClasses: factor
+  direction:
+    attributeName: direction
+    attributeDefinition: direction or quadrant of plant in which measured stem is positioned
+    columnClasses: factor
+  pre_date:
+    attributeName: pre_date
+    attributeDefinition: date of initial or pre stem-length measurement
+    formatString: YYYY-MM-DD
+    columnClasses: Date
+  post_date:
+    attributeName: post_date
+    attributeDefinition: date of final or post stem-length
+    formatString: YYYY-MM-DD
+    columnClasses: Date
+  post_note:
+    attributeName: post_note
+    attributeDefinition: field note regarding final or post stem-length measurement
+    definition: field note regarding final or post stem-length measurement
+    columnClasses: character
+  post_measurement:
+    attributeName: post_measurement
+    attributeDefinition: boolean indicator denoting whether the measurement is a pre
+      or initial stem-length measurement (FALSE), or a final or post stem-length measurement
+      (TRUE)
+    columnClasses: factor
+  stem_length:
+    attributeName: stem_length
+    attributeDefinition: length of stem
+    unit: millimeter
+    numberType: real
+    minimum: -6.0
+    maximum: 1116.5
+    columnClasses: numeric
+  stem_comment:
+    attributeName: stem_comment
+    attributeDefinition: field note(s) regarding particular shrub or measurement
+    definition: field note(s) regarding particular shrub or measurement
+    columnClasses: character
+  plot_comment:
+    attributeName: plot_comment
+    attributeDefinition: field note(s) regarding particular the plot or site
+    definition: field note(s) regarding particular the plot or site
+    columnClasses: character

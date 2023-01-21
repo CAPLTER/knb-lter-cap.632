@@ -4,15 +4,17 @@ dataset publishing: Desert Fertilization
 
 ## overview
 
-This repository is the home of publishing processes for the desert
-fertilization project beginning with version 632.3. Resources, workflows, and
-processes for database creation, the initial publication, and previous versions
-(632.1, 632.2) are in the 'cndep' repository that resides with GIOS on AWS.
-However, the R script file that documents the creation of the database and
-initial publication have been moved to this repository, and the 'cndep'
-repository should be able to be ignored going forward. 'cndep' had also held
-the data, but those are all now moved to the cndep folder of the department
-drive.
+This repository is the home of publishing processes for the desert fertilization project beginning with version 632.3. Resources, workflows, and processes for database creation, the initial publication, and previous versions (632.1, 632.2) are in the 'cndep' repository that resides with GIOS on AWS. However, the R script file that documents the creation of the database and initial publication have been moved to this repository, and the 'cndep' repository should be able to be ignored going forward. 'cndep' had also held the data, but those are all now moved to the cndep folder of the department drive.
+
+### knb-lter-cap.632.14 *2023-01-21*
+
+- data refresh
+- add `capeml::update_attributes` function to workflow
+- (most) attribute metadata updated from `csv` to `yaml` format
+- fixes some mislabeled PRS probe data (under plant instead of blank)
+- Rmd to qmd
+- update people attributes to draw from file instead of database
+
 
 ### knb-lter-cap.632.13 *2022-06-02*
 
