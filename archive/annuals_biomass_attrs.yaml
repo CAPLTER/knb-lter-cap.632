@@ -1,0 +1,52 @@
+|
+  site_code:
+    attributeName: site_code
+    attributeDefinition: site name abbreviation
+    columnClasses: factor
+  plot_id:
+    attributeName: plot_id
+    attributeDefinition: plot id number
+    definition: plot id number
+    columnClasses: character
+  treatment_code:
+    attributeName: treatment_code
+    attributeDefinition: treatment name abbreviation
+    columnClasses: factor
+  location_within_plot:
+    attributeName: location_within_plot
+    attributeDefinition: habitat within plot where probes were deployed
+    columnClasses: factor
+  subplot:
+    attributeName: subplot
+    attributeDefinition: subplot number (one of two replicates)
+    columnClasses: factor
+  subquad_orientation:
+    attributeName: subquad_orientation
+    attributeDefinition: direction of subquadrat from which biomass was harvested
+    definition: direction of subquadrat from which biomass was harvested
+    columnClasses: character
+  date:
+    attributeName: date
+    attributeDefinition: date of data collection
+    formatString: YYYY-MM-DD
+    columnClasses: Date
+  year:
+    attributeName: year
+    attributeDefinition: year of data collection
+    formatString: YYYY
+    minimum: 2008.0
+    maximum: 2021.0
+    columnClasses: Date
+  mass:
+    attributeName: mass
+    attributeDefinition: mass of biomass harvested in 0.25 meterSquare quadrat
+    minimum: -0.481
+    maximum: 131.52
+    unit: gram
+    numberType: real
+    columnClasses: numeric
+  notes:
+    attributeName: notes
+    attributeDefinition: field and_or processing notes
+    definition: field and_or processing notes
+    columnClasses: character

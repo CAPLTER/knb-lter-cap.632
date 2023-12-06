@@ -2,18 +2,10 @@
   site:
     attributeName: site
     attributeDefinition: 'site name abbreviation'
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
     columnClasses: character
     definition: ''
   description:
     attributeName: description
     attributeDefinition: 'study site location description'
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
     columnClasses: character
     definition: ''

@@ -1,0 +1,397 @@
+|
+  - attribute:
+      attributeName: site_code
+      levels:
+      - code: DBG
+        definition: "core region: Desert Botanical Garden"
+      - code: EME
+        definition: "west region: Estrella Mountain Regional Park east"
+      - code: EMW
+        definition: "west region: Estrella Mountain Regional Park west"
+      - code: LDP
+        definition: "east region: Lost Dutchman State Park"
+      - code: MCN
+        definition: "east region: McDowell Mountain Regional north"
+      - code: MCS
+        definition: "east region: McDowell Mountain Regional south"
+      - code: MVP
+        definition: "core region: North Mountain"
+      - code: PWP
+        definition: "core region: Piestewa Peak"
+      - code: SME
+        definition: "core region: South Mountain Park east"
+      - code: SMW
+        definition: "core region: South Mountain Park west"
+      - code: SNE
+        definition: "west region: Sonoran Desert National Monument east"
+      - code: SNW
+        definition: "west region: Sonoran Desert National Monument west"
+      - code: SRR
+        definition: "east region: Salt River Recreation Area (Tonto NF)"
+      - code: UMP
+        definition: "east region: Usery Mountain Regional Park"
+      - code: WTM
+        definition: "west region: White Tanks Mountain Regional Park"
+  - attribute:
+      attributeName: treatment_code
+      levels:
+      - code: C1
+        definition: "control plot 1"
+      - code: 'N'
+        definition: "nitrogen amendment"
+      - code: NP
+        definition: "nitrogen + phosphorus amendment"
+      - code: P
+        definition: "phosphorus amendment"
+  - attribute:
+      attributeName: location_within_plot
+      levels:
+      - code: IP
+        definition: "subplot located in an interplant space"
+      - code: P
+        definition: "subplot features a Larrea tridentata plant"
+  - attribute:
+      attributeName: subplot
+      levels:
+      - code: '1'
+        definition: "one of two replicates"
+      - code: '2'
+        definition: "two of two replicates"
+  - attribute:
+      attributeName: cover_type
+      levels:
+      - code: Ambrosia_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Ambrosia_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Ambrosia_stem
+        definition: characterizing dead or broken branches of a plant of this type that have fallen into the plot
+      - code: Amsinckia
+        definition: Amsinckia
+      - code: Amsinckia_menziesii
+        definition: Amsinckia menziesii
+      - code: Amsinckia_tessellata
+        definition: Amsinckia tessellata
+      - code: Aristida purpurea
+        definition: Aristida adscensionis
+      - code: Aristida_adscensionis
+        definition: Aristida adscensionis
+      - code: Asteraceae
+        definition: Asteraceae
+      - code: Astragalus
+        definition: Astragalus
+      - code: Astragalus didymocarpus
+        definition: Astragalus
+      - code: Astragalus_nuttallianus
+        definition: Astragalus nuttallianus
+      - code: Baileya_multiradiata
+        definition: Baileya multiradiata
+      - code: bare_ground
+        definition: bare ground
+      - code: Bebbia_juncea_cover
+        definition: Bebbia juncea
+      - code: Boraginaceae
+        definition: Boraginaceae
+      - code: Bowlesia_incana
+        definition: Bowlesia incana
+      - code: Brassica tournefortii
+        definition: Brassicaceae
+      - code: Brassicaceae
+        definition: Brassicaceae
+      - code: Bromus arizonica
+        definition: Bromus rubens
+      - code: Bromus_rubens
+        definition: Bromus rubens
+      - code: Calandrinia_ciliata
+        definition: Calandrinia ciliata
+      - code: Camissonia_californica
+        definition: Camissonia californica
+      - code: Camissonia_claviformis
+        definition: Camissonia claviformis
+      - code: Cammisonia confusa
+        definition: Cammisonia confusa
+      - code: Castilleja_exserta
+        definition: Castilleja exserta
+      - code: Caulanthus_lasiophyllus
+        definition: Caulanthus lasiophyllus
+      - code: Chaenactis_stevioides
+        definition: Chaenactis stevioides
+      - code: Chamaesyce
+        definition: Chamaesyce
+      - code: Chamaesyce_albomarginata
+        definition: Chamaesyce albomarginata
+      - code: Chamaesyce_polycarpa
+        definition: Chamaesyce polycarpa
+      - code: Chorizanthe
+        definition: Chorizanthe
+      - code: Chorizanthe_brevicornu
+        definition: Chorizanthe brevicornu
+      - code: Chorizanthe_rigida
+        definition: Chorizanthe rigida
+      - code: Cistanthe_monandra
+        definition: Cistanthe monandra
+      - code: Crassula_connata
+        definition: Crassula connata
+      - code: Cryptantha
+        definition: Cryptantha
+      - code: Cryptantha_angustifolia
+        definition: Cryptantha angustifolia
+      - code: Cryptantha_barbigera
+        definition: Cryptantha barbigera
+      - code: Cryptantha_decipiens
+        definition: Cryptantha decipiens
+      - code: Cryptantha_maritima
+        definition: Cryptantha maritima
+      - code: Cryptantha_pterocarya
+        definition: Cryptantha pterocarya
+      - code: Cylindropuntia_acanthocarpa_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Cylindropuntia_acanthocarpa_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Cylindropuntia_bigelovii_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Cylindropuntia_bigelovii_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Cylindropuntia_fulgida_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Cylindropuntia_fulgida_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Daucus_pusillus
+        definition: Daucus pusillus
+      - code: Descurainia_pinnata
+        definition: Descurainia pinnata
+      - code: Dichelostemma_capitatum
+        definition: Dichelostemma capitatum
+      - code: Ditaxis serrata
+        definition: Ditaxis lanceolata
+      - code: Ditaxis_lanceolata
+        definition: Ditaxis lanceolata
+      - code: Ditaxis_neomexicana
+        definition: Ditaxis neomexicana
+      - code: Draba_cuneifolia
+        definition: Draba cuneifolia
+      - code: Encelia_farinosa_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Encelia_farinosa_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Eremothera_chamaenerioides
+        definition: Eremothera chamaenerioides
+      - code: Eriastrum_diffusum
+        definition: Eriastrum diffusum
+      - code: Eriastrum_eremicum
+        definition: Eriastrum eremicum
+      - code: Eriochloa_aristata
+        definition: Eriochloa aristata
+      - code: Eriogonum_thomasii
+        definition: Eriogonum thomasii
+      - code: Eriophyllum_lanosum
+        definition: Eriophyllum lanosum
+      - code: Erodium_cicutarium
+        definition: Erodium cicutarium
+      - code: Erodium_texanum
+        definition: Erodium texanum
+      - code: Eschscholzia_californica
+        definition: Eschscholzia californica
+      - code: Eucrypta
+        definition: Eucrypta
+      - code: Eucrypta_chrysanthemifolia
+        definition: Eucrypta chrysanthemifolia
+      - code: Eucrypta_micrantha
+        definition: Eucrypta micrantha
+      - code: Gilia_stellata
+        definition: Gilia stellata
+      - code: Gnaphalium
+        definition: Gnaphalium
+      - code: green
+        definition: green
+      - code: Harpagonella palmeri
+        definition: Harpagonella palmeri
+      - code: Herniaria_hirsuta
+        definition: Herniaria hirsuta
+      - code: Hordeum_murinum
+        definition: Hordeum murinum
+      - code: Krameria_grayi_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Krameria_grayi_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Lactuca_serriola
+        definition: Lactuca serriola
+      - code: Larrea_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Larrea_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Lasthenia_californica
+        definition: Lasthenia californica
+      - code: Lepidium virginica
+        definition: Lepidium lasiocarpum
+      - code: Lepidium_lasiocarpum
+        definition: Lepidium lasiocarpum
+      - code: Linanthus
+        definition: Linanthus
+      - code: Linanthus_bigelovii
+        definition: Linanthus bigelovii
+      - code: Linanthus_demissus
+        definition: Linanthus demissus
+      - code: litter
+        definition: litter
+      - code: Loeflingia_squarrosa
+        definition: Loeflingia squarrosa
+      - code: Logfia_arizonica
+        definition: Logfia arizonica
+      - code: Logfia_depressa
+        definition: Logfia depressa
+      - code: Logfia_filaginoides
+        definition: Logfia filaginoides
+      - code: Lotus_humistratus
+        definition: Lotus humistratus
+      - code: Lotus_salsuginosus
+        definition: Lotus salsuginosus
+      - code: Lotus_strigosus
+        definition: Lotus strigosus
+      - code: Lupinus_concinnus
+        definition: Lupinus concinnus
+      - code: Lupinus_sparsiflorus
+        definition: Lupinus sparsiflorus
+      - code: Lycium_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Lycium_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Mammillaria_grahamii_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Mammillaria_grahamii_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Matthiola_parviflora
+        definition: Matthiola parviflora
+      - code: Minuartia_douglasii
+        definition: Minuartia douglasii
+      - code: Monolepis_nuttalliana
+        definition: Monolepis nuttalliana
+      - code: Monoptilon belliodes
+        definition: Monoptilon belliodes
+      - code: Nemacladus_glanduliferus
+        definition: Nemacladus glanduliferus
+      - code: Nemacladus_rigidus
+        definition: Nemacladus rigidus
+      - code: Neogaerrhinum filipes
+        definition: Neogaerrhinum filipes
+      - code: Nicotiana_obtusifolia
+        definition: Nicotiana obtusifolia
+      - code: Oligomeris_linifolia
+        definition: Oligomeris linifolia
+      - code: Oncosiphon_piluliferum
+        definition: Oncosiphon piluliferum
+      - code: Orobanche_cooperi
+        definition: Orobanche cooperi
+      - code: Parietaria_hespera
+        definition: Parietaria hespera
+      - code: Parkinsonia_microphylla_base
+        definition: base of the trunk of a plant of this type where it enters the ground
+      - code: Parkinsonia_microphylla_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Pectocarya
+        definition: Pectocarya
+      - code: Pectocarya_heterocarpa
+        definition: Pectocarya heterocarpa
+      - code: Pectocarya_platycarpa
+        definition: Pectocarya platycarpa
+      - code: Pectocarya_recurvata
+        definition: Pectocarya recurvata
+      - code: Perityle_emoryi
+        definition: Perityle emoryi
+      - code: Phacelia
+        definition: Phacelia crenulata
+      - code: Phacelia_crenulata
+        definition: Phacelia crenulata
+      - code: Phacelia_distans
+        definition: Phacelia distans
+      - code: Pholistoma_auritum
+        definition: Pholistoma auritum
+      - code: Physaria
+        definition: Physaria
+      - code: Physaria_gordonii
+        definition: Physaria gordonii
+      - code: Physaria_tenella
+        definition: Physaria tenella
+      - code: Plagiobothrys_arizonicus
+        definition: Plagiobothrys arizonicus
+      - code: Plantago
+        definition: Plantago
+      - code: Plantago_ovata
+        definition: Plantago ovata
+      - code: Plantago_patagonica
+        definition: Plantago patagonica
+      - code: Poa annua
+        definition: Poa annua
+      - code: Poa_bigelovii
+        definition: Poa bigelovii
+      - code: Poaceae
+        definition: Poaceae
+      - code: Polemoniaceae
+        definition: Polemoniaceae
+      - code: Pseudognaphalium
+        definition: Pseudognaphalium
+      - code: Rafinesquia_neomexicana
+        definition: Rafinesquia neomexicana
+      - code: Salsola_tragus
+        definition: Salsola tragus
+      - code: Salvia_columbariae
+        definition: Salvia columbariae
+      - code: sampled
+        definition: indicating that the plot was surveyed
+      - code: Schismus
+        definition: Schismus
+      - code: Schismus_arabicus
+        definition: Schismus arabicus
+      - code: Schismus_barbatus
+        definition: Schismus barbatus
+      - code: Silene_antirrhina
+        definition: Silene antirrhina
+      - code: Simmondsia_chinensis_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: Sisymbrium_irio
+        definition: Sisymbrium irio
+      - code: soil_crusts
+        definition: soil crusts
+      - code: Sonchus
+        definition: Sonchus
+      - code: Sonchus_oleraceus
+        definition: Sonchus oleraceus
+      - code: Sphaeralcea_coulteri
+        definition: Sphaeralcea coulteri
+      - code: Stylocline_gnaphaloides
+        definition: Stylocline gnaphaloides
+      - code: Stylocline_micropoides
+        definition: Stylocline micropoides
+      - code: total_shrub_cover
+        definition: cover of the over story of a plant of this type within the plot or overhanging the subplot
+      - code: unidentified
+        definition: unidentified
+      - code: unidentified_1_2017
+        definition: "unidentified plant number 1 in collection year 2017"
+      - code: unidentified_1_2018
+        definition: "unidentified plant number 1 in collection year 2018"
+      - code: unidentified_1_2019
+        definition: "unidentified plant number 1 in collection year 2019"
+      - code: unidentified_2_2017
+        definition: "unidentified plant number 2 in collection year 2017"
+      - code: unidentified_2_2018
+        definition: "unidentified plant number 2 in collection year 2018"
+      - code: unidentified_3_2017
+        definition: "unidentified plant number 3 in collection year 2017"
+      - code: unidentified_3_2018
+        definition: "unidentified plant number 3 in collection year 2018"
+      - code: Uropappus_lindleyi
+        definition: Uropappus lindleyi
+      - code: Vulpia_microstachys
+        definition: Vulpia microstachys
+      - code: Vulpia_octoflora
+        definition: Vulpia octoflora
+  - attribute:
+      attributeName: cover_category
+      levels:
+      - code: annual
+        definition: observation referring to a type of plant
+      - code: plot characteristic
+        definition: "observation referring to characteristic of the plot other than cover of a specific type of annual plant"
+      - code: record_keeping
+        definition: "entry for record keeping typically whether the plot was survyed"

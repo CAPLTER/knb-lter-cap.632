@@ -2,96 +2,54 @@
   site_code:
     attributeName: site_code
     attributeDefinition: site name abbreviation
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
     columnClasses: factor
   plot_id:
     attributeName: plot_id
     attributeDefinition: plot id number
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
+    definition: plot id number
     columnClasses: character
-    definition: ''
   treatment_code:
     attributeName: treatment_code
     attributeDefinition: treatment name abbreviation
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
     columnClasses: factor
   scientific_name:
     attributeName: scientific_name
     attributeDefinition: scientific name of plant measured
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
+    definition: scientific name of plant measured
     columnClasses: character
-    definition: ''
   shrub_code:
     attributeName: shrub_code
     attributeDefinition: study plant identifier
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
     columnClasses: factor
   direction:
     attributeName: direction
     attributeDefinition: direction or quadrant of plant in which measured stem is positioned
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
     columnClasses: factor
   pre_date:
     attributeName: pre_date
     attributeDefinition: date of initial or pre stem-length measurement
-    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
-    propertyLabel: 'contains measurements of type'
-    valueURI: 'http://purl.dataone.org/odo/ECSO_00002051'
-    valueLabel: 'date'
-    columnClasses: Date
     formatString: YYYY-MM-DD
+    columnClasses: Date
   post_date:
     attributeName: post_date
     attributeDefinition: date of final or post stem-length
-    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
-    propertyLabel: 'contains measurements of type'
-    valueURI: 'http://purl.dataone.org/odo/ECSO_00002051'
-    valueLabel: 'date'
-    columnClasses: Date
     formatString: YYYY-MM-DD
+    columnClasses: Date
   post_note:
     attributeName: post_note
     attributeDefinition: field note regarding final or post stem-length measurement
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
+    definition: field note regarding final or post stem-length measurement
     columnClasses: character
-    definition: ''
   post_measurement:
     attributeName: post_measurement
-    attributeDefinition: boolean indicator denoting whether the measurement is a pre or initial stem-length measurement (FALSE), or a final or post stem-length measurement (TRUE)
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
+    attributeDefinition: boolean indicator denoting whether the measurement is a pre
+      or initial stem-length measurement (FALSE), or a final or post stem-length measurement
+      (TRUE)
     columnClasses: factor
   stem_length:
     attributeName: stem_length
     attributeDefinition: length of stem
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    unit: MilliM
+    unit: millimeter
     numberType: real
     minimum: -6.0
     maximum: 1116.5
@@ -99,18 +57,10 @@
   stem_comment:
     attributeName: stem_comment
     attributeDefinition: field note(s) regarding particular shrub or measurement
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
+    definition: field note(s) regarding particular shrub or measurement
     columnClasses: character
-    definition: ''
   plot_comment:
     attributeName: plot_comment
     attributeDefinition: field note(s) regarding particular the plot or site
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
+    definition: field note(s) regarding particular the plot or site
     columnClasses: character
-    definition: ''

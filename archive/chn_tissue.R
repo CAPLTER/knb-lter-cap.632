@@ -1,5 +1,9 @@
-
 # README ------------------------------------------------------------------
+
+# fall 2023
+
+# CHN data upload was moved to the Shiny application:
+# https://github.com/CAPLTER/databases-change-log/commit/f381eee078121f671f77b8759fd5222b947b283d
 
 # 2019-07-01
 

@@ -1,0 +1,61 @@
+|
+  - attribute:
+      attributeName: site_code
+      levels:
+      - code: DBG
+        definition: "core region: Desert Botanical Garden"
+      - code: EME
+        definition: "west region: Estrella Mountain Regional Park east"
+      - code: EMW
+        definition: "west region: Estrella Mountain Regional Park west"
+      - code: LDP
+        definition: "east region: Lost Dutchman State Park"
+      - code: MCN
+        definition: "east region: McDowell Mountain Regional north"
+      - code: MCS
+        definition: "east region: McDowell Mountain Regional south"
+      - code: MVP
+        definition: "core region: North Mountain"
+      - code: PWP
+        definition: "core region: Piestewa Peak"
+      - code: SME
+        definition: "core region: South Mountain Park east"
+      - code: SMW
+        definition: "core region: South Mountain Park west"
+      - code: SNE
+        definition: "west region: Sonoran Desert National Monument east"
+      - code: SNW
+        definition: "west region: Sonoran Desert National Monument west"
+      - code: SRR
+        definition: "east region: Salt River Recreation Area (Tonto NF)"
+      - code: UMP
+        definition: "east region: Usery Mountain Regional Park"
+      - code: WTM
+        definition: "west region: White Tanks Mountain Regional Park"
+  - attribute:
+      attributeName: treatment_code
+      levels:
+      - code: C1
+        definition: "control plot 1"
+      - code: 'N'
+        definition: "nitrogen amendment"
+      - code: NP
+        definition: "nitrogen + phosphorus amendment"
+      - code: P
+        definition: "phosphorus amendment"
+  - attribute:
+      attributeName: tissue_type
+      levels:
+      - code: Larrea tridentata
+        definition: Larrea tridentata leaf tissue
+      - code: Pectocarya recurvata
+        definition: Pectocarya recurvata whole-plant tissue
+  - attribute:
+      attributeName: analyte
+      levels:
+      - code: Carbon %
+        definition: percent carbon
+      - code: Hydrogen %
+        definition: percent hydrogen
+      - code: Nitrogen %
+        definition: percent nitrogen

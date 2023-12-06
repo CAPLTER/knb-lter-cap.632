@@ -7,14 +7,6 @@
     valueURI: ''
     valueLabel: ''
     columnClasses: factor
-  treatment_code:
-    attributeName: treatment_code
-    attributeDefinition: treatment name abbreviation
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    columnClasses: factor
   plot_id:
     attributeName: plot_id
     attributeDefinition: plot identifier
@@ -24,8 +16,16 @@
     valueLabel: ''
     columnClasses: character
     definition: ''
-  collection_date:
-    attributeName: collection_date
+  treatment_code:
+    attributeName: treatment_code
+    attributeDefinition: treatment name abbreviation
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    columnClasses: factor
+  sample_date:
+    attributeName: sample_date
     attributeDefinition: date of leaf (Larrea) or plant (Pectocarya) collection
     propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
     propertyLabel: 'contains measurements of type'
@@ -33,6 +33,15 @@
     valueLabel: 'date'
     columnClasses: Date
     formatString: YYYY-MM-DD
+  season_year:
+    attributeName: season_year
+    attributeDefinition: season and year of collection (for easier sorting)
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    columnClasses: character
+    definition: ''
   tissue_type:
     attributeName: tissue_type
     attributeDefinition: source of tissue material
@@ -41,44 +50,41 @@
     valueURI: ''
     valueLabel: ''
     columnClasses: factor
-  Weight:
-    attributeName: Weight
-    attributeDefinition: weight of material used for analysis
+  instrument:
+    attributeName: instrument
+    attributeDefinition: instrument employed for tissue analysis
     propertyURI: ''
     propertyLabel: ''
     valueURI: ''
     valueLabel: ''
-    unit: GM
-    numberType: real
-    minimum: 1.704
-    maximum: 2.801
-    columnClasses: numeric
-  Comment:
-    attributeName: Comment
-    attributeDefinition: comment about analytical measurement
+    columnClasses: factor
+  isotope_element:
+    attributeName: isotope_element
+    attributeDefinition: isotope atomic mass and element symbol (except Sulfur (S) that is the element symbol only)
     propertyURI: ''
     propertyLabel: ''
     valueURI: ''
     valueLabel: ''
     columnClasses: character
     definition: ''
-  analyte:
-    attributeName: analyte
-    attributeDefinition: element analyzed
+  concentration:
+    attributeName: concentration
+    attributeDefinition: mass of isotope_element per mass of leaf material
     propertyURI: ''
     propertyLabel: ''
     valueURI: ''
     valueLabel: ''
-    columnClasses: factor
-  percent_composition:
-    attributeName: percent_composition
-    attributeDefinition: percent composition of analyte
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    unit: PERCENT
+    unit: MilliGM-PER-KiloGM
     numberType: real
-    minimum: 1.29
-    maximum: 53.43
+    minimum: -4.344
+    maximum: 46286.837
     columnClasses: numeric
+  source_file:
+    attributeName: source_file
+    attributeDefinition: file name corresponding to raw data for the observation (raw data available as another entity in this data set)
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    columnClasses: character
+    definition: ''

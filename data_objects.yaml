@@ -1,0 +1,79 @@
+annuals_biomass:
+  type: table
+  dfname: annuals_biomass
+  description: "Biomass (g) of annual plants harvested from subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Material is harvested from 0.25 square meter quadrats within each subplot. All harvests occur during the spring."
+  dateRangeField: "date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+annuals_composition:
+  type: table
+  dfname: annuals_composition
+  description: "Composition of annual plants and some other characteristics (e.g. bare soil; base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
+  dateRangeField: "date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+fertilizer_application:
+  type: table
+  dfname: fertilizer_application
+  description: "Catalog of amounts and timing of nitrogen and phosphorus fertilizer applications to nitrogen (N); phosphorus (P); and nitrogen+phosphorus (N+P) treatment plots - applications are delivered to the respective plot at the site that receives either N; P; or an N+P addition (except control sites (n = 2) that do not receive a fertilizer amendment)."
+  dateRangeField: "application_date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+stem_growth:
+  type: table
+  dfname: stem_growth
+  description: "biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots"
+  dateRangeField: "pre_date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: 
+plant_root_simulator:
+  type: table
+  dfname: plant_root_simulator
+  description: "Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions such as nitrate (NO3-); phosphate (H2PO4-; HPO42-); and sulphate (SO42-); whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations such as ammonium (NH4+); potassium (K+); calcium (Ca2+); and magnesium (Mg2+)."
+  dateRangeField: "start_date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+tissue_chn:
+  type: table
+  dfname: tissue_chn
+  description: "CHN (Carbon Hydrogen and Nitrogen) elemental analysis of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites."
+  dateRangeField: "collection_date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+tissue_icp:
+  type: table
+  dfname: tissue_icp
+  description: "Elemental composition of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites. Most analyses are by ICP-MS except Sulfur (S) which is typically analyzed by ICP-OES with the instrument type noted in the instrument field."
+  dateRangeField: "sample_date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+raw_icp:
+  type: other
+  target_file_or_directory: "raw_icp/"
+  description: "This zipped file contains the raw ICP-MS and ICP-OES data (as XSLM and xls files) pertaining to the analyses of Larrea tridentata leaf tissue and Pectocarya recurvata plant tissue samples. The calculated concentrations are presented in an analysis-friendly format in the data entity 'tissue_icp' that is part of this dataset; the raw data file from which the calculated concentrations were derived is referenced in the source_file field of the tissue_icp data entity."
+  overwrite: TRUE
+  projectNaming: TRUE
+  additional_information: ~
+atmospheric_deposition:
+  type: table
+  dfname: atmospheric_deposition
+  description: "ammonium-nitrogen and nitrate-nitrogen as measured by ion exchange resin (IER) collectors that are used to measure bulk (wet) deposition in interplant open spaces and throughfall (wet and dry) deposition under the dominant shrub"
+  dateRangeField: "collection_date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~

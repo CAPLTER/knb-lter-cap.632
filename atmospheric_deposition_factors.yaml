@@ -1,0 +1,234 @@
+|
+  - attribute:
+      attributeName: field_id
+      levels:
+      - code: DBG.IP CNTL1
+        definition: "Desert Botanical Garden inter-plant control repliate number 1"
+      - code: DBG.IP CNTL2
+        definition: "Desert Botanical Garden inter-plant control repliate number 2"
+      - code: DBG.IP CNTL3
+        definition: "Desert Botanical Garden inter-plant control repliate number 3"
+      - code: DBG.IP1
+        definition: "Desert Botanical Garden inter-plant replicate number 1"
+      - code: DBG.IP1.6MONTH
+        definition: "Desert Botanical Garden inter-plant collected at a 6-month interval replicate number 1"
+      - code: DBG.IP2
+        definition: "Desert Botanical Garden inter-plant replicate number 2"
+      - code: DBG.IP2.6MONTH
+        definition: "Desert Botanical Garden inter-plant collected at a 6-month interval replicate number 2"
+      - code: DBG.LATR CNTL1
+        definition: "Desert Botanical Garden under Larrea tridendata control replicate number 1"
+      - code: DBG.LATR CNTL2
+        definition: "Desert Botanical Garden under Larrea tridendata control replicate number 2"
+      - code: DBG.LATR CNTL3
+        definition: "Desert Botanical Garden under Larrea tridendata control replicate number 3"
+      - code: DBG.LATR1
+        definition: "Desert Botanical Garden under Larrea tridendata replicate number 1"
+      - code: DBG.LATR2
+        definition: "Desert Botanical Garden under Larrea tridendata replicate number 2"
+      - code: EME.IP1
+        definition: "Estrella Mountain Park east inter-plant replicate number 1"
+      - code: EME.IP2
+        definition: "Estrella Mountain Park east inter-plant replicate number 2"
+      - code: EME.LATR1
+        definition: "Estrella Mountain Park east under Larrea tridendata replicate number 1"
+      - code: EME.LATR2
+        definition: "Estrella Mountain Park east under Larrea tridendata replicate number 2"
+      - code: EMW.IP1
+        definition: "Estrella Mountain Park east inter-plant replicate number 1"
+      - code: EMW.IP2
+        definition: "Estrella Mountain Park east inter-plant replicate number 2"
+      - code: EMW.LATR1
+        definition: "Estrella Mountain Park east under Larrea tridendata replicate number 1"
+      - code: EMW.LATR2
+        definition: "Estrella Mountain Park east under Larrea tridendata replicate number 2"
+      - code: GTW IP1 (Gateway/Thompson)
+        definition: "McDowell Sonoran Preserve Gateway Thompson Peak inter-plant replicate number 1"
+      - code: GTW IP2 (Gateway/Thompson)
+        definition: "McDowell Sonoran Preserve Gateway Thompson Peak inter-plant replicate number 2"
+      - code: KCl_blank
+        definition: "solution blanks of the 0.2 M KCl extract solution that is run through a filter; this solution is used to construct the standard curves"
+      - code: LDP.IP CNTL1
+        definition: "Lost Dutchman State Park inter-plant control replicate number 1"
+      - code: LDP.IP CNTL2
+        definition: "Lost Dutchman State Park inter-plant control replicate number 2"
+      - code: LDP.IP CNTL3
+        definition: "Lost Dutchman State Park inter-plant control replicate number 3"
+      - code: LDP.IP1
+        definition: "Lost Dutchman State Park inter-plant replicate number 1"
+      - code: LDP.IP2
+        definition: "Lost Dutchman State Park inter-plant replicate number 2"
+      - code: LDP.LATR CNTL1
+        definition: "Lost Dutchman State Park under Larrea tridendata control replicate number 1"
+      - code: LDP.LATR CNTL2
+        definition: "Lost Dutchman State Park under Larrea tridendata control replicate number 2"
+      - code: LDP.LATR CNTL3
+        definition: "Lost Dutchman State Park under Larrea tridendata control replicate number 3"
+      - code: LDP.LATR1
+        definition: "Lost Dutchman State Park under Larrea tridendata replicate number 1"
+      - code: LDP.LATR2
+        definition: "Lost Dutchman State Park under Larrea tridendata replicate number 2"
+      - code: LVE IP3 104th&Bell Levytrail
+        definition: "McDowell Sonoran Preserve Bell Road inter-plant replicate number 3"
+      - code: LVE IP4 104th&Bell Levytrail
+        definition: "McDowell Sonoran Preserve Bell Road inter-plant replicate number 4"
+      - code: MCN.IP1
+        definition: "McDowell Mountain Park north inter-plant replicate number 1"
+      - code: MCN.IP2
+        definition: "McDowell Mountain Park north inter-plant replicate number 2"
+      - code: MCN.LATR1
+        definition: "McDowell Mountain Park north under Larrea tridendata replicate number 1"
+      - code: MCN.LATR2
+        definition: "McDowell Mountain Park north under Larrea tridendata replicate number 2"
+      - code: MCS.IP1
+        definition: "McDowell Mountain Park south inter-plant replicate number 1"
+      - code: MCS.IP1.6MONTH
+        definition: "McDowell Mountain Park south inter-plant collected at a 6-month interval replicate number 1"
+      - code: MCS.IP2
+        definition: "McDowell Mountain Park south inter-plant replicate number 2"
+      - code: MCS.IP2.6MONTH
+        definition: "McDowell Mountain Park south inter-plant collected at a 6-month interval replicate number 2"
+      - code: MCS.LATR1
+        definition: "McDowell Mountain Park south under Larrea tridendata replicate number 1"
+      - code: MCS.LATR2
+        definition: "McDowell Mountain Park south under Larrea tridendata replicate number 2"
+      - code: PWP.IP1
+        definition: "Piestewa Peak inter-plant replicate number 1"
+      - code: PWP.IP2
+        definition: "Piestewa Peak inter-plant replicate number 2"
+      - code: PWP.LATR1
+        definition: "Piestewa Peak under Larrea tridendata replicate number 1"
+      - code: PWP.LATR2
+        definition: "Piestewa Peak under Larrea tridendata replicate number 2"
+      - code: resin.KCl.1
+        definition: "run blank constructed by performing the complete extraction procedure on an aliquot of clean resin material that was not deployed in the field or otherwise used in any way replicate 1"
+      - code: resin.KCl.2
+        definition: "run blank constructed by performing the complete extraction procedure on an aliquot of clean resin material that was not deployed in the field or otherwise used in any way replicate 1"
+      - code: resin.KCl.3
+        definition: "run blank constructed by performing the complete extraction procedure on an aliquot of clean resin material that was not deployed in the field or otherwise used in any way replicate 1"
+      - code: SME.IP1
+        definition: "South Mountain east inter-plant replicate number 1"
+      - code: SME.IP2
+        definition: "South Mountain east inter-plant replicate number 2"
+      - code: SME.LATR1
+        definition: "South Mountain east under Larrea tridendata replicate number 1"
+      - code: SME.LATR2
+        definition: "South Mountain east under Larrea tridendata replicate number 2"
+      - code: SMW.IP CNTL1
+        definition: "South Mountain west inter-plant control replicate number 1"
+      - code: SMW.IP CNTL2
+        definition: "South Mountain west inter-plant control replicate number 2"
+      - code: SMW.IP CNTL3
+        definition: "South Mountain west inter-plant control replicate number 3"
+      - code: SMW.IP1
+        definition: "South Mountain west inter-plant replicate number 1"
+      - code: SMW.IP2
+        definition: "South Mountain west inter-plant replicate number 2"
+      - code: SMW.LATR CNTL1
+        definition: "South Mountain west under Larrea tridendata control replicate number 1"
+      - code: SMW.LATR CNTL2
+        definition: "South Mountain west under Larrea tridendata control replicate number 2"
+      - code: SMW.LATR CNTL3
+        definition: "South Mountain west under Larrea tridendata control replicate number 3"
+      - code: SMW.LATR1
+        definition: "South Mountain west under Larrea tridendata replicate number 1"
+      - code: SMW.LATR2
+        definition: "South Mountain west under Larrea tridendata replicate number 2"
+      - code: SNE.IP1
+        definition: "Sonoran Monument east inter-plant replicate number 1"
+      - code: SNE.IP2
+        definition: "Sonoran Monument east inter-plant replicate number 2"
+      - code: SNE.LATR1
+        definition: "Sonoran Monument east under Larrea tridendata replicate number 1"
+      - code: SNE.LATR2
+        definition: "Sonoran Monument east under Larrea tridendata replicate number 2"
+      - code: SNW.IP1
+        definition: "Sonoran Monument west inter-plant replicate number 1"
+      - code: SNW.IP2
+        definition: "Sonoran Monument west inter-plant replicate number 2"
+      - code: SNW.LATR1
+        definition: "Sonoran Monument west under Larrea tridendata replicate number 1"
+      - code: SNW.LATR2
+        definition: "Sonoran Monument west under Larrea tridendata replicate number 2"
+      - code: SRR.IP1
+        definition: "Salt River Recreation area inter-plant replicate number 1"
+      - code: SRR.IP2
+        definition: "Salt River Recreation area inter-plant replicate number 2"
+      - code: SRR.LATR1
+        definition: "Salt River Recreation area under Larrea tridendata replicate number 1"
+      - code: SRR.LATR2
+        definition: "Salt River Recreation area under Larrea tridendata replicate number 2"
+      - code: UMP.IP1
+        definition: "Usury Mountain Park inter-plant replicate number 1"
+      - code: UMP.IP2
+        definition: "Usury Mountain Park inter-plant replicate number 2"
+      - code: UMP.LATR1
+        definition: "Usury Mountain Park under Larrea tridendata replicate number 1"
+      - code: UMP.LATR2
+        definition: "Usury Mountain Park under Larrea tridendata replicate number 2"
+      - code: WTM.IP CNTL1
+        definition: "White Tank Mountain Park inter-plant control replicate number 1"
+      - code: WTM.IP CNTL2
+        definition: "White Tank Mountain Park inter-plant control replicate number 2"
+      - code: WTM.IP CNTL3
+        definition: "White Tank Mountain Park inter-plant control replicate number 3"
+      - code: WTM.IP1
+        definition: "White Tank Mountain Park inter-plant replicate number 1"
+      - code: WTM.IP1.6MONTH
+        definition: "White Tank Mountain Park inter-plant collected at a 6-month interval replicate number 1"
+      - code: WTM.IP2
+        definition: "White Tank Mountain Park inter-plant replicate number 2"
+      - code: WTM.IP2.6MONTH
+        definition: "White Tank Mountain Park inter-plant collected at a 6-month interval replicate number 2"
+      - code: WTM.LATR CNTL1
+        definition: "White Tank Mountain Park under Larrea tridendata control replicate number 1"
+      - code: WTM.LATR CNTL2
+        definition: "White Tank Mountain Park under Larrea tridendata control replicate number 2"
+      - code: WTM.LATR CNTL3
+        definition: "White Tank Mountain Park under Larrea tridendata control replicate number 3"
+      - code: WTM.LATR1
+        definition: "White Tank Mountain Park under Larrea tridendata replicate number 1"
+      - code: WTM.LATR2
+        definition: "White Tank Mountain Park under Larrea tridendata replicate number 2"
+  - attribute:
+      attributeName: analyte_name
+      levels:
+      - code: Ammonia
+        definition: ammonium nitrogen
+      - code: NItrate/Nitrite
+        definition: nitrate-nitrogen
+  - attribute:
+      attributeName: site_code
+      levels:
+      - code: DBG
+        definition: "core region: Desert Botanical Garden"
+      - code: EME
+        definition: "west region: Estrella Mountain Regional Park east"
+      - code: EMW
+        definition: "west region: Estrella Mountain Regional Park west"
+      - code: GTW
+        definition: "McDowell Sonoran Preserve: Gateway trail off Thompson Peak"
+      - code: LDP
+        definition: "east region: Lost Dutchman State Park"
+      - code: LVE
+        definition: "McDowell Sonoran Preserve: Levee trail off Bell Road"
+      - code: MCN
+        definition: "east region: McDowell Mountain Regional north"
+      - code: MCS
+        definition: "east region: McDowell Mountain Regional south"
+      - code: PWP
+        definition: "core region: Piestewa Peak"
+      - code: SME
+        definition: "core region: South Mountain Park east"
+      - code: SMW
+        definition: "core region: South Mountain Park west"
+      - code: SNE
+        definition: "west region: Sonoran Desert National Monument east"
+      - code: SNW
+        definition: "west region: Sonoran Desert National Monument west"
+      - code: SRR
+        definition: "east region: Salt River Recreation Area (Tonto NF)"
+      - code: UMP
+        definition: "east region: Usery Mountain Regional Park"
+      - code: WTM
+        definition: "west region: White Tanks Mountain Regional Park"

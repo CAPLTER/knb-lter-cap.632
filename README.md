@@ -1,10 +1,19 @@
 # knb-lter-cap.632
 
-dataset publishing: Desert Fertilization
+dataset publishing: Desert Fertilization (formerly CNdep)
 
 ## overview
 
-This repository is the home of publishing processes for the desert fertilization project beginning with version 632.3. Resources, workflows, and processes for database creation, the initial publication, and previous versions (632.1, 632.2) are in the 'cndep' repository that resides with GIOS on AWS. However, the R script file that documents the creation of the database and initial publication have been moved to this repository, and the 'cndep' repository should be able to be ignored going forward. 'cndep' had also held the data, but those are all now moved to the cndep folder of the department drive.
+This repository is the home of publishing processes for the desert fertilization project beginning with version 632.3. Resources, workflows, and processes for database creation, the initial publication, and very early versions (632.1, 632.2) are in the 'cndep' repository that resides with GIOS on AWS. However, the R script file that documents the creation of the database and initial publication have been moved to this repository. At one time, 'cndep' also held the data but those are all now moved to the cndep folder of the department drive.
+
+### knb-lter-cap.632.15 *2023-12-06*
+
+- data refresh
+- incorporates more of the yaml approach, here data entities (except site locations) and people are documented via yaml configuration files
+- incorporates QUDT units
+- adds for the first time, albeit limited, annotations, mostly in conjunction with the move to QUDT units but also annotations are added to some attributes (mostly dates)
+- adds a notes field to the annuals composition table
+
 
 ### knb-lter-cap.632.14 *2023-01-21*
 
@@ -28,6 +37,7 @@ This repository is the home of publishing processes for the desert fertilization
 - PRS data now includes notes
 - annuals composition
 
+
 ### knb-lter-cap.632.11 *2022-04-20*
 
 - data refresh with a focus on PRS data
@@ -35,12 +45,14 @@ This repository is the home of publishing processes for the desert fertilization
 - changed geographic coverage from a single polygon spanning all points to
   site-specific polygons per [19](https://github.com/CAPLTER/knb-lter-cap.632/issues/19)
 
+
 ### knb-lter-cap.632.10 *2021-12-17*
 
 - added site code to atm deposition per [#18](https://github.com/CAPLTER/knb-lter-cap.632/issues/18)
 - added maintenance to config.yaml
 - code cleaning: namespace functions, R pipe
 - enhanced description of fertilizer per [#18](https://github.com/CAPLTER/knb-lter-cap.632/issues/18)
+
 
 ### knb-lter-cap.632.9 *2020-10-02*
 
@@ -52,6 +64,7 @@ This repository is the home of publishing processes for the desert fertilization
 * tissue_icp and icp_raw_data now completely buildable with each update
   regarldess of whether new icp data were added (no need to copy old xml
   sections of data that were not updated)
+
 
 ###  knb-lter-cap.632.8 *2019-12-12*
  
@@ -68,6 +81,7 @@ point where we can have push-button updates to the entire data set.
 
 The problem noted with the PRS probes in the previous round did occur this
 round.
+
 
 ###  knb-lter-cap.632.7 *2019-07-01*
 
@@ -94,6 +108,7 @@ plant_root_simulator_DT <- create_dataTable(
 
 In addition, rEML again did not properly construct the customUnits list, and
 that XML had to be modified by hand.
+
 
 ###  knb-lter-cap.632.6 *2018-06-05*
 
