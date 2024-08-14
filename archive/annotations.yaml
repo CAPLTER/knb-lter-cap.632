@@ -1,0 +1,126 @@
+- name: GM
+  valueLabel: Gram
+  valueURI: http://qudt.org/vocab/unit/GM
+  references: 31eeda61b745966cdc965f4b6c89ae9b_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 600cd668c2a3e52affd89c35b5f9bd69_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: KiloGM
+  valueLabel: kilogram
+  valueURI: http://qudt.org/vocab/unit/KiloGM
+  references: b79dc628a46f9115d4a600ee104cbf98_3
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: KiloGM
+  valueLabel: kilogram
+  valueURI: http://qudt.org/vocab/unit/KiloGM
+  references: b79dc628a46f9115d4a600ee104cbf98_4
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliM
+  valueLabel: Millimeter
+  valueURI: http://qudt.org/vocab/unit/MilliM
+  references: b35857e118b668375f0aa899a4dab729_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: NUM
+  valueLabel: Number
+  valueURI: http://qudt.org/vocab/unit/NUM
+  references: 1937cd311d7643db2ae872c2a9283796_10
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: NUM
+  valueLabel: Number
+  valueURI: http://qudt.org/vocab/unit/NUM
+  references: 1937cd311d7643db2ae872c2a9283796_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: GM
+  valueLabel: Gram
+  valueURI: http://qudt.org/vocab/unit/GM
+  references: 7239146c8f688a72e2d8c54b71ab1ca2_6
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: PERCENT
+  valueLabel: Percent
+  valueURI: http://qudt.org/vocab/unit/PERCENT
+  references: 7239146c8f688a72e2d8c54b71ab1ca2_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliGM-PER-KiloGM
+  valueLabel: Milligram Per Kilogram
+  valueURI: http://qudt.org/vocab/unit/MilliGM-PER-KiloGM
+  references: 9deb3c6f2a60ae7ebf82b947ff094476_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliGM-PER-L
+  valueLabel: Milligram Per Liter
+  valueURI: http://qudt.org/vocab/unit/MilliGM-PER-L
+  references: 242923bea5bb21d8df9315211c7f582b_6
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: GM
+  valueLabel: Gram
+  valueURI: http://qudt.org/vocab/unit/GM
+  references: 5a265d64b9be1ac45eef614bf55a5c5e_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: feabd47d2bb41f11e87c6b6808f13ef0_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: KiloGM
+  valueLabel: kilogram
+  valueURI: http://qudt.org/vocab/unit/KiloGM
+  references: 953b259ffc65fa1bb8cf2a23a99aeb30_3
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: KiloGM
+  valueLabel: kilogram
+  valueURI: http://qudt.org/vocab/unit/KiloGM
+  references: 953b259ffc65fa1bb8cf2a23a99aeb30_4
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliM
+  valueLabel: Millimeter
+  valueURI: http://qudt.org/vocab/unit/MilliM
+  references: f9bae4a1eb98ea22bcd61ea0b82d78ce_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: NUM
+  valueLabel: Number
+  valueURI: http://qudt.org/vocab/unit/NUM
+  references: 45933673084015a26b6c383d66565371_10
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: NUM
+  valueLabel: Number
+  valueURI: http://qudt.org/vocab/unit/NUM
+  references: 45933673084015a26b6c383d66565371_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: GM
+  valueLabel: Gram
+  valueURI: http://qudt.org/vocab/unit/GM
+  references: 890d07f7fd6cbb13abcb53a768b04e25_6
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: PERCENT
+  valueLabel: Percent
+  valueURI: http://qudt.org/vocab/unit/PERCENT
+  references: 890d07f7fd6cbb13abcb53a768b04e25_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliGM-PER-L
+  valueLabel: Milligram Per Liter
+  valueURI: http://qudt.org/vocab/unit/MilliGM-PER-L
+  references: d71e4c5b842f40a8755b8a53f4f8ab00_6
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit

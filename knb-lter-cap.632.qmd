@@ -9,9 +9,13 @@ content moved to project README.md
 
 # annuals biomass
 
-```{r annuals-biomass, eval=TRUE}
+```{r}
+#| label: annuals-biomass
+#| eval: TRUE
 
-annuals_biomass <- DBI::dbGetQuery(pg,"
+annuals_biomass <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = "
 SELECT
   s.code as site_code,
   ab.plot_id,
@@ -65,43 +69,48 @@ annuals_biomass <- annuals_biomass |>
 
 # annuals composition
 
-```{r annuals-composition}
+```{r}
+#| label: annuals-composition
+#| eval: TRUE
 
 # add filter to remove 2008 data from publication
-# add filter to remove total comparable annual cover from publication (could be removed from DB as well)
+# add filter to remove total comparable annual cover from publication (could be
+# removed from DB as well)
 
-annuals_composition <- DBI::dbGetQuery(pg, "
-SELECT
-  s.code AS site_code,
-  ce.plot AS plot_id,
-  t.code AS treatment_code,
-  ce.patch_type AS location_within_plot,
-  ce.subplot,
-  ce.sample_date AS date,
-  ce.year,
-  ce.collector,
-  ct.cover_type,
-  ct.cover_category,
-  cc.cover_amt AS cover_amount,
-  cc.notes
-FROM
-  urbancndep.cover_composition cc
-  JOIN urbancndep.cover_events ce ON (cc.cover_event_id = ce.cover_event_id)
-  JOIN urbancndep.cover_types ct ON (cc.cover_type_id = ct.cover_type_id)
-  JOIN urbancndep.plots p ON (ce.plot = p.id)
-  JOIN urbancndep.sites s ON (s.id = p.site_id)
-  JOIN urbancndep.treatments t ON (t.id = p.treatment_id)
-WHERE
-  ce.year > 2008 AND
-  ct.cover_type != 'total_comparable_annual_cover'
-ORDER BY
-  year,
-  plot,
-  location_within_plot,
-  subplot,
-  cover_type
-;
-")
+annuals_composition <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = "
+  SELECT
+    s.code AS site_code,
+    ce.plot AS plot_id,
+    t.code AS treatment_code,
+    ce.patch_type AS location_within_plot,
+    ce.subplot,
+    ce.sample_date AS date,
+    ce.year,
+    ce.collector,
+    ct.cover_type,
+    ct.cover_category,
+    cc.cover_amt AS cover_amount,
+    cc.notes
+  FROM
+    urbancndep.cover_composition cc
+    JOIN urbancndep.cover_events ce ON (cc.cover_event_id = ce.cover_event_id)
+    JOIN urbancndep.cover_types ct ON (cc.cover_type_id = ct.cover_type_id)
+    JOIN urbancndep.plots p ON (ce.plot = p.id)
+    JOIN urbancndep.sites s ON (s.id = p.site_id)
+    JOIN urbancndep.treatments t ON (t.id = p.treatment_id)
+  WHERE
+    ce.year > 2008 AND
+    ct.cover_type != 'total_comparable_annual_cover'
+  ORDER BY
+    year,
+    plot,
+    location_within_plot,
+    subplot,
+    cover_type
+  ;
+  ")
 
 # change column types as appropriate
 annuals_composition <- annuals_composition |>
@@ -132,22 +141,26 @@ annuals_composition <- annuals_composition |>
 
 # fertilizer
 
-```{r fertilizer, eval=TRUE}
+```{r}
+#| label: fertilizer
+#| eval: TRUE
 
-fertilizer_application <- DBI::dbGetQuery(pg, '
-SELECT
-  s.code as site_code,
-  f.date as application_date,
-  f."N" as nitrogen,
-  f."P" as phosphorus
-FROM urbancndep.fertilizer_applications f
-  JOIN urbancndep.sites s ON (f.site_id = s.id)
-ORDER BY
-  f.date,
-  s.code
-;
-'
-)
+fertilizer_application <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = '
+  SELECT
+    s.code as site_code,
+    f.date as application_date,
+    f."N" as nitrogen,
+    f."P" as phosphorus
+  FROM urbancndep.fertilizer_applications f
+    JOIN urbancndep.sites s ON (f.site_id = s.id)
+  ORDER BY
+    f.date,
+    s.code
+  ;
+  '
+  )
 
 # change column types as appropriate
 fertilizer_application <- fertilizer_application |>
@@ -170,56 +183,60 @@ fertilizer_application <- fertilizer_application |>
 
 # stems
 
-```{r stems, eval=TRUE}
+```{r}
+#| label: stems
+#| eval: TRUE
 
-stem_growth <- DBI::dbGetQuery(pg, "
-SELECT
-  s.code AS site_code,
-  p.id AS plot_id,
-  t.code AS treatment_code,
-  sp.scientific_name,
-  sh.code AS shrub_code,
-  st.direction,
-  st.pre_date,
-  st.post_date,
-  st.post_note,
-  sl.post_measurement,
-  sl.length_in_mm AS stem_length,
-  sc.comment AS stem_comment,
-  agg_plot_notes.plot_comment
-FROM urbancndep.stems st
-JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
-JOIN urbancndep.plots p ON sh.plot_id = p.id
-JOIN urbancndep.sites s ON p.site_id = s.id
-JOIN urbancndep.treatments t ON p.treatment_id = t.id
-JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
-LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
-LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
-LEFT JOIN (
+stem_growth <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = "
   SELECT
-    plot_id,
-    survey_date,
-    string_agg(distinct plot_notes, '; ') AS plot_comment
-  FROM urbancndep.stem_plot_notes
-  GROUP BY plot_id, survey_date
-) agg_plot_notes ON (agg_plot_notes.plot_id = p.id AND agg_plot_notes.survey_date = st.post_date)
-WHERE
-NOT (
-    -- omit post data not collected when smart sampling was implemented
-    EXTRACT (YEAR FROM st.pre_date) = 2016 AND
-    EXTRACT (MONTH FROM st.pre_date) = 10 AND
-    st.post_date IS NULL
-  ) AND
-  NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
-  NOT (p.id = 12 AND st.pre_date = '2010-05-11')
-ORDER BY
-  st.pre_date,
-  p.id,
-  sl.post_measurement,
-  sh.code,
-  st.direction
-  ;
-")
+    s.code AS site_code,
+    p.id AS plot_id,
+    t.code AS treatment_code,
+    sp.scientific_name,
+    sh.code AS shrub_code,
+    st.direction,
+    st.pre_date,
+    st.post_date,
+    st.post_note,
+    sl.post_measurement,
+    sl.length_in_mm AS stem_length,
+    sc.comment AS stem_comment,
+    agg_plot_notes.plot_comment
+  FROM urbancndep.stems st
+  JOIN urbancndep.shrubs sh ON sh.id = st.shrub_id
+  JOIN urbancndep.plots p ON sh.plot_id = p.id
+  JOIN urbancndep.sites s ON p.site_id = s.id
+  JOIN urbancndep.treatments t ON p.treatment_id = t.id
+  JOIN urbancndep.shrub_species sp ON sh.shrub_species_id = sp.id
+  LEFT JOIN urbancndep.stem_lengths sl ON st.id = sl.stem_id
+  LEFT JOIN urbancndep.stem_comment sc ON (sc.stem_id = st.id AND sl.post_measurement = sc.post_measurement)
+  LEFT JOIN (
+    SELECT
+      plot_id,
+      survey_date,
+      string_agg(distinct plot_notes, '; ') AS plot_comment
+    FROM urbancndep.stem_plot_notes
+    GROUP BY plot_id, survey_date
+  ) agg_plot_notes ON (agg_plot_notes.plot_id = p.id AND agg_plot_notes.survey_date = st.post_date)
+  WHERE
+  NOT (
+      -- omit post data not collected when smart sampling was implemented
+      EXTRACT (YEAR FROM st.pre_date) = 2016 AND
+      EXTRACT (MONTH FROM st.pre_date) = 10 AND
+      st.post_date IS NULL
+    ) AND
+    NOT (p.id = 13 AND st.pre_date = '2010-05-10') AND
+    NOT (p.id = 12 AND st.pre_date = '2010-05-11')
+  ORDER BY
+    st.pre_date,
+    p.id,
+    sl.post_measurement,
+    sh.code,
+    st.direction
+    ;
+  ")
 
 stem_growth <- stem_growth |>
   dplyr::mutate(
@@ -249,30 +266,34 @@ stem_growth <- stem_growth |>
 
 # PRS
 
-```{r PRS, eval=TRUE}
+```{r}
+#| label: PRS
+#| eval: TRUE
 
-plant_root_simulator <- DBI::dbGetQuery(pg, '
-SELECT
-   s.code AS site_code,
-   p.id AS plot_id,
-   t.code AS treatment_code,
-   pa.start_date,
-   pa.end_date,
-   pa.analyte,
-   pa.final_value,
-   pa.flag,
-   pa.location_within_plot,
-   pa.num_cation_probes,
-   pa.num_anion_probes,
-   pa.notes
- FROM urbancndep.sites s
-   JOIN urbancndep.plots p ON s.id = p.site_id
-   JOIN urbancndep.treatments t ON p.treatment_id = t.id
-   JOIN urbancndep.prs_analysis pa ON p.id = pa.plot_id
-ORDER BY
-  pa.start_date
-;
-')
+plant_root_simulator <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = '
+  SELECT
+     s.code AS site_code,
+     p.id AS plot_id,
+     t.code AS treatment_code,
+     pa.start_date,
+     pa.end_date,
+     pa.analyte,
+     pa.final_value,
+     pa.flag,
+     pa.location_within_plot,
+     pa.num_cation_probes,
+     pa.num_anion_probes,
+     pa.notes
+   FROM urbancndep.sites s
+     JOIN urbancndep.plots p ON s.id = p.site_id
+     JOIN urbancndep.treatments t ON p.treatment_id = t.id
+     JOIN urbancndep.prs_analysis pa ON p.id = pa.plot_id
+  ORDER BY
+    pa.start_date
+  ;
+  ')
 
 # standardize sample type names
 plant_root_simulator <- plant_root_simulator |>
@@ -318,7 +339,9 @@ Here we keep the source file (desert_fertilization_sampling_sites.kml) in the
 repository so that we can easily reconstruct desert_fertilization_sites when
 updating.
 
-```{r generalized-study-locations, eval=TRUE}
+```{r}
+#| label: generalized-study-locations
+#| eval: TRUE
 
 desert_fertilization_sampling_sites <- sf::read_sf(
   dsn = "desert_fertilization_sampling_sites.kml"
@@ -365,9 +388,13 @@ desert_fertilization_sampling_sites_SV <- capemlGIS::create_vector(
 
 # tissue CHN
 
-```{r tissue CHN}
+```{r}
+#| label: tissue-CHN
+#| eval: TRUE
 
-tissue_chn <- DBI::dbGetQuery(pg, '
+tissue_chn <- DBI::dbGetQuery(
+  conn = pg,
+  statement = '
   SELECT
     sites.code AS site_code,
     treatments.code AS treatment_code,
@@ -438,7 +465,9 @@ type, the initial ICP tissue data processing is isolated in a separate workflow
 xml for the tissue icp dt and other entity are recycled from earlier versions
 of the knb-lter-cap.632 xml/eml.
 
-```{r tissue-icp, eval=TRUE}
+```{r}
+#| label: tissue-icp
+#| eval: TRUE
 
 tissue_icp <- read.csv("working_icp/632_tissue_icp_7d940d0979cc34c094c46525f7cd2995.csv") |>
 dplyr::mutate(
@@ -486,7 +515,9 @@ dplyr::mutate(
 
 # icp_raw_data
 
-```{r icp-raw-data, eval=TRUE}
+```{r}
+#| label: icp-raw-data
+#| eval: TRUE
 
 # icp_raw_data_desc <- "This zipped file contains the raw ICP-MS and ICP-OES data (as XSLM and xls files) pertaining to the analyses of Larrea tridentata leaf tissue and Pectocarya recurvata plant tissue samples. The calculated concentrations are presented in an analysis-friendly format in the data entity 'tissue_icp' that is part of this dataset; the raw data file from which the calculated concentrations were derived is referenced in the source_file field of the tissue_icp data entity."
 
@@ -532,9 +563,18 @@ For atmospheric deposition blanks:
   extraction procedure on an aliquot of clean resin material that was not
   deployed in the field or otherwise used in any way.
 
-```{r atmospheric-deposition, eval=TRUE}
+```{r}
+#| label: atmospheric-deposition
+#| eval: TRUE
 
-allresin <- dbGetQuery(pg, " select * from urbancndep.resin ; ")
+allresin <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = "
+  SELECT *
+  FROM urbancndep.resin
+  ;
+  "
+)
 
 unknowns <- allresin |>
 dplyr::filter(
@@ -636,16 +676,18 @@ dplyr::mutate(
 # coverages
 
 ```{r coverages}
+#| label: coverages
+#| eval: TRUE
 
 getMaxDate <- function() {
   
   maxDates <- data.frame()
   maxDates <- rbind(
-    DBI::dbGetQuery(pg, 'SELECT MAX(sample_date) FROM urbancndep.cover_events;'),
-    DBI::dbGetQuery(pg, 'SELECT MAX(date) FROM urbancndep.annuals_biomass;'),
-    DBI::dbGetQuery(pg, 'SELECT MAX(date) FROM urbancndep.fertilizer_applications;'),
-    DBI::dbGetQuery(pg, 'SELECT MAX(post_date) FROM urbancndep.stems;'),
-    DBI::dbGetQuery(pg, 'SELECT MAX(end_date) FROM urbancndep.prs_analysis;')
+    DBI::dbGetQuery(conn = pg, statement = 'SELECT MAX(sample_date) FROM urbancndep.cover_events ;'),
+    DBI::dbGetQuery(conn = pg, statement = 'SELECT MAX(date) FROM urbancndep.annuals_biomass ;'),
+    DBI::dbGetQuery(conn = pg, statement = 'SELECT MAX(date) FROM urbancndep.fertilizer_applications ;'),
+    DBI::dbGetQuery(conn = pg, statement = 'SELECT MAX(post_date) FROM urbancndep.stems ;'),
+    DBI::dbGetQuery(conn = pg, statement = 'SELECT MAX(end_date) FROM urbancndep.prs_analysis ;')
   )
  
   theMaxDate <- max(maxDates$max)
@@ -699,7 +741,9 @@ per version/session -- the taxonomicCoverage can be built as many times as
 needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated
 and the taxonomic IDs resolved.
 
-```{r taxonomyCleanr, eval=TRUE}
+```{r}
+#| label: taxonomyCleanr
+#| eval: TRUE
 
 # taxonomyCleanr requires a path (to build the taxa_map)
 
@@ -753,7 +797,9 @@ coverage$taxonomicCoverage <- taxaCoverage
 
 # literature cited
 
-```{r literature-cited, eval=TRUE}
+```{r}
+#| label: literature-cited
+#| eval: TRUE
 
 fenn   <- capeml::create_citation("https://doi.org/10.2134/jeq2004.2007")
 simkin <- capeml::create_citation("https://doi.org/10.1023/B:WATE.0000019958.59277.ed")
@@ -769,7 +815,9 @@ citations <- list(
 # dataset
 
 
-```{r construct-dataset}
+```{r}
+#| label: construct-dataset
+#| eval: TRUE
 
 dataset <- capeml::create_dataset()
 ```
@@ -779,31 +827,43 @@ dataset <- capeml::create_dataset()
 
 ## create
 
-```{r construct-eml, eval=TRUE}
+```{r}
+#| label: construct-eml
+#| eval: TRUE
 
 eml <- capeml::create_eml()
 ```
 
 ## validate
 
-```{r validate-eml, eval=TRUE}
+```{r}
+#| label: validate-eml
+#| eval: TRUE
 
 EML::eml_validate(eml)
 ```
 
 ## write
 
-```{r eml-to-file, eval=TRUE}
+```{r}
+#| label: eml-to-file
+#| eval: TRUE
 
 capeml::write_cap_eml()
 ```
 
 # upload to AWS
 
-```{r upload-to-AWS, eval=TRUE}
+```{r}
+#| label: upload-to-AWS
+#| eval: TRUE
 
 source("~/Documents/localSettings/aws.s3")
-lapply(list.files(pattern = paste0(632, "_")), capeml::data_to_amz)
+
+lapply(
+  X   = list.files(pattern = paste0(632, "_")),
+  FUN = capeml::data_to_amz
+)
 ```
 
 
@@ -811,14 +871,18 @@ lapply(list.files(pattern = paste0(632, "_")), capeml::data_to_amz)
 
 ## login
 
-```{r edi-login, eval=TRUE}
+```{r}
+#| label: edi-login
+#| eval: TRUE
 
 source("~/Documents/localSettings/edi.R")
 ```
 
 ## evaluate
 
-```{r edi-evaluate, eval=TRUE}
+```{r}
+#| label: edi-evaluate
+#| eval: TRUE
 
 capeml::get_package_evaluation(full_report = FALSE)
 # report <- capeml::get_package_evaluation(full_report = TRUE)
@@ -826,14 +890,22 @@ capeml::get_package_evaluation(full_report = FALSE)
 
 ## update
 
-```{r edi-update, eval=TRUE}
+```{r}
+#| label: edi-update
+#| eval: TRUE
 
-capeml::create_package(update = TRUE, environment = "production")
+capeml::create_package(
+  update      = TRUE,
+  environment = "production"
+)
+
 ```
 
 ## logout
 
-```{r edi-logout, eval=TRUE}
+```{r}
+#| label: edi-logout
+#| eval: TRUE
 
 EDIutils::logout()
 ```
@@ -843,16 +915,28 @@ EDIutils::logout()
 
 ## remove data files
 
-```{r delete-data-files}
+```{r}
+#| label: delete-data-files
+#| eval: TRUE
 
-lapply(list.files(pattern = paste0(632, "_")), file.remove)
+lapply(
+  X   = list.files(pattern = paste0(632, "_")),
+  FUN = file.remove
+)
 ```
 
 ## XML/EML to AWS / GitHub
 
-```{r copy-xml}
+```{r}
+#| label: copy-xml
+#| eval: TRUE
 
 capeml::eml_to_amz(list.files(pattern = "knb.+xml"))
-file.copy(list.files(pattern = "knb.+xml"), "/home/srearl/localRepos/cap-metadata/cap-data-eml/")
+
+file.copy(
+  from = list.files(pattern = "knb.+xml"),
+  to   = "/home/srearl/localRepos/cap-metadata/cap-data-eml/"
+)
+
 file.remove(list.files(pattern = "knb.+xml"))
 ```

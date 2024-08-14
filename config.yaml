@@ -1,6 +1,6 @@
 scope: knb-lter-cap
 identifier: 632
-baseURL: https://data.gios.asu.edu/datasets/cap/
+baseURL: https://gios-data.s3.us-west-2.amazonaws.com/datasets/cap/
 project: lter
 title: 'Desert Fertilization Experiment: investigation of Sonoran desert ecosystem response to atmospheric deposition and experimental nutrient addition, ongoing since 2006'
 maintenance: regular

@@ -80,5 +80,5 @@
     unit: PERCENT
     numberType: real
     minimum: 1.29
-    maximum: 53.43
+    maximum: 54.62
     columnClasses: numeric
