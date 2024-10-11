@@ -4,18 +4,32 @@ dataset publishing: Desert Fertilization (formerly CNdep)
 
 ## overview
 
-This repository is the home of publishing processes for the desert fertilization project beginning with version 632.3. Resources, workflows, and processes for database creation, the initial publication, and very early versions (632.1, 632.2) are in the 'cndep' repository that resides with GIOS on AWS. However, the R script file that documents the creation of the database and initial publication have been moved to this repository. At one time, 'cndep' also held the data but those are all now moved to the cndep folder of the department drive.
+This repository is the home of publishing processes for the desert fertilization
+project beginning with version 632.3. Resources, workflows, and processes for
+database creation, the initial publication, and very early versions (632.1,
+632.2) are in the 'cndep' repository that resides with GIOS on AWS. However, the
+R script file that documents the creation of the database and initial
+publication have been moved to this repository. At one time, 'cndep' also held
+the data but those are all now moved to the GIOSI Dropbox DesFert folder.
 
-### knb-lter-cap.632.15 *2024-08-14*
+
+### knb-lter-cap.632.17 *2024-10-11*
+
+- data refresh
+
+### knb-lter-cap.632.16 *2024-08-14*
 
 - data refresh
 
 ### knb-lter-cap.632.15 *2023-12-06*
 
 - data refresh
-- incorporates more of the yaml approach, here data entities (except site locations) and people are documented via yaml configuration files
+- incorporates more of the yaml approach, here data entities (except site
+locations) and people are documented via yaml configuration files
 - incorporates QUDT units
-- adds for the first time, albeit limited, annotations, mostly in conjunction with the move to QUDT units but also annotations are added to some attributes (mostly dates)
+- adds for the first time, albeit limited, annotations, mostly in conjunction
+with the move to QUDT units but also annotations are added to some attributes
+(mostly dates)
 - adds a notes field to the annuals composition table
 
 

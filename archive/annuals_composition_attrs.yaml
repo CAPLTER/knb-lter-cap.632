@@ -2,55 +2,105 @@
   site_code:
     attributeName: site_code
     attributeDefinition: site name abbreviation
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   plot_id:
     attributeName: plot_id
     attributeDefinition: plot id number
-    definition: plot id number
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: character
+    definition: ''
   treatment_code:
     attributeName: treatment_code
     attributeDefinition: treatment name abbreviation
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   location_within_plot:
     attributeName: location_within_plot
     attributeDefinition: habitat within plot where probes were deployed
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   subplot:
     attributeName: subplot
     attributeDefinition: subplot number (one of two replicates)
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   date:
     attributeName: date
     attributeDefinition: date of data collection
-    formatString: YYYY-MM-DD
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00002051'
+    valueLabel: 'date'
     columnClasses: Date
+    formatString: YYYY-MM-DD
   year:
     attributeName: year
     attributeDefinition: year of data collection
-    formatString: YYYY
-    minimum: 2009.0
-    maximum: 2022.0
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00002050'
+    valueLabel: 'year of measurement'
     columnClasses: Date
+    formatString: YYYY
   collector:
     attributeName: collector
     attributeDefinition: initials of subplot surveyors
-    definition: initials of subplot surveyors
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: character
+    definition: ''
   cover_type:
     attributeName: cover_type
     attributeDefinition: taxon of annual plant, plot characteristic, or logistical note
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   cover_category:
     attributeName: cover_category
-    attributeDefinition: nature of the observation (taxonomic, general plot characteristic,
-      logistical)
+    attributeDefinition: nature of the observation (taxonomic, general plot characteristic, logistical)
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   cover_amount:
     attributeName: cover_amount
     attributeDefinition: proportion of subplot as a decimal fraction of this type
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    unit: FRACTION
+    numberType: real
     minimum: 0.001
     maximum: 7.0
-    unit: dimensionless
-    numberType: real
     columnClasses: numeric
+  notes:
+    attributeName: notes
+    attributeDefinition: 'notes pertaining to measurement'
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    columnClasses: character
+    definition: ''

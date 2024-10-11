@@ -126,7 +126,7 @@ annuals_composition <- annuals_composition |>
 
 # capeml::write_attributes(annuals_composition)
 # capeml::write_factors(annuals_composition)
-# capeml::update_attributes(annuals_composition)
+capeml::update_attributes(annuals_composition)
 
 # annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
 
@@ -168,7 +168,7 @@ fertilizer_application <- fertilizer_application |>
 
 # write_attributes(fertilizer_application)
 # write_factors(fertilizer_application)
-# capeml::update_attributes(fertilizer_application)
+capeml::update_attributes(fertilizer_application)
 
 # fertilizer_application_desc <- "catalog of amounts and timing of nitrogen and phosphorus fertilizer applications to nitrogen (N), phosphorus (P), and nitrogen+phosphorus (N+P) treatment plots - applications are delivered to the respective plot at the site that receives either N, P, or an N+P addition, except control sites (n = 2) that do not receive a fertilizer amendment"
 
@@ -251,7 +251,7 @@ stem_growth <- stem_growth |>
 
 # write_attributes(stem_growth)
 # write_factors(stem_growth)
-# capeml::update_attributes(stem_growth)
+capeml::update_attributes(stem_growth)
 
 # stem_growth_desc <- "Biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots"
 
@@ -320,7 +320,7 @@ plant_root_simulator <- plant_root_simulator |>
 #   capeml::write_attributes(plant_root_simulator, overwrite = FALSE)
 #   capeml::write_factors(plant_root_simulator, overwrite = FALSE)
 # })
-# capeml::update_attributes(plant_root_simulator)
+capeml::update_attributes(plant_root_simulator)
 
 # plant_root_simulator_desc <- "Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+)."
 
@@ -659,7 +659,7 @@ dplyr::mutate(
 #   capeml::write_attributes(atmospheric_deposition, overwrite = FALSE)
 #   capeml::write_factors(atmospheric_deposition, overwrite = FALSE)
 # })
-# capeml::update_attributes(atmospheric_deposition)
+capeml::update_attributes(atmospheric_deposition)
 
 # atmospheric_deposition_desc <- "ammonium-nitrogen and nitrate-nitrogen as measured by ion exchange resin (IER) collectors that are used to measure bulk (wet) deposition in interplant open spaces and throughfall (wet and dry) deposition under the dominant shrub"
 
@@ -820,6 +820,7 @@ citations <- list(
 #| eval: TRUE
 
 dataset <- capeml::create_dataset()
+
 ```
 
 
@@ -871,6 +872,8 @@ lapply(
 
 ## login
 
+Note that keyring does not work in vscode (usually).
+
 ```{r}
 #| label: edi-login
 #| eval: TRUE
@@ -898,7 +901,6 @@ capeml::create_package(
   update      = TRUE,
   environment = "production"
 )
-
 ```
 
 ## logout

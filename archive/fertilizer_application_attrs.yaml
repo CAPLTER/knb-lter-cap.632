@@ -2,26 +2,40 @@
   site_code:
     attributeName: site_code
     attributeDefinition: site name abbreviation
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   application_date:
     attributeName: application_date
     attributeDefinition: date of fertilizer application
-    formatString: YYYY-MM-DD
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: Date
+    formatString: YYYY-MM-DD
   nitrogen:
     attributeName: nitrogen
-    attributeDefinition: amount of ammonium-nitrate nitrogen fertilizer applied to 20mx20m
-      nitrogen (N) and nitrogen+phosphorus (N+P) treatment plots
-    unit: kilogram
+    attributeDefinition: amount of ammonium-nitrate nitrogen fertilizer applied to 20mx20m nitrogen (N) and nitrogen+phosphorus (N+P) treatment plots
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    unit: KiloGM
     numberType: real
     minimum: 1.715
     maximum: 3.429
     columnClasses: numeric
   phosphorus:
     attributeName: phosphorus
-    attributeDefinition: amount of triple-super phosphate phosphorus fertilizer applied
-      to 20mx20m phosphorus (P) and nitrogen+phosphorus (N+P) treatment plots
-    unit: kilogram
+    attributeDefinition: amount of triple-super phosphate phosphorus fertilizer applied to 20mx20m phosphorus (P) and nitrogen+phosphorus (N+P) treatment plots
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    unit: KiloGM
     numberType: real
     minimum: 0.0
     maximum: 12.0

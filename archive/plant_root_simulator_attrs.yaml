@@ -2,33 +2,61 @@
   site_code:
     attributeName: site_code
     attributeDefinition: site name abbreviation
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   plot_id:
     attributeName: plot_id
     attributeDefinition: plot id number
-    definition: plot id number
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: character
+    definition: ''
   treatment_code:
     attributeName: treatment_code
     attributeDefinition: treatment name abbreviation
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   start_date:
     attributeName: start_date
     attributeDefinition: date of probe deployment
-    formatString: YYYY-MM-DD
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: Date
+    formatString: YYYY-MM-DD
   end_date:
     attributeName: end_date
     attributeDefinition: date of probe extraction
-    formatString: YYYY-MM-DD
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: Date
+    formatString: YYYY-MM-DD
   analyte:
     attributeName: analyte
     attributeDefinition: analyte measured
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   final_value:
     attributeName: final_value
     attributeDefinition: analyte concentration
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     unit: microgramPerTenSquareCentimeterPerBurialLength
     numberType: real
     minimum: -0.2
@@ -37,26 +65,40 @@
   flag:
     attributeName: flag
     attributeDefinition: data quality flag
-    definition: data quality flag
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: character
+    definition: ''
   location_within_plot:
     attributeName: location_within_plot
     attributeDefinition: habitat within plot where probes were deployed
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: factor
   num_cation_probes:
     attributeName: num_cation_probes
-    attributeDefinition: number of probes designated for analysis of cations recovered
-      (of four)
-    unit: number
+    attributeDefinition: number of probes designated for analysis of cations recovered (of four)
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    unit: NUM
     numberType: natural
     minimum: 1.0
     maximum: 5.0
     columnClasses: numeric
   num_anion_probes:
     attributeName: num_anion_probes
-    attributeDefinition: number of probes designated for analysis of anions recovered
-      (of four)
-    unit: number
+    attributeDefinition: number of probes designated for analysis of anions recovered (of four)
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
+    unit: NUM
     numberType: natural
     minimum: 1.0
     maximum: 5.0
@@ -64,5 +106,9 @@
   notes:
     attributeName: notes
     attributeDefinition: notes pertaining to the deployment or analysis of the probes
-    definition: notes pertaining to the deployment or analysis of the probes
+    propertyURI: ''
+    propertyLabel: ''
+    valueURI: ''
+    valueLabel: ''
     columnClasses: character
+    definition: ''
