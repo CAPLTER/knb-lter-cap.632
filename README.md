@@ -4,13 +4,27 @@ dataset publishing: Desert Fertilization (formerly CNdep)
 
 ## overview
 
-This repository is the home of publishing processes for the desert fertilization
-project beginning with version 632.3. Resources, workflows, and processes for
-database creation, the initial publication, and very early versions (632.1,
-632.2) are in the 'cndep' repository that resides with GIOS on AWS. However, the
-R script file that documents the creation of the database and initial
-publication have been moved to this repository. At one time, 'cndep' also held
-the data but those are all now moved to the GIOSI Dropbox DesFert folder.
+- This repository is the home of publishing processes for the desert
+fertilization project beginning with version 632.3.
+- The R script file that documents the creation of the database and initial
+publication are also included.
+
+### knb-lter-cap.632.18 *2025-12-xx*
+
+- data refresh
+- consolidate unidentified annuals cover types:
+
+> cover_id  cover_type  
+> 14343     unidentified_3_2017 -->  unidentified_3  
+> 14339     unidentified_1_2017 -->  unidentified  
+> 14340     unidentified_1_2017 -->  unidentified  
+> 14341     unidentified_1_2017 -->  unidentified  
+> 14342     unidentified_2_2017 -->  unidentified_2  
+> 15514     unidentified_1_2018 -->  unidentified  
+> 15515     unidentified_1_2018 -->  unidentified  
+> 15517     unidentified_3_2018 -->  unidentified_3  
+> 15516     unidentified_2_2018 -->  unidentified_2  
+> 18700     unidentified_1_2019 -->  unidentified  
 
 
 ### knb-lter-cap.632.17 *2024-10-11*
