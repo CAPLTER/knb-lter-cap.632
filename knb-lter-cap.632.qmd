@@ -111,6 +111,23 @@ make_rectangular_wide <- function(
     dplyr::filter(cover_category == category_keep) |>
     dplyr::mutate(cover_amount = suppressWarnings(as.numeric(cover_amount)))
 
+  # Guardrail: ensure no duplicate cover_type within a key group
+  dup_check <- meas_df |>
+    dplyr::count(dplyr::across(all_of(key_cols)), cover_type, name = "n") |>
+    dplyr::filter(n > 1L)
+
+  if (nrow(dup_check) > 0L) {
+    example <- dup_check |> dplyr::slice_head(n = 10)
+    msg <- paste0(
+      "Duplicate cover_type rows detected within key groups. ",
+      "Clean upstream data (DB or pre-processing) so each (",
+      paste(key_cols, collapse = ", "), ", cover_type) is unique.\n",
+      "Example offending rows:\n",
+      paste(utils::capture.output(print(example)), collapse = "\n")
+    )
+    rlang::abort(msg)
+  }
+
   meas_idx <- meas_df |>
     dplyr::arrange(cover_id) |>
     dplyr::group_by(dplyr::across(all_of(key_cols)), cover_type) |>
@@ -131,6 +148,20 @@ make_rectangular_wide <- function(
     dplyr::left_join(sampled_df, by = key_cols) |>
     dplyr::left_join(meta_df, by = key_cols) |>
     dplyr::arrange(year, site_code, plot_id, location_within_plot, subplot)
+
+  # Drop trailing _1 from measurement columns (keys/meta do not match this pattern)
+  out <- out |>
+    dplyr::rename_with(~ sub("_1$", "", .x), .cols = tidyselect::ends_with("_1"))
+
+  # Final audit: abort if any _1 columns remain (unexpected under invariant)
+  remaining <- names(out)[grepl("_1$", names(out))]
+  if (length(remaining) > 0L) {
+    rlang::abort(paste0(
+      "Columns still ending with _1 after normalization: ",
+      paste(remaining, collapse = ", "),
+      ". Check upstream for duplicates and clean the data."
+    ))
+  }
 
   return(out)
 
@@ -182,7 +213,8 @@ FROM
   JOIN urbancndep.treatments ON (urbancndep.treatments.id = urbancndep.plots.treatment_id)
 WHERE
   urbancndep.cover_types.cover_category IN ('annual','record_keeping') AND
-  cover_types.include IS NOT FALSE
+  cover_types.include IS NOT FALSE AND
+  cover_composition.cover_amt IS NOT NULL
 ORDER BY
   cover_events.year,
   sites.code,
