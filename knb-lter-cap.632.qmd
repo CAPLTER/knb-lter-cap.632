@@ -67,7 +67,168 @@ annuals_biomass <- annuals_biomass |>
 
 ```
 
-# annuals composition
+# annuals composition and plot characteristics
+
+```{r}
+#| label: annuals-key-helpers
+#| eval: TRUE
+
+make_rectangular_wide <- function(
+  df_long,
+  category_keep
+  ) {
+
+  df <- df_long |>
+    dplyr::mutate(
+      cover_category = as.character(cover_category),
+      cover_type     = as.character(cover_type)
+    )
+
+  sampled_df <- df |>
+    dplyr::filter(cover_category == "record_keeping", cover_type == "sampled") |>
+    dplyr::group_by(dplyr::across(all_of(key_cols))) |>
+    dplyr::summarise(
+      sampled       = suppressWarnings(max(as.numeric(cover_amount), na.rm = TRUE)),
+      sampled_notes = dplyr::first(stats::na.omit(notes)),
+      .groups = "drop"
+    )
+
+  if (nrow(sampled_df) == 0L) {
+    sampled_df <- df |>
+      dplyr::distinct(dplyr::across(all_of(key_cols))) |>
+      dplyr::mutate(sampled = NA_real_, sampled_notes = NA_character_)
+  }
+
+  meta_df <- df |>
+    dplyr::group_by(dplyr::across(all_of(key_cols))) |>
+    dplyr::summarise(
+      sample_date = suppressWarnings(max(as.Date(sample_date), na.rm = TRUE)),
+      collector   = dplyr::first(stats::na.omit(collector)),
+      .groups = "drop"
+    )
+
+  meas_df <- df |>
+    dplyr::filter(cover_category == category_keep) |>
+    dplyr::mutate(cover_amount = suppressWarnings(as.numeric(cover_amount)))
+
+  meas_idx <- meas_df |>
+    dplyr::arrange(cover_id) |>
+    dplyr::group_by(dplyr::across(all_of(key_cols)), cover_type) |>
+    dplyr::mutate(idx = dplyr::row_number()) |>
+    dplyr::ungroup()
+
+  values_wide <- meas_idx |>
+    dplyr::transmute(
+      !!!rlang::syms(key_cols),
+      name  = paste0(cover_type, "_", idx),
+      value = cover_amount
+    ) |>
+    tidyr::pivot_wider(names_from = name, values_from = value)
+
+  out <- df |>
+    dplyr::distinct(dplyr::across(all_of(key_cols))) |>
+    dplyr::left_join(values_wide, by = key_cols) |>
+    dplyr::left_join(sampled_df, by = key_cols) |>
+    dplyr::left_join(meta_df, by = key_cols) |>
+    dplyr::arrange(year, site_code, plot_id, location_within_plot, subplot)
+
+  return(out)
+
+}
+
+```
+
+```{r}
+#| label: annuals-key-columns
+#| eval: TRUE
+
+key_cols <-
+  c(
+    "year",
+    "site_code",
+    "plot_id",
+    "treatment_code",
+    "location_within_plot",
+    "subplot"
+  )
+
+```
+
+```{r}
+#| label: annuals-composition
+#| eval: TRUE
+
+sql_annuals <- "
+SELECT
+  cover_events.year,
+  sites.code AS site_code,
+  plots.id AS plot_id,
+  treatments.code AS treatment_code,
+  cover_events.patch_type AS location_within_plot,
+  cover_events.subplot,
+  cover_events.sample_date,
+  cover_events.collector,
+  cover_composition.cover_id,
+  cover_types.cover_category,
+  cover_types.cover_type,
+  cover_composition.cover_amt AS cover_amount,
+  cover_composition.notes
+FROM
+  urbancndep.cover_composition
+  JOIN urbancndep.cover_events ON (urbancndep.cover_composition.cover_event_id = urbancndep.cover_events.cover_event_id)
+  JOIN urbancndep.cover_types ON (urbancndep.cover_composition.cover_type_id = urbancndep.cover_types.cover_type_id)
+  JOIN urbancndep.plots ON (urbancndep.cover_events.plot = urbancndep.plots.id)
+  JOIN urbancndep.sites ON (urbancndep.sites.id = urbancndep.plots.site_id)
+  JOIN urbancndep.treatments ON (urbancndep.treatments.id = urbancndep.plots.treatment_id)
+WHERE
+  urbancndep.cover_types.cover_category IN ('annual','record_keeping') AND
+  cover_types.include IS NOT FALSE
+ORDER BY
+  cover_events.year,
+  sites.code,
+  plots.id,
+  cover_events.patch_type,
+  cover_events.subplot,
+  cover_types.cover_type,
+  cover_composition.cover_id;
+"
+
+annuals_long <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = sql_annuals
+)
+
+annuals_composition <- make_rectangular_wide(
+  annuals_long,
+  category_keep = "annual"
+)
+
+# change column types as appropriate
+annuals_composition <- annuals_composition |>
+  dplyr::mutate(
+    site_code            = as.factor(site_code),
+    plot_id              = as.character(plot_id),
+    treatment_code       = as.factor(treatment_code),
+    location_within_plot = as.factor(location_within_plot),
+    subplot              = as.factor(subplot)
+    # cover_type           = as.factor(cover_type),
+    # cover_category       = as.factor(cover_category)
+  )
+
+# capeml::write_attributes(annuals_composition)
+# capeml::write_factors(annuals_composition)
+# capeml::update_attributes(annuals_composition)
+
+# annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
+
+# do not add date range since early years did not have a full date
+# annuals_composition_DT <- capeml::create_dataTable(
+#   dfname      = annuals_composition,
+#   description = annuals_composition_desc,
+#   overwrite   = TRUE
+# )
+
+```
 
 ```{r}
 #| label: annuals-composition
@@ -138,6 +299,7 @@ capeml::update_attributes(annuals_composition)
 # )
 
 ```
+
 
 # fertilizer
 
