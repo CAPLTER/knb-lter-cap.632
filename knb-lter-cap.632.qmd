@@ -74,10 +74,8 @@ annuals_biomass <- annuals_biomass |>
 #| eval: TRUE
 
 make_rectangular_wide <- function(
-  df_long,
-  category_keep
-  ) {
-
+    df_long,
+    category_keep) {
   df <- df_long |>
     dplyr::mutate(
       cover_category = as.character(cover_category),
@@ -88,7 +86,7 @@ make_rectangular_wide <- function(
     dplyr::filter(cover_category == "record_keeping", cover_type == "sampled") |>
     dplyr::group_by(dplyr::across(all_of(key_cols))) |>
     dplyr::summarise(
-      sampled       = suppressWarnings(max(as.numeric(cover_amount), na.rm = TRUE)),
+      sampled = suppressWarnings(max(as.numeric(cover_amount), na.rm = TRUE)),
       sampled_notes = dplyr::first(stats::na.omit(notes)),
       .groups = "drop"
     )
@@ -103,7 +101,7 @@ make_rectangular_wide <- function(
     dplyr::group_by(dplyr::across(all_of(key_cols))) |>
     dplyr::summarise(
       sample_date = suppressWarnings(max(as.Date(sample_date), na.rm = TRUE)),
-      collector   = dplyr::first(stats::na.omit(collector)),
+      # collector   = dplyr::first(stats::na.omit(collector)),
       .groups = "drop"
     )
 
@@ -163,6 +161,22 @@ make_rectangular_wide <- function(
     ))
   }
 
+  # Reorder columns: fixed keys first, then all remaining alphabetically
+  cols_fixed <- c(
+    "site_code",
+    "year",
+    "sample_date",
+    "plot_id",
+    "treatment_code",
+    "location_within_plot",
+    "subplot",
+    "sampled_notes"
+  )
+
+  remaining_cols <- sort(setdiff(names(out), cols_fixed))
+  out <- out |>
+    dplyr::select(dplyr::any_of(cols_fixed), dplyr::all_of(remaining_cols))
+
   return(out)
 
 }
@@ -175,8 +189,8 @@ make_rectangular_wide <- function(
 
 key_cols <-
   c(
-    "year",
     "site_code",
+    "year",
     "plot_id",
     "treatment_code",
     "location_within_plot",
@@ -186,7 +200,7 @@ key_cols <-
 ```
 
 ```{r}
-#| label: annuals-composition
+#| label: annuals-composition-wide
 #| eval: TRUE
 
 sql_annuals <- "
@@ -198,7 +212,7 @@ SELECT
   cover_events.patch_type AS location_within_plot,
   cover_events.subplot,
   cover_events.sample_date,
-  cover_events.collector,
+  -- cover_events.collector,
   cover_composition.cover_id,
   cover_types.cover_category,
   cover_types.cover_type,
@@ -263,8 +277,60 @@ annuals_composition <- annuals_composition |>
 ```
 
 ```{r}
-#| label: annuals-composition
+#| label: annuals-plot-characteristics
 #| eval: TRUE
+
+sql_plotchar <- "
+SELECT
+  cover_events.year,
+  sites.code AS site_code,
+  plots.id AS plot_id,
+  treatments.code AS treatment_code,
+  cover_events.patch_type AS location_within_plot,
+  cover_events.subplot,
+  cover_events.sample_date,
+  -- cover_events.collector,
+  cover_composition.cover_id,
+  cover_types.cover_category,
+  cover_types.cover_type,
+  cover_composition.cover_amt AS cover_amount,
+  cover_composition.notes
+FROM
+  urbancndep.cover_composition
+  JOIN urbancndep.cover_events ON (urbancndep.cover_composition.cover_event_id = urbancndep.cover_events.cover_event_id)
+  JOIN urbancndep.cover_types ON (urbancndep.cover_composition.cover_type_id = urbancndep.cover_types.cover_type_id)
+  JOIN urbancndep.plots ON (urbancndep.cover_events.plot = urbancndep.plots.id)
+  JOIN urbancndep.sites ON (urbancndep.sites.id = urbancndep.plots.site_id)
+  JOIN urbancndep.treatments ON (urbancndep.treatments.id = urbancndep.plots.treatment_id)
+WHERE
+  cover_types.cover_category IN ('plot characteristic','record_keeping') AND
+  cover_types.include IS NOT FALSE
+  -- AND urbancndep.cover_types.cover_type <> 'total_comparable_annual_cover'
+ORDER BY
+  cover_events.year,
+  sites.code,
+  plots.id,
+  cover_events.patch_type,
+  cover_events.subplot,
+  cover_types.cover_type,
+  cover_composition.cover_id ;
+"
+
+annuals_plot_chars_long <- DBI::dbGetQuery(
+  conn      = pg,
+  statement = sql_plotchar
+)
+
+annuals_plot_characteristics <- make_rectangular_wide(
+  annuals_plot_chars_long,
+  category_keep = "plot characteristic"
+)
+
+```
+
+```{r}
+#| label: annuals-composition-oe
+#| eval: FALSE
 
 # add filter to remove 2008 data from publication
 # add filter to remove total comparable annual cover from publication (could be
