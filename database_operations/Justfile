@@ -33,6 +33,9 @@ do-standardize-annuals:
 do-modify-cover-types:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f modify_cover_types.sql
 
+do-modify-cover-composition:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f modify_cover_composition.sql
+
 do-standardize-cover-amt:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f standardize_cover_amt.sql
 
@@ -40,7 +43,7 @@ do-add-cover-uniqueness:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f add_cover_uniqueness_constraints.sql
 
 # Orchestrator: runs steps in order
-run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-modify-cover-types do-standardize-cover-amt do-add-cover-uniqueness
+run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-modify-cover-types do-modify-cover-composition do-standardize-cover-amt do-add-cover-uniqueness
 	@echo "All database operations completed."
 
 # Dry-run: list the files that would be executed in order
@@ -52,5 +55,6 @@ plan-db-ops:
 	deduplicate_unidentified_annuals.sql \
 	standardize_unidentified_annuals.sql \
 	modify_cover_types.sql \
+	modify_cover_composition.sql \
 	standardize_cover_amt.sql \
 	add_cover_uniqueness_constraints.sql

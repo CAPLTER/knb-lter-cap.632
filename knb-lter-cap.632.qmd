@@ -236,7 +236,7 @@ ORDER BY
   cover_events.patch_type,
   cover_events.subplot,
   cover_types.cover_type,
-  cover_composition.cover_id;
+  cover_composition.cover_id ;
 "
 
 annuals_long <- DBI::dbGetQuery(
@@ -304,8 +304,8 @@ FROM
   JOIN urbancndep.treatments ON (urbancndep.treatments.id = urbancndep.plots.treatment_id)
 WHERE
   cover_types.cover_category IN ('plot characteristic','record_keeping') AND
-  cover_types.include IS NOT FALSE
-  -- AND urbancndep.cover_types.cover_type <> 'total_comparable_annual_cover'
+  cover_types.include IS NOT FALSE AND
+  cover_composition.include IS NOT FALSE
 ORDER BY
   cover_events.year,
   sites.code,
