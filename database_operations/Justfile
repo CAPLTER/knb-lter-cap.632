@@ -1,0 +1,56 @@
+# Justfile for database operations (stepwise + orchestrated)
+
+# Usage:
+# - Show effective connection: just env
+# - Preview step order:        just plan-db-ops
+# - Run all steps:             just run-db-ops
+# - Run one step:              just do-standardize-cover-amt
+#
+# Connection via environment (or .pgpass):
+#   DB_HOST (default localhost), DB_PORT (5432),
+#   DB_NAME (caplter), DB_USER (${USER or postgres}).
+
+# Connection defaults are read from environment at runtime
+# (DB_NAME, DB_USER, DB_HOST, DB_PORT) with sensible fallbacks
+
+# Show current DB connection settings
+env:
+	@echo "DB_HOST=${DB_HOST:-localhost}"
+	@echo "DB_PORT=${DB_PORT:-5432}"
+	@echo "DB_NAME=${DB_NAME:-caplter}"
+	@echo "DB_USER=${DB_USER:-${USER:-postgres}}"
+
+# Individual steps (one recipe per SQL file)
+do-set-updated-at:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f set_updated_at_triggers.sql
+
+do-dedup-annuals:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f deduplicate_unidentified_annuals.sql
+
+do-standardize-annuals:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f standardize_unidentified_annuals.sql
+
+do-modify-cover-types:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f modify_cover_types.sql
+
+do-standardize-cover-amt:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f standardize_cover_amt.sql
+
+do-add-cover-uniqueness:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f add_cover_uniqueness_constraints.sql
+
+# Orchestrator: runs steps in order
+run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-modify-cover-types do-standardize-cover-amt do-add-cover-uniqueness
+	@echo "All database operations completed."
+
+# Dry-run: list the files that would be executed in order
+plan-db-ops:
+	@set -e
+	@echo "Execution plan (fixed order):"
+	@printf "%s\n" \
+	set_updated_at_triggers.sql \
+	deduplicate_unidentified_annuals.sql \
+	standardize_unidentified_annuals.sql \
+	modify_cover_types.sql \
+	standardize_cover_amt.sql \
+	add_cover_uniqueness_constraints.sql
