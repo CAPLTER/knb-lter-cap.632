@@ -42,8 +42,16 @@ do-standardize-cover-amt:
 do-add-cover-uniqueness:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f add_cover_uniqueness_constraints.sql
 
+# Populate missing year_added as final step
+do-year-added-populate:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f year_added_populate.sql
+
+# Optional: relaxed populate (skips gating, still updates only NULLs)
+do-year-added-populate-relaxed:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f year_added_populate_relaxed.sql
+
 # Orchestrator: runs steps in order
-run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-modify-cover-types do-modify-cover-composition do-standardize-cover-amt do-add-cover-uniqueness
+run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-modify-cover-types do-modify-cover-composition do-standardize-cover-amt do-add-cover-uniqueness do-year-added-populate
 	@echo "All database operations completed."
 
 # Dry-run: list the files that would be executed in order
@@ -57,4 +65,5 @@ plan-db-ops:
 	modify_cover_types.sql \
 	modify_cover_composition.sql \
 	standardize_cover_amt.sql \
-	add_cover_uniqueness_constraints.sql
+	add_cover_uniqueness_constraints.sql \
+	year_added_populate.sql
