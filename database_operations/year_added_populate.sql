@@ -31,10 +31,9 @@ BEGIN;
 -- incorrect
 UPDATE urbancndep.cover_types
    SET year_added = NULL
- WHERE cover_type IN (
-   'Sonchus',
-   'Castilleja_exserta'
- );
+ WHERE
+   cover_type = 'Sonchus' OR
+   cover_type IN ('Castilleja_exserta', 'Castilleja exserta');
 
 -- 2) Delete cover_types that are not used
 DELETE FROM urbancndep.cover_types

@@ -30,6 +30,9 @@ do-dedup-annuals:
 do-standardize-annuals:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f standardize_unidentified_annuals.sql
 
+do-standardize-annual-cover-type-names:
+	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f standardize_annual_cover_type_names.sql
+
 do-modify-cover-types:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f modify_cover_types.sql
 
@@ -51,7 +54,7 @@ do-year-added-populate-relaxed:
 	@psql -h ${DB_HOST:-localhost} -U ${DB_USER:-${USER:-postgres}} -d ${DB_NAME:-caplter} -p ${DB_PORT:-5432} -v ON_ERROR_STOP=1 -f year_added_populate_relaxed.sql
 
 # Orchestrator: runs steps in order
-run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-modify-cover-types do-modify-cover-composition do-standardize-cover-amt do-add-cover-uniqueness do-year-added-populate
+run-db-ops: do-set-updated-at do-dedup-annuals do-standardize-annuals do-standardize-annual-cover-type-names do-modify-cover-types do-modify-cover-composition do-standardize-cover-amt do-add-cover-uniqueness do-year-added-populate
 	@echo "All database operations completed."
 
 # Dry-run: list the files that would be executed in order
@@ -62,6 +65,7 @@ plan-db-ops:
 	set_updated_at_triggers.sql \
 	deduplicate_unidentified_annuals.sql \
 	standardize_unidentified_annuals.sql \
+	standardize_annual_cover_type_names.sql \
 	modify_cover_types.sql \
 	modify_cover_composition.sql \
 	standardize_cover_amt.sql \

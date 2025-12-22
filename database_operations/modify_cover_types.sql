@@ -40,7 +40,7 @@ WHERE
 ;
 
 UPDATE urbancndep.cover_types
-SET comment = 'only inlude observations prior to 2015 (noninclusive) in output'
+SET comment = 'only include observations prior to 2015 (noninclusive) in output'
 WHERE cover_type = 'Ambrosia_stem'
 ;
 

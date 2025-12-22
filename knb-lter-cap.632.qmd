@@ -73,6 +73,24 @@ annuals_biomass <- annuals_biomass |>
 #| label: annuals-key-helpers
 #| eval: TRUE
 
+cover_types_year_added <- DBI::dbGetQuery(
+  pg,
+  "SELECT cover_type, cover_category, year_added FROM urbancndep.cover_types WHERE include IS NOT FALSE;"
+)
+
+# warn if any year_added are NULL
+n_null_year_added <- DBI::dbGetQuery(
+  pg,
+  "SELECT COUNT(*) AS n_null FROM urbancndep.cover_types WHERE include IS NOT FALSE AND year_added IS NULL;"
+)$n_null
+if (!is.null(n_null_year_added) && n_null_year_added > 0) {
+  warning(paste(
+    "urbancndep.cover_types.year_added has",
+    n_null_year_added,
+    "NULL values; gating may be inaccurate."
+  ))
+}
+
 make_rectangular_wide <- function(
     df_long,
     category_keep) {
@@ -126,7 +144,29 @@ make_rectangular_wide <- function(
     rlang::abort(msg)
   }
 
-  meas_idx <- meas_df |>
+  # Build full keys × cover_type grid and apply year_added gating with zero-fill
+  types_lu <- cover_types_year_added |>
+    dplyr::filter(cover_category == category_keep) |>
+    dplyr::distinct(cover_type, year_added)
+
+  keys_df <- df |>
+    dplyr::distinct(dplyr::across(all_of(key_cols)))
+
+  grid <- tidyr::crossing(keys_df, types_lu)
+
+  meas_filled <- grid |>
+    dplyr::left_join(
+      meas_df,
+      by = c(key_cols, "cover_type")
+    ) |>
+    dplyr::mutate(
+      cover_amount = dplyr::case_when(
+        year < year_added ~ NA_real_,
+        TRUE              ~ dplyr::coalesce(cover_amount, 0)
+      )
+    )
+
+  meas_idx <- meas_filled |>
     dplyr::arrange(cover_id) |>
     dplyr::group_by(dplyr::across(all_of(key_cols)), cover_type) |>
     dplyr::mutate(idx = dplyr::row_number()) |>
@@ -321,10 +361,17 @@ annuals_plot_chars_long <- DBI::dbGetQuery(
   statement = sql_plotchar
 )
 
-annuals_plot_characteristics <- make_rectangular_wide(
+annuals_plot_characteristics2 <- make_rectangular_wide(
   annuals_plot_chars_long,
   category_keep = "plot characteristic"
-)
+) |>
+  # total_shrub_cover not measured in  2016
+  dplyr::mutate(
+    total_shrub_cover = dplyr::case_when(
+      year == 2016 ~ NA_real_,
+      TRUE ~ total_shrub_cover
+    )
+  )
 
 ```
 
