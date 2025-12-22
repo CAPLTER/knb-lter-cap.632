@@ -108,4 +108,7 @@ SELECT 'still_null_year_added' AS metric,
   FROM cover_types
  WHERE year_added IS NULL;
 
+-- column comment
+COMMENT ON COLUMN urbancndep.cover_types.year_added IS 'year when cover type was first used in observations';
+
 COMMIT;
