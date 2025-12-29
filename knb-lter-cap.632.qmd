@@ -301,9 +301,9 @@ annuals_composition <- annuals_composition |>
     # cover_category       = as.factor(cover_category)
   )
 
-# capeml::write_attributes(annuals_composition)
-# capeml::write_factors(annuals_composition)
-# capeml::update_attributes(annuals_composition)
+capeml::write_attributes(annuals_composition)
+capeml::write_factors(annuals_composition)
+capeml::update_attributes(annuals_composition)
 
 # annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
 
