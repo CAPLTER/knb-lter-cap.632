@@ -296,7 +296,8 @@ annuals_composition <- annuals_composition |>
     plot_id              = as.character(plot_id),
     treatment_code       = as.factor(treatment_code),
     location_within_plot = as.factor(location_within_plot),
-    subplot              = as.factor(subplot)
+    subplot              = as.factor(subplot),
+    sampled              = as.factor(sampled)
     # cover_type           = as.factor(cover_type),
     # cover_category       = as.factor(cover_category)
   )
