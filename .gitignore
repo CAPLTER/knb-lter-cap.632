@@ -34,3 +34,7 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+
+# project specific
+knb-lter-cap.632.[0-9]*.xml
+632_*

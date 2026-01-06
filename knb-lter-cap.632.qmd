@@ -304,7 +304,7 @@ annuals_composition <- annuals_composition |>
 
 capeml::write_attributes(annuals_composition)
 capeml::write_factors(annuals_composition)
-capeml::update_attributes(annuals_composition)
+# capeml::update_attributes(annuals_composition)
 
 # annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
 
@@ -384,56 +384,56 @@ annuals_plot_characteristics2 <- make_rectangular_wide(
 # add filter to remove total comparable annual cover from publication (could be
 # removed from DB as well)
 
-annuals_composition <- DBI::dbGetQuery(
-  conn      = pg,
-  statement = "
-  SELECT
-    s.code AS site_code,
-    ce.plot AS plot_id,
-    t.code AS treatment_code,
-    ce.patch_type AS location_within_plot,
-    ce.subplot,
-    ce.sample_date AS date,
-    ce.year,
-    ce.collector,
-    ct.cover_type,
-    ct.cover_category,
-    cc.cover_amt AS cover_amount,
-    cc.notes
-  FROM
-    urbancndep.cover_composition cc
-    JOIN urbancndep.cover_events ce ON (cc.cover_event_id = ce.cover_event_id)
-    JOIN urbancndep.cover_types ct ON (cc.cover_type_id = ct.cover_type_id)
-    JOIN urbancndep.plots p ON (ce.plot = p.id)
-    JOIN urbancndep.sites s ON (s.id = p.site_id)
-    JOIN urbancndep.treatments t ON (t.id = p.treatment_id)
-  WHERE
-    ce.year > 2008 AND
-    ct.cover_type != 'total_comparable_annual_cover'
-  ORDER BY
-    year,
-    plot,
-    location_within_plot,
-    subplot,
-    cover_type
-  ;
-  ")
+# annuals_composition <- DBI::dbGetQuery(
+#   conn      = pg,
+#   statement = "
+#   SELECT
+#     s.code AS site_code,
+#     ce.plot AS plot_id,
+#     t.code AS treatment_code,
+#     ce.patch_type AS location_within_plot,
+#     ce.subplot,
+#     ce.sample_date AS date,
+#     ce.year,
+#     ce.collector,
+#     ct.cover_type,
+#     ct.cover_category,
+#     cc.cover_amt AS cover_amount,
+#     cc.notes
+#   FROM
+#     urbancndep.cover_composition cc
+#     JOIN urbancndep.cover_events ce ON (cc.cover_event_id = ce.cover_event_id)
+#     JOIN urbancndep.cover_types ct ON (cc.cover_type_id = ct.cover_type_id)
+#     JOIN urbancndep.plots p ON (ce.plot = p.id)
+#     JOIN urbancndep.sites s ON (s.id = p.site_id)
+#     JOIN urbancndep.treatments t ON (t.id = p.treatment_id)
+#   WHERE
+#     ce.year > 2008 AND
+#     ct.cover_type != 'total_comparable_annual_cover'
+#   ORDER BY
+#     year,
+#     plot,
+#     location_within_plot,
+#     subplot,
+#     cover_type
+#   ;
+#   ")
 
 # change column types as appropriate
-annuals_composition <- annuals_composition |>
-  dplyr::mutate(
-    site_code            = as.factor(site_code),
-    plot_id              = as.character(plot_id),
-    treatment_code       = as.factor(treatment_code),
-    location_within_plot = as.factor(location_within_plot),
-    subplot              = as.factor(subplot),
-    cover_type           = as.factor(cover_type),
-    cover_category       = as.factor(cover_category)
-  )
+# annuals_composition <- annuals_composition |>
+#   dplyr::mutate(
+#     site_code            = as.factor(site_code),
+#     plot_id              = as.character(plot_id),
+#     treatment_code       = as.factor(treatment_code),
+#     location_within_plot = as.factor(location_within_plot),
+#     subplot              = as.factor(subplot),
+#     cover_type           = as.factor(cover_type),
+#     cover_category       = as.factor(cover_category)
+#   )
 
 # capeml::write_attributes(annuals_composition)
 # capeml::write_factors(annuals_composition)
-capeml::update_attributes(annuals_composition)
+# capeml::update_attributes(annuals_composition)
 
 # annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
 
@@ -1043,19 +1043,9 @@ geographicCoverage = geographic_coverage
 
 ## taxonomic coverage
 
-*Note* that the `taxa_map.csv` built with the `create_taxa_map()` function and
-resolving taxonomic IDs (i.e., `resolve_comm_taxa()`) only needs to be run once
-per version/session -- the taxonomicCoverage can be built as many times as
-needed with `resolve_comm_taxa()` once the `taxa_map.csv` has been generated
-and the taxonomic IDs resolved.
-
 ```{r}
-#| label: taxonomyCleanr
+#| label: taxonomic-coverage
 #| eval: TRUE
-
-# taxonomyCleanr requires a path (to build the taxa_map)
-
-my_path <- getwd() 
 
 dataset_taxa <- DBI::dbGetQuery(pg, "
     SELECT
@@ -1063,41 +1053,37 @@ dataset_taxa <- DBI::dbGetQuery(pg, "
     FROM
       urbancndep.cover_types
     WHERE
-      cover_category LIKE 'annual'
+      cover_category = 'annual' AND
+      include IS NOT FALSE
     ;
-    ") |> 
-dplyr::mutate(cover_type = gsub("_", " ", cover_type)) |>
-dplyr::filter(!stringr::str_detect(cover_type, "unident")) |> 
-tibble::add_row(
+    ") |>
+  dplyr::mutate(cover_type = gsub("_", " ", cover_type)) |>
+  dplyr::filter(!stringr::str_detect(cover_type, "unident")) |>
+  tibble::add_row(
     cover_type = c(
-      'Larrea tridentata',
-      'Ambrosia dumosa',
-      'Ambrosia deltoidea',
-      'Pectocarya recurvata',
-      'Amsinckia menziesii',
-      'Schismus arabicus'
-      )
-    ) |> 
-dplyr::distinct(cover_type)
+      "Ambrosia",
+      "Bebbia juncea",
+      "Cylindropuntia acanthocarpa",
+      "Cylindropuntia bigelovii",
+      "Cylindropuntia fulgida",
+      "Encelia farinosa",
+      "Krameria grayi",
+      "Larrea tridentata",
+      "Lycium",
+      "Parkinsonia microphylla",
+      "Mammillaria grahamii",
+      "Simmondsia chinensis"
+    )
+  ) |>
+  dplyr::distinct(cover_type) |>
+  dplyr::arrange(cover_type)
 
-# run once
-
-# taxonomyCleanr::create_taxa_map(
-#   path = my_path,
-#   x    = dataset_taxa,
-#   col  = "cover_type"
-# )
-
-taxonomyCleanr::resolve_sci_taxa(
-  path         = my_path,
-  data.sources = 3 # ITIS
+capeml::write_taxa_map(
+  taxa_df  = dataset_taxa,
+  taxa_col = cover_type 
 )
 
-# build the EML taxonomomic coverage
-
-taxaCoverage <- taxonomyCleanr::make_taxonomicCoverage(path = my_path)
-
-# add taxonomic to other coverages
+taxaCoverage <- capeml::create_taxonomicCoverage()
 
 coverage$taxonomicCoverage <- taxaCoverage
 
