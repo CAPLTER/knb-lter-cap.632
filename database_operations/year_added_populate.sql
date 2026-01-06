@@ -36,16 +36,19 @@ UPDATE urbancndep.cover_types
    cover_type IN ('Castilleja_exserta', 'Castilleja exserta');
 
 -- 2) Delete cover_types that are not used
-DELETE FROM urbancndep.cover_types
- WHERE cover_type_id IN (
+-- Delete only if truly unused (no references in cover_composition)
+DELETE FROM urbancndep.cover_types AS ct
+ WHERE ct.cover_type_id IN (
    156, -- Asclepias
-   175, -- Logfia
-   174, -- Lotus
    177, -- Lupinus
    40,  -- Mirabilis_bigelovii
-   41,  -- Orthocarpus_purpurascens
-   176  -- Parietaria
- );
+   41   -- Orthocarpus_purpurascens
+ )
+   AND NOT EXISTS (
+     SELECT 1
+       FROM urbancndep.cover_composition AS c
+      WHERE c.cover_type_id = ct.cover_type_id
+   );
 
 DO $$
 DECLARE v_discrepancies integer;
