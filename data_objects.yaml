@@ -10,7 +10,16 @@ annuals_biomass:
 annuals_composition:
   type: table
   dfname: annuals_composition
-  description: "Composition of annual plants and some other characteristics (e.g. bare soil; base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
+  description: "Composition of annual plants at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements are collected in the spring."
+  dateRangeField: "date"
+  overwrite: TRUE
+  projectNaming: TRUE
+  missingValueCode: ~
+  additional_information: ~
+annuals_plot_characteristics:
+  type: table
+  dfname: annuals_plot_characteristics
+  description: "Characteristics (e.g. bare soil; base or canopy of perennial plants) at subplots within Desert Fertilization study plots corresponding to the annual spring measurements of annual plants. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. This is a companion table to the annuals composition data that attempts to capture details of the habitat where annual plants are measured."
   dateRangeField: "date"
   overwrite: TRUE
   projectNaming: TRUE

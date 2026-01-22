@@ -362,17 +362,32 @@ annuals_plot_chars_long <- DBI::dbGetQuery(
   statement = sql_plotchar
 )
 
-annuals_plot_characteristics2 <- make_rectangular_wide(
+annuals_plot_characteristics <- make_rectangular_wide(
   annuals_plot_chars_long,
   category_keep = "plot characteristic"
 ) |>
-  # total_shrub_cover not measured in  2016
+  # total_shrub_cover not measured in 2016
   dplyr::mutate(
     total_shrub_cover = dplyr::case_when(
       year == 2016 ~ NA_real_,
       TRUE ~ total_shrub_cover
     )
   )
+
+annuals_plot_characteristics <- annuals_plot_characteristics |>
+  dplyr::mutate(
+    site_code            = as.factor(site_code),
+    plot_id              = as.character(plot_id),
+    treatment_code       = as.factor(treatment_code),
+    location_within_plot = as.factor(location_within_plot),
+    subplot              = as.factor(subplot),
+    sampled              = as.factor(sampled)
+    # cover_type           = as.factor(cover_type),
+    # cover_category       = as.factor(cover_category)
+  )
+
+capeml::write_attributes(annuals_plot_characteristics)
+capeml::write_factors(annuals_plot_characteristics)
 
 ```
 
@@ -1026,19 +1041,6 @@ coverage <- list(
 geographicCoverage = geographic_coverage
 ) # close coverage
 
-# begindate <- "2005-12-07"
-# enddate   <- as.character(getMaxDate())
-# geographicDescription <- "desert and desert-remnant regional parks in the CAP LTER study encompassing the greater Phoenix metropolitan area and surrounding Sonoran desert region"
-# coverage <- EML::set_coverage(
-#   begin                 = begindate,
-#   end                   = enddate,
-#   geographicDescription = geographicDescription,
-#   west                  = -112.547375174279352,
-#   east                  = -111.482761068522152,
-#   north                 = +33.726771147871851,
-#   south                 = +33.013262396669028
-# )
-
 ```
 
 ## taxonomic coverage
@@ -1106,133 +1108,46 @@ citations <- list(
 ) # close citation
 ```
 
-# dataset
 
+## build
 
 ```{r}
-#| label: construct-dataset
 #| eval: TRUE
+#| label: build
 
 dataset <- capeml::create_dataset()
-
-```
-
-
-# eml
-
-## create
-
-```{r}
-#| label: construct-eml
-#| eval: TRUE
-
-eml <- capeml::create_eml()
-```
-
-## validate
-
-```{r}
-#| label: validate-eml
-#| eval: TRUE
+eml     <- capeml::create_eml()
 
 EML::eml_validate(eml)
-```
-
-## write
-
-```{r}
-#| label: eml-to-file
-#| eval: TRUE
-
 capeml::write_cap_eml()
-```
-
-# upload to AWS
-
-```{r}
-#| label: upload-to-AWS
-#| eval: TRUE
 
 source("~/Documents/localSettings/aws.s3")
 
 lapply(
-  X   = list.files(pattern = paste0(632, "_")),
+  X   = list.files(pattern = "41_"),
   FUN = capeml::data_to_amz
 )
-```
-
-
-# EDI
-
-## login
-
-Note that keyring does not work in vscode (usually).
-
-```{r}
-#| label: edi-login
-#| eval: TRUE
 
 source("~/Documents/localSettings/edi.R")
-```
-
-## evaluate
-
-```{r}
-#| label: edi-evaluate
-#| eval: TRUE
-
 capeml::get_package_evaluation(full_report = FALSE)
-# report <- capeml::get_package_evaluation(full_report = TRUE)
-```
 
-## update
+report <- capeml::get_package_evaluation(full_report = TRUE)
+xml2::write_xml(report, "/tmp/report.xml")
 
-```{r}
-#| label: edi-update
-#| eval: TRUE
-
-capeml::create_package(
-  update      = TRUE,
-  environment = "production"
-)
-```
-
-## logout
-
-```{r}
-#| label: edi-logout
-#| eval: TRUE
+# capeml::create_package(environment = "staging")
 
 EDIutils::logout()
+
 ```
 
-
-# post processing
-
-## remove data files
+## clean
 
 ```{r}
-#| label: delete-data-files
 #| eval: TRUE
+#| label: clean
 
-lapply(
-  X   = list.files(pattern = paste0(632, "_")),
-  FUN = file.remove
-)
-```
-
-## XML/EML to AWS / GitHub
-
-```{r}
-#| label: copy-xml
-#| eval: TRUE
-
+file.remove(c(list.files(pattern = "^41_")))
 capeml::eml_to_amz(list.files(pattern = "knb.+xml"))
+# file.copy(list.files(pattern = "knb.+xml"), "/home/srearl/localRepos/cap-metadata/cap-data-eml/")
 
-file.copy(
-  from = list.files(pattern = "knb.+xml"),
-  to   = "/home/srearl/localRepos/cap-metadata/cap-data-eml/"
-)
-
-file.remove(list.files(pattern = "knb.+xml"))
 ```

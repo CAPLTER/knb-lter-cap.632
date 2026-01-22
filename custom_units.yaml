@@ -1,12 +1,2 @@
 - name: GM
-- name: FRACTION
-- name: KiloGM
-- name: MilliM
-- name: microgramPerTenSquareCentimeterPerBurialLength
-  description: net rate of nutrient ion adsorption by the PRS® Probe expressed as
-    the weight of nutrient adsorbed per surface area of ion-exchange membrane over
-    time
-- name: NUM
-- name: PERCENT
-- name: MilliGM-PER-KiloGM
-- name: MilliGM-PER-L
+  description: Gram

@@ -7,6 +7,24 @@
     valueURI: ''
     valueLabel: ''
     columnClasses: factor
+  year:
+    attributeName: year
+    attributeDefinition: year of data collection
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00002050'
+    valueLabel: 'year of measurement'
+    columnClasses: Date
+    formatString: YYYY
+  sample_date:
+    attributeName: sample_date
+    attributeDefinition: date of data collection
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00002051'
+    valueLabel: 'date'
+    columnClasses: Date
+    formatString: YYYY-MM-DD
   plot_id:
     attributeName: plot_id
     attributeDefinition: plot id number
@@ -26,7 +44,7 @@
     columnClasses: factor
   location_within_plot:
     attributeName: location_within_plot
-    attributeDefinition: habitat within plot where probes were deployed
+    attributeDefinition: habitat within plot
     propertyURI: ''
     propertyLabel: ''
     valueURI: ''
@@ -40,67 +58,1604 @@
     valueURI: ''
     valueLabel: ''
     columnClasses: factor
-  date:
-    attributeName: date
-    attributeDefinition: date of data collection
-    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
-    propertyLabel: 'contains measurements of type'
-    valueURI: 'http://purl.dataone.org/odo/ECSO_00002051'
-    valueLabel: 'date'
-    columnClasses: Date
-    formatString: YYYY-MM-DD
-  year:
-    attributeName: year
-    attributeDefinition: year of data collection
-    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
-    propertyLabel: 'contains measurements of type'
-    valueURI: 'http://purl.dataone.org/odo/ECSO_00002050'
-    valueLabel: 'year of measurement'
-    columnClasses: Date
-    formatString: YYYY
-  collector:
-    attributeName: collector
-    attributeDefinition: initials of subplot surveyors
+  sampled_notes:
+    attributeName: sampled_notes
+    attributeDefinition: notes pertaining to observation
     propertyURI: ''
     propertyLabel: ''
     valueURI: ''
     valueLabel: ''
     columnClasses: character
     definition: ''
-  cover_type:
-    attributeName: cover_type
-    attributeDefinition: taxon of annual plant, plot characteristic, or logistical note
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    columnClasses: factor
-  cover_category:
-    attributeName: cover_category
-    attributeDefinition: nature of the observation (taxonomic, general plot characteristic, logistical)
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    columnClasses: factor
-  cover_amount:
-    attributeName: cover_amount
-    attributeDefinition: proportion of subplot as a decimal fraction of this type
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    unit: FRACTION
+  Amsinckia:
+    attributeName: Amsinckia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
     numberType: real
-    minimum: 0.001
-    maximum: 7.0
+    minimum: 0.0
+    maximum: 0.6
     columnClasses: numeric
-  notes:
-    attributeName: notes
-    attributeDefinition: 'notes pertaining to measurement'
+  Amsinckia menziesii:
+    attributeName: Amsinckia menziesii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.9481669
+    columnClasses: numeric
+  Amsinckia tessellata:
+    attributeName: Amsinckia tessellata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.3
+    columnClasses: numeric
+  Aristida adscensionis:
+    attributeName: Aristida adscensionis
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.03
+    columnClasses: numeric
+  Aristida purpurea:
+    attributeName: Aristida purpurea
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Asteraceae:
+    attributeName: Asteraceae
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Astragalus:
+    attributeName: Astragalus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.05
+    columnClasses: numeric
+  Astragalus didymocarpus:
+    attributeName: Astragalus didymocarpus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.002
+    columnClasses: numeric
+  Astragalus nuttallianus:
+    attributeName: Astragalus nuttallianus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.1
+    columnClasses: numeric
+  Baileya multiradiata:
+    attributeName: Baileya multiradiata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Boraginaceae:
+    attributeName: Boraginaceae
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Bowlesia incana:
+    attributeName: Bowlesia incana
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.3
+    columnClasses: numeric
+  Brassica tournefortii:
+    attributeName: Brassica tournefortii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Brassicaceae:
+    attributeName: Brassicaceae
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Bromus arizonica:
+    attributeName: Bromus arizonica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.13
+    columnClasses: numeric
+  Bromus rubens:
+    attributeName: Bromus rubens
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.57
+    columnClasses: numeric
+  Calandrinia ciliata:
+    attributeName: Calandrinia ciliata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0119048
+    columnClasses: numeric
+  Camissonia californica:
+    attributeName: Camissonia californica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Camissonia claviformis:
+    attributeName: Camissonia claviformis
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Cammisonia confusa:
+    attributeName: Cammisonia confusa
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Castilleja exserta:
+    attributeName: Castilleja exserta
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Caulanthus lasiophyllus:
+    attributeName: Caulanthus lasiophyllus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.4
+    columnClasses: numeric
+  Chaenactis stevioides:
+    attributeName: Chaenactis stevioides
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.2
+    columnClasses: numeric
+  Chamaesyce:
+    attributeName: Chamaesyce
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Chamaesyce albomarginata:
+    attributeName: Chamaesyce albomarginata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.3
+    columnClasses: numeric
+  Chamaesyce polycarpa:
+    attributeName: Chamaesyce polycarpa
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.5
+    columnClasses: numeric
+  Chorizanthe:
+    attributeName: Chorizanthe
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Chorizanthe brevicornu:
+    attributeName: Chorizanthe brevicornu
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.17
+    columnClasses: numeric
+  Chorizanthe rigida:
+    attributeName: Chorizanthe rigida
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Cistanthe monandra:
+    attributeName: Cistanthe monandra
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.002
+    columnClasses: numeric
+  Conyza canadensis:
+    attributeName: Conyza canadensis
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0022422
+    columnClasses: numeric
+  Crassula connata:
+    attributeName: Crassula connata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.6
+    columnClasses: numeric
+  Cryptantha:
+    attributeName: Cryptantha
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.06
+    columnClasses: numeric
+  Cryptantha angustifolia:
+    attributeName: Cryptantha angustifolia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.35
+    columnClasses: numeric
+  Cryptantha barbigera:
+    attributeName: Cryptantha barbigera
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.3
+    columnClasses: numeric
+  Cryptantha decipiens:
+    attributeName: Cryptantha decipiens
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.8097166
+    columnClasses: numeric
+  Cryptantha maritima:
+    attributeName: Cryptantha maritima
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.48
+    columnClasses: numeric
+  Cryptantha pterocarya:
+    attributeName: Cryptantha pterocarya
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Daucus pusillus:
+    attributeName: Daucus pusillus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.03
+    columnClasses: numeric
+  Descurainia pinnata:
+    attributeName: Descurainia pinnata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0366973
+    columnClasses: numeric
+  Dichelostemma capitatum:
+    attributeName: Dichelostemma capitatum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Ditaxis lanceolata:
+    attributeName: Ditaxis lanceolata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.04
+    columnClasses: numeric
+  Ditaxis neomexicana:
+    attributeName: Ditaxis neomexicana
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Ditaxis serrata:
+    attributeName: Ditaxis serrata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.002
+    columnClasses: numeric
+  Draba cuneifolia:
+    attributeName: Draba cuneifolia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.7
+    columnClasses: numeric
+  Eremothera chamaenerioides:
+    attributeName: Eremothera chamaenerioides
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.03
+    columnClasses: numeric
+  Eriastrum diffusum:
+    attributeName: Eriastrum diffusum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.1
+    columnClasses: numeric
+  Eriastrum eremicum:
+    attributeName: Eriastrum eremicum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.08
+    columnClasses: numeric
+  Eriochloa aristata:
+    attributeName: Eriochloa aristata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Eriogonum thomasii:
+    attributeName: Eriogonum thomasii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Eriophyllum lanosum:
+    attributeName: Eriophyllum lanosum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.16
+    columnClasses: numeric
+  Erodium cicutarium:
+    attributeName: Erodium cicutarium
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.6976744
+    columnClasses: numeric
+  Erodium texanum:
+    attributeName: Erodium texanum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.115942
+    columnClasses: numeric
+  Eschscholzia californica:
+    attributeName: Eschscholzia californica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.48
+    columnClasses: numeric
+  Eucrypta:
+    attributeName: Eucrypta
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Eucrypta chrysanthemifolia:
+    attributeName: Eucrypta chrysanthemifolia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.8
+    columnClasses: numeric
+  Eucrypta micrantha:
+    attributeName: Eucrypta micrantha
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.04
+    columnClasses: numeric
+  Gilia stellata:
+    attributeName: Gilia stellata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Gnaphalium:
+    attributeName: Gnaphalium
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Harpagonella palmeri:
+    attributeName: Harpagonella palmeri
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Herniaria hirsuta:
+    attributeName: Herniaria hirsuta
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.1
+    columnClasses: numeric
+  Hordeum murinum:
+    attributeName: Hordeum murinum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Houstonia:
+    attributeName: Houstonia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0364963
+    columnClasses: numeric
+  Lactuca serriola:
+    attributeName: Lactuca serriola
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.005
+    columnClasses: numeric
+  Lasthenia californica:
+    attributeName: Lasthenia californica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0126422
+    columnClasses: numeric
+  Lepidium lasiocarpum:
+    attributeName: Lepidium lasiocarpum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.7
+    columnClasses: numeric
+  Lepidium virginica:
+    attributeName: Lepidium virginica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Linanthus:
+    attributeName: Linanthus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.002
+    columnClasses: numeric
+  Linanthus bigelovii:
+    attributeName: Linanthus bigelovii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.14
+    columnClasses: numeric
+  Linanthus demissus:
+    attributeName: Linanthus demissus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Loeflingia squarrosa:
+    attributeName: Loeflingia squarrosa
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.1
+    columnClasses: numeric
+  Logfia arizonica:
+    attributeName: Logfia arizonica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.43
+    columnClasses: numeric
+  Logfia depressa:
+    attributeName: Logfia depressa
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.03
+    columnClasses: numeric
+  Logfia filaginoides:
+    attributeName: Logfia filaginoides
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Lotus humistratus:
+    attributeName: Lotus humistratus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0840336
+    columnClasses: numeric
+  Lotus salsuginosus:
+    attributeName: Lotus salsuginosus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.21
+    columnClasses: numeric
+  Lotus strigosus:
+    attributeName: Lotus strigosus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0775194
+    columnClasses: numeric
+  Lupinus concinnus:
+    attributeName: Lupinus concinnus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Lupinus sparsiflorus:
+    attributeName: Lupinus sparsiflorus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0900901
+    columnClasses: numeric
+  Matthiola parviflora:
+    attributeName: Matthiola parviflora
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.005
+    columnClasses: numeric
+  Mentzelia affinis:
+    attributeName: Mentzelia affinis
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.0038168
+    columnClasses: numeric
+  Minuartia douglasii:
+    attributeName: Minuartia douglasii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Monolepis nuttalliana:
+    attributeName: Monolepis nuttalliana
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Monoptilon belliodes:
+    attributeName: Monoptilon belliodes
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Nemacladus glanduliferus:
+    attributeName: Nemacladus glanduliferus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Nemacladus rigidus:
+    attributeName: Nemacladus rigidus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Neogaerrhinum filipes:
+    attributeName: Neogaerrhinum filipes
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.002
+    columnClasses: numeric
+  Nicotiana obtusifolia:
+    attributeName: Nicotiana obtusifolia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Oligomeris linifolia:
+    attributeName: Oligomeris linifolia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.04
+    columnClasses: numeric
+  Oncosiphon piluliferum:
+    attributeName: Oncosiphon piluliferum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.16
+    columnClasses: numeric
+  Orobanche cooperi:
+    attributeName: Orobanche cooperi
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Parietaria hespera:
+    attributeName: Parietaria hespera
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Pectocarya:
+    attributeName: Pectocarya
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.98
+    columnClasses: numeric
+  Pectocarya heterocarpa:
+    attributeName: Pectocarya heterocarpa
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.76
+    columnClasses: numeric
+  Pectocarya platycarpa:
+    attributeName: Pectocarya platycarpa
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.75
+    columnClasses: numeric
+  Pectocarya recurvata:
+    attributeName: Pectocarya recurvata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.85
+    columnClasses: numeric
+  Perityle emoryi:
+    attributeName: Perityle emoryi
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Phacelia:
+    attributeName: Phacelia
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Phacelia crenulata:
+    attributeName: Phacelia crenulata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Phacelia distans:
+    attributeName: Phacelia distans
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.25
+    columnClasses: numeric
+  Pholistoma auritum:
+    attributeName: Pholistoma auritum
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.3121099
+    columnClasses: numeric
+  Physaria:
+    attributeName: Physaria
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.01
+    columnClasses: numeric
+  Physaria gordonii:
+    attributeName: Physaria gordonii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.2881844
+    columnClasses: numeric
+  Physaria tenella:
+    attributeName: Physaria tenella
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.6
+    columnClasses: numeric
+  Plagiobothrys arizonicus:
+    attributeName: Plagiobothrys arizonicus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.25
+    columnClasses: numeric
+  Plantago:
+    attributeName: Plantago
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.005
+    columnClasses: numeric
+  Plantago ovata:
+    attributeName: Plantago ovata
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.8
+    columnClasses: numeric
+  Plantago patagonica:
+    attributeName: Plantago patagonica
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.2
+    columnClasses: numeric
+  Poa annua:
+    attributeName: Poa annua
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.002
+    columnClasses: numeric
+  Poa bigelovii:
+    attributeName: Poa bigelovii
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.53
+    columnClasses: numeric
+  Poaceae:
+    attributeName: Poaceae
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Polemoniaceae:
+    attributeName: Polemoniaceae
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Pseudognaphalium:
+    attributeName: Pseudognaphalium
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Rafinesquia neomexicana:
+    attributeName: Rafinesquia neomexicana
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.04
+    columnClasses: numeric
+  Salsola tragus:
+    attributeName: Salsola tragus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.003
+    columnClasses: numeric
+  Salvia columbariae:
+    attributeName: Salvia columbariae
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.005
+    columnClasses: numeric
+  sampled:
+    attributeName: sampled
+    attributeDefinition: 'indicates that the plot_id * year * location_within_plot * subplot combination was sampled'
     propertyURI: ''
     propertyLabel: ''
     valueURI: ''
     valueLabel: ''
-    columnClasses: character
-    definition: ''
+    columnClasses: factor
+  Schismus:
+    attributeName: Schismus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.85
+    columnClasses: numeric
+  Schismus arabicus:
+    attributeName: Schismus arabicus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 1.0
+    columnClasses: numeric
+  Schismus barbatus:
+    attributeName: Schismus barbatus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.23
+    columnClasses: numeric
+  Silene antirrhina:
+    attributeName: Silene antirrhina
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.03
+    columnClasses: numeric
+  Sisymbrium irio:
+    attributeName: Sisymbrium irio
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.12
+    columnClasses: numeric
+  Sonchus:
+    attributeName: Sonchus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  Sonchus oleraceus:
+    attributeName: Sonchus oleraceus
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.06
+    columnClasses: numeric
+  Sphaeralcea coulteri:
+    attributeName: Sphaeralcea coulteri
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.007
+    columnClasses: numeric
+  Stylocline gnaphaloides:
+    attributeName: Stylocline gnaphaloides
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.3
+    columnClasses: numeric
+  Stylocline micropoides:
+    attributeName: Stylocline micropoides
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.11
+    columnClasses: numeric
+  unidentified:
+    attributeName: unidentified
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.02
+    columnClasses: numeric
+  unidentified_2:
+    attributeName: unidentified_2
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  unidentified_3:
+    attributeName: unidentified_3
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.004
+    columnClasses: numeric
+  Uropappus lindleyi:
+    attributeName: Uropappus lindleyi
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.001
+    columnClasses: numeric
+  Vulpia microstachys:
+    attributeName: Vulpia microstachys
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.04
+    columnClasses: numeric
+  Vulpia octoflora:
+    attributeName: Vulpia octoflora
+    attributeDefinition: ''
+    propertyURI: 'http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType'
+    propertyLabel: 'contains measurements of type'
+    valueURI: 'http://purl.dataone.org/odo/ECSO_00001197'
+    valueLabel: 'plant cover percentage'
+    unit: 'FRACTION'
+    numberType: real
+    minimum: 0.0
+    maximum: 0.4
+    columnClasses: numeric

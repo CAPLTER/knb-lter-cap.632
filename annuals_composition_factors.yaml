@@ -57,3 +57,8 @@
         definition: metadata_not_provided
       - code: '2'
         definition: metadata_not_provided
+  - attribute:
+      attributeName: sampled
+      levels:
+      - code: '1'
+        definition: metadata_not_provided
