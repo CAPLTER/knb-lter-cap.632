@@ -9,23 +9,20 @@ fertilization project beginning with version 632.3.
 - The R script file that documents the creation of the database and initial
 publication are also included.
 
-### knb-lter-cap.632.18 *2025-12-xx*
+### knb-lter-cap.632.18 *2026-01-xx*
 
 - data refresh
-- consolidate unidentified annuals cover types:
-
-> cover_id  cover_type  
-> 14343     unidentified_3_2017 -->  unidentified_3  
-> 14339     unidentified_1_2017 -->  unidentified  
-> 14340     unidentified_1_2017 -->  unidentified  
-> 14341     unidentified_1_2017 -->  unidentified  
-> 14342     unidentified_2_2017 -->  unidentified_2  
-> 15514     unidentified_1_2018 -->  unidentified  
-> 15515     unidentified_1_2018 -->  unidentified  
-> 15517     unidentified_3_2018 -->  unidentified_3  
-> 15516     unidentified_2_2018 -->  unidentified_2  
-> 18700     unidentified_1_2019 -->  unidentified  
-
+- major database changes, particularly related to annuals; the most notable changes include:
+  + splitting annuals and plot characteristics into separate tables
+  + converting data from long to wide
+  + addressing data structure, format, and quality issues catalogued in the following issues:
+    - https://github.com/CAPLTER/knb-lter-cap.632/issues/31
+    - https://github.com/CAPLTER/knb-lter-cap.632/issues/30
+    - https://github.com/CAPLTER/knb-lter-cap.632/issues/29
+    - https://github.com/CAPLTER/knb-lter-cap.632/issues/28
+    - https://github.com/CAPLTER/knb-lter-cap.632/issues/27
+    - https://github.com/CAPLTER/knb-lter-cap.632/issues/26
+- minor qmd refactoring
 
 ### knb-lter-cap.632.17 *2024-10-11*
 

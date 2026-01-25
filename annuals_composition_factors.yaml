@@ -3,62 +3,62 @@
       attributeName: site_code
       levels:
       - code: DBG
-        definition: metadata_not_provided
+        definition: "core region: Desert Botanical Garden"
       - code: EME
-        definition: metadata_not_provided
+        definition: "west region: Estrella Mountain Regional Park east"
       - code: EMW
-        definition: metadata_not_provided
+        definition: "west region: Estrella Mountain Regional Park west"
       - code: LDP
-        definition: metadata_not_provided
+        definition: "east region: Lost Dutchman State Park"
       - code: MCN
-        definition: metadata_not_provided
+        definition: "east region: McDowell Mountain Regional north"
       - code: MCS
-        definition: metadata_not_provided
+        definition: "east region: McDowell Mountain Regional south"
       - code: MVP
-        definition: metadata_not_provided
+        definition: "core region: North Mountain"
       - code: PWP
-        definition: metadata_not_provided
+        definition: "core region: Piestewa Peak"
       - code: SME
-        definition: metadata_not_provided
+        definition: "core region: South Mountain Park east"
       - code: SMW
-        definition: metadata_not_provided
+        definition: "core region: South Mountain Park west"
       - code: SNE
-        definition: metadata_not_provided
+        definition: "west region: Sonoran Desert National Monument east"
       - code: SNW
-        definition: metadata_not_provided
+        definition: "west region: Sonoran Desert National Monument west"
       - code: SRR
-        definition: metadata_not_provided
+        definition: "east region: Salt River Recreation Area (Tonto NF)"
       - code: UMP
-        definition: metadata_not_provided
+        definition: "east region: Usery Mountain Regional Park"
       - code: WTM
-        definition: metadata_not_provided
+        definition: "west region: White Tanks Mountain Regional Park"
   - attribute:
       attributeName: treatment_code
       levels:
       - code: C1
-        definition: metadata_not_provided
+        definition: "control plot 1"
       - code: 'N'
-        definition: metadata_not_provided
+        definition: "nitrogen amendment"
       - code: NP
-        definition: metadata_not_provided
+        definition: "nitrogen + phosphorus amendment"
       - code: P
-        definition: metadata_not_provided
+        definition: "phosphorus amendment"
   - attribute:
       attributeName: location_within_plot
       levels:
       - code: IP
-        definition: metadata_not_provided
+        definition: "subplot located in an interplant space"
       - code: P
-        definition: metadata_not_provided
+        definition: "subplot features a Larrea tridentata plant"
   - attribute:
       attributeName: subplot
       levels:
       - code: '1'
-        definition: metadata_not_provided
+        definition: "one of two replicates"
       - code: '2'
-        definition: metadata_not_provided
+        definition: "two of two replicates"
   - attribute:
       attributeName: sampled
       levels:
       - code: '1'
-        definition: metadata_not_provided
+        definition: 'boolean value indicating this year*plot_id*location_within_plot*subplot was sampled; assigned to to indicate that the sampling occurred but there were not any annuals in the plot and/or plot characteristics to record'

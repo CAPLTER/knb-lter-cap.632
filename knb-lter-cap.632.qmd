@@ -39,7 +39,8 @@ ORDER BY
   subplot,
   subquad_orientation
 ;
-")
+"
+)
 
 # change column types as appropriate
 annuals_biomass <- annuals_biomass |>
@@ -51,21 +52,15 @@ annuals_biomass <- annuals_biomass |>
     plot_id              = as.character(plot_id)
   )
 
-# capeml::write_attributes(annuals_biomass)
-# capeml::write_factors(annuals_biomass)
+# try({
+#   capeml::write_attributes(annuals_biomass)
+#   capeml::write_factors(annuals_biomass)
+# })
 
 # capeml::update_attributes(annuals_biomass)
 
-# annuals_biomass_desc <- "Biomass (g) of annual plants harvested from subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. Material is harvested from 0.25 square meter quadrats within each subplot. All harvests occur during the spring."
-
-# annuals_biomass_DT <- capeml::create_dataTable(
-#   dfname         = annuals_biomass,
-#   description    = annuals_biomass_desc,
-#   dateRangeField = "date",
-#   overwrite      = TRUE
-# )
-
 ```
+
 
 # annuals composition and plot characteristics
 
@@ -100,11 +95,20 @@ make_rectangular_wide <- function(
       cover_type     = as.character(cover_type)
     )
 
+  safe_max_date <- function(x) {
+    x <- suppressWarnings(as.Date(x))
+    if (all(is.na(x))) as.Date(NA) else max(x, na.rm = TRUE)
+  }
+  safe_max_num <- function(x) {
+    x <- suppressWarnings(as.numeric(x))
+    if (all(is.na(x))) NA_real_ else max(x, na.rm = TRUE)
+  }
+
   sampled_df <- df |>
     dplyr::filter(cover_category == "record_keeping", cover_type == "sampled") |>
     dplyr::group_by(dplyr::across(all_of(key_cols))) |>
     dplyr::summarise(
-      sampled = suppressWarnings(max(as.numeric(cover_amount), na.rm = TRUE)),
+      sampled = safe_max_num(cover_amount),
       sampled_notes = dplyr::first(stats::na.omit(notes)),
       .groups = "drop"
     )
@@ -118,7 +122,7 @@ make_rectangular_wide <- function(
   meta_df <- df |>
     dplyr::group_by(dplyr::across(all_of(key_cols))) |>
     dplyr::summarise(
-      sample_date = suppressWarnings(max(as.Date(sample_date), na.rm = TRUE)),
+      sample_date = safe_max_date(sample_date),
       # collector   = dplyr::first(stats::na.omit(collector)),
       .groups = "drop"
     )
@@ -162,7 +166,7 @@ make_rectangular_wide <- function(
     dplyr::mutate(
       cover_amount = dplyr::case_when(
         year < year_added ~ NA_real_,
-        TRUE              ~ dplyr::coalesce(cover_amount, 0)
+        TRUE ~ dplyr::coalesce(cover_amount, 0)
       )
     )
 
@@ -218,7 +222,6 @@ make_rectangular_wide <- function(
     dplyr::select(dplyr::any_of(cols_fixed), dplyr::all_of(remaining_cols))
 
   return(out)
-
 }
 
 ```
@@ -268,7 +271,8 @@ FROM
 WHERE
   urbancndep.cover_types.cover_category IN ('annual','record_keeping') AND
   cover_types.include IS NOT FALSE AND
-  cover_composition.cover_amt IS NOT NULL
+  cover_composition.cover_amt IS NOT NULL AND
+  cover_events.year > 2008
 ORDER BY
   cover_events.year,
   sites.code,
@@ -298,22 +302,14 @@ annuals_composition <- annuals_composition |>
     location_within_plot = as.factor(location_within_plot),
     subplot              = as.factor(subplot),
     sampled              = as.factor(sampled)
-    # cover_type           = as.factor(cover_type),
-    # cover_category       = as.factor(cover_category)
   )
 
-capeml::write_attributes(annuals_composition)
-capeml::write_factors(annuals_composition)
+# try({
+#   capeml::write_attributes(annuals_composition)
+#   capeml::write_factors(annuals_composition)
+# })
+
 # capeml::update_attributes(annuals_composition)
-
-# annuals_composition_desc <- "Composition of annual plants and some other characteristics (e.g., bare soil, base or canopy of perennial plants) at subplots within Desert Fertilization study plots. One-meter subplots include locations around a Larrea tridentata plant and locations in the interplant space between shrubs. All measurements collected in the spring."
-
-# do not add date range since early years did not have a full date
-# annuals_composition_DT <- capeml::create_dataTable(
-#   dfname      = annuals_composition,
-#   description = annuals_composition_desc,
-#   overwrite   = TRUE
-# )
 
 ```
 
@@ -346,7 +342,8 @@ FROM
 WHERE
   cover_types.cover_category IN ('plot characteristic','record_keeping') AND
   cover_types.include IS NOT FALSE AND
-  cover_composition.include IS NOT FALSE
+  cover_composition.include IS NOT FALSE AND
+  cover_events.year > 2008
 ORDER BY
   cover_events.year,
   sites.code,
@@ -382,12 +379,12 @@ annuals_plot_characteristics <- annuals_plot_characteristics |>
     location_within_plot = as.factor(location_within_plot),
     subplot              = as.factor(subplot),
     sampled              = as.factor(sampled)
-    # cover_type           = as.factor(cover_type),
-    # cover_category       = as.factor(cover_category)
   )
 
-capeml::write_attributes(annuals_plot_characteristics)
-capeml::write_factors(annuals_plot_characteristics)
+# try({
+#   capeml::write_attributes(annuals_plot_characteristics)
+#   capeml::write_factors(annuals_plot_characteristics)
+# })
 
 ```
 
@@ -489,18 +486,12 @@ fertilizer_application <- DBI::dbGetQuery(
 fertilizer_application <- fertilizer_application |>
   dplyr::mutate(site_code = as.factor(site_code))
 
-# write_attributes(fertilizer_application)
-# write_factors(fertilizer_application)
-capeml::update_attributes(fertilizer_application)
+# try({
+#   capeml::write_attributes(fertilizer_application)
+#   capeml::write_factors(fertilizer_application)
+# })
 
-# fertilizer_application_desc <- "catalog of amounts and timing of nitrogen and phosphorus fertilizer applications to nitrogen (N), phosphorus (P), and nitrogen+phosphorus (N+P) treatment plots - applications are delivered to the respective plot at the site that receives either N, P, or an N+P addition, except control sites (n = 2) that do not receive a fertilizer amendment"
-
-# fertilizer_application_DT <- capeml::create_dataTable(
-#   dfname         = fertilizer_application,
-#   description    = fertilizer_application_desc,
-#   dateRangeField = "application_date",
-#   overwrite      = TRUE
-# )
+# capeml::update_attributes(fertilizer_application)
 
 ```
 
@@ -572,9 +563,12 @@ stem_growth <- stem_growth |>
     post_note        = gsub("[\r\n]", "", post_note)
   )
 
-# write_attributes(stem_growth)
-# write_factors(stem_growth)
-capeml::update_attributes(stem_growth)
+# try({
+#   capeml::write_attributes(stem_growth)
+#   capeml::write_factors(stem_growth)
+# })
+
+# capeml::update_attributes(stem_growth)
 
 # stem_growth_desc <- "Biannual measures of stem growth on five Larrea tridentata study plants in Desert Fertilization experiment treatment and control plots"
 
@@ -643,16 +637,8 @@ plant_root_simulator <- plant_root_simulator |>
 #   capeml::write_attributes(plant_root_simulator, overwrite = FALSE)
 #   capeml::write_factors(plant_root_simulator, overwrite = FALSE)
 # })
-capeml::update_attributes(plant_root_simulator)
 
-# plant_root_simulator_desc <- "Soil ion concentrations as determined with Plant Root Simulator (PRS®) probes (ion exchange resin membranes). Probes for the analyses of soil anions have a positively-charged membrane to simultaneously attract and adsorb all negatively-charged anions, such as nitrate (NO3-), phosphate (H2PO4-, HPO42-), and sulphate (SO42-), whereas cation probes have a negatively-charged membrane to simultaneously attract and adsorb all positively-charged cations, such as ammonium (NH4+), potassium (K+), calcium (Ca2+), and magnesium (Mg2+)."
-
-# plant_root_simulator_DT <- capeml::create_dataTable(
-#   dfname         = plant_root_simulator,
-#   description    = plant_root_simulator_desc,
-#   dateRangeField = "start_date",
-#   overwrite      = TRUE
-# )
+# capeml::update_attributes(plant_root_simulator)
 
 ```
 
@@ -694,8 +680,10 @@ dplyr::select(
   geometry
 )
 
-# capeml::write_attributes(desert_fertilization_sampling_sites, overwrite = FALSE)
-# capeml::update_attributes(desert_fertilization_sampling_sites)
+# try({
+#   capeml::write_attributes(desert_fertilization_sampling_sites, overwrite = FALSE)
+#   capeml::write_factors(desert_fertilization_sampling_sites, overwrite = FALSE)
+# })
 
 desert_fertilization_sampling_sites_desc <- "approximate location of desert fertilization long-term study sites"
 
@@ -763,8 +751,10 @@ tissue_chn <- tissue_chn |>
     analyte
   )
 
-# capeml::write_attributes(tissue_chn)
-# capeml::write_factors(tissue_chn) 
+# try({
+#   capeml::write_attributes(tissue_chn)
+#   capeml::write_factors(tissue_chn)
+# })
 
 # no need to edit until we upload new data
 # capeml::update_attributes(tissue_chn)
@@ -822,8 +812,10 @@ dplyr::mutate(
   instrument     = as.factor(instrument)
 )
 
-# capeml::write_attributes(tissue_icp)
-# capeml::write_factors(tissue_icp)
+# try({
+#   capeml::write_attributes(tissue_icp)
+#   capeml::write_factors(tissue_icp)
+# })
 
 # tissue_icp_desc <- "Elemental composition of Larrea tridentata leaf tissue and Pectocarya recurvata (whole plant) tissue collected from control plots at Desert Fertilization study sites. Most analyses are by ICP-MS except Sulfur (S), which is typically analyzed by ICP-OES with the instrument type noted in the instrument field."
 
@@ -982,16 +974,8 @@ dplyr::mutate(
 #   capeml::write_attributes(atmospheric_deposition, overwrite = FALSE)
 #   capeml::write_factors(atmospheric_deposition, overwrite = FALSE)
 # })
-capeml::update_attributes(atmospheric_deposition)
 
-# atmospheric_deposition_desc <- "ammonium-nitrogen and nitrate-nitrogen as measured by ion exchange resin (IER) collectors that are used to measure bulk (wet) deposition in interplant open spaces and throughfall (wet and dry) deposition under the dominant shrub"
-
-# atmospheric_deposition_DT <- capeml::create_dataTable(
-#   dfname         = atmospheric_deposition,
-#   description    = atmospheric_deposition_desc,
-#   dateRangeField = "collection_date",
-#   overwrite      = TRUE
-# )
+# capeml::update_attributes(atmospheric_deposition)
 
 ```
 
@@ -1019,7 +1003,6 @@ getMaxDate <- function() {
   
 }
 
-
 geographic_coverage <- split(
   x = desert_fertilization_sampling_sites,
   f = desert_fertilization_sampling_sites$site
@@ -1042,6 +1025,7 @@ geographicCoverage = geographic_coverage
 ) # close coverage
 
 ```
+
 
 ## taxonomic coverage
 
@@ -1124,7 +1108,7 @@ capeml::write_cap_eml()
 source("~/Documents/localSettings/aws.s3")
 
 lapply(
-  X   = list.files(pattern = "41_"),
+  X   = list.files(pattern = "632_"),
   FUN = capeml::data_to_amz
 )
 

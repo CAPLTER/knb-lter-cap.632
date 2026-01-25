@@ -30,13 +30,9 @@ UPDATE urbancndep.cover_types
 
 DELETE FROM urbancndep.cover_types
  WHERE cover_type_id IN (
-   156, -- Asclepias
-   175, -- Logfia
-   174, -- Lotus
-   177, -- Lupinus
    40,  -- Mirabilis_bigelovii
    41,  -- Orthocarpus_purpurascens
-   176  -- Parietaria
+   156  -- Asclepias
  );
 
 -- Update NULL year_added values only

@@ -61,4 +61,4 @@
       attributeName: sampled
       levels:
       - code: '1'
-        definition:'boolean value indicating this year*plot_id*location_within_plot*subplot was sampled; assigned to each event in 2008-2022; used to indicate event occurred in cases where no annuals or plot characteristics were recorded' 
+        definition: 'boolean value indicating this year*plot_id*location_within_plot*subplot was sampled; assigned to to indicate that the sampling occurred but there were not any annuals in the plot and/or plot characteristics to record'

@@ -1,2 +1,18 @@
 - name: GM
   description: Gram
+- name: FRACTION
+  description: Fraction
+- name: KiloGM
+  description: kilogram
+- name: MilliM
+  description: Millimeter
+- name: microgramPerTenSquareCentimeterPerBurialLength
+  description: ''
+- name: NUM
+  description: Number
+- name: PERCENT
+  description: Percent
+- name: MilliGM-PER-KiloGM
+  description: Milligram Per Kilogram
+- name: MilliGM-PER-L
+  description: Milligram Per Liter

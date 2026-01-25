@@ -1,6 +1,1038 @@
 - name: GM
   valueLabel: Gram
   valueURI: http://qudt.org/vocab/unit/GM
-  references: 31eeda61b745966cdc965f4b6c89ae9b_9
+  references: ffc4061c77b2b8e321344644a172d145_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_10
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_100
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_101
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_102
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_103
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_104
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_105
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_106
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_107
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_108
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_109
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_110
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_111
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_112
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_113
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_114
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_115
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_116
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_117
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_118
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_119
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_12
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_120
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_121
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_122
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_123
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_124
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_125
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_126
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_127
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_128
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_13
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_130
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_131
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_132
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_133
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_134
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_135
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_136
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_137
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_138
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_139
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_14
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_140
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_141
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_142
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_143
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_144
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_145
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_15
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_16
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_17
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_18
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_19
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_20
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_21
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_22
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_23
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_24
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_25
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_26
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_27
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_28
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_29
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_30
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_31
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_32
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_33
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_34
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_35
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_36
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_37
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_38
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_39
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_40
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_41
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_42
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_43
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_44
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_45
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_46
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_47
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_48
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_49
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_50
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_51
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_52
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_53
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_54
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_55
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_56
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_57
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_58
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_59
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_60
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_61
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_62
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_63
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_64
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_65
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_66
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_67
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_68
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_69
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_70
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_71
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_72
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_73
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_74
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_75
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_76
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_77
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_78
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_79
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_80
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_81
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_82
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_83
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_84
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_85
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_86
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_87
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_88
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_89
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_90
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_91
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_92
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_93
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_94
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_95
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_96
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_97
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_98
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 1bd34b1c81142575ae0b75e817ccd5c5_99
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_10
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_12
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_13
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_14
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_15
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_16
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_17
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_18
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_19
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_20
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_21
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_22
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_23
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_24
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_25
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_26
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_27
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_28
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_29
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_30
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_31
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_32
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_34
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_35
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_36
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: FRACTION
+  valueLabel: Fraction
+  valueURI: http://qudt.org/vocab/unit/FRACTION
+  references: 203db0800ce014e90c1f2fb0ef4d8e3e_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: KiloGM
+  valueLabel: kilogram
+  valueURI: http://qudt.org/vocab/unit/KiloGM
+  references: 7f8cbcb9dee9a7336a12fc2fc7e20dc0_3
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: KiloGM
+  valueLabel: kilogram
+  valueURI: http://qudt.org/vocab/unit/KiloGM
+  references: 7f8cbcb9dee9a7336a12fc2fc7e20dc0_4
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliM
+  valueLabel: Millimeter
+  valueURI: http://qudt.org/vocab/unit/MilliM
+  references: 984875778bb8278a0b42f5be5cd68b6d_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: NUM
+  valueLabel: Number
+  valueURI: http://qudt.org/vocab/unit/NUM
+  references: a8a7fbf633e0d4a7100a4cfaceaf33da_10
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: NUM
+  valueLabel: Number
+  valueURI: http://qudt.org/vocab/unit/NUM
+  references: a8a7fbf633e0d4a7100a4cfaceaf33da_11
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: GM
+  valueLabel: Gram
+  valueURI: http://qudt.org/vocab/unit/GM
+  references: afad0a7c34532f93b636d6096c1b5e85_6
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: PERCENT
+  valueLabel: Percent
+  valueURI: http://qudt.org/vocab/unit/PERCENT
+  references: afad0a7c34532f93b636d6096c1b5e85_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliGM-PER-KiloGM
+  valueLabel: Milligram Per Kilogram
+  valueURI: http://qudt.org/vocab/unit/MilliGM-PER-KiloGM
+  references: 9deb3c6f2a60ae7ebf82b947ff094476_9
+  propertyLabel: has unit
+  propertyURI: http://qudt.org/schema/qudt/hasUnit
+- name: MilliGM-PER-L
+  valueLabel: Milligram Per Liter
+  valueURI: http://qudt.org/vocab/unit/MilliGM-PER-L
+  references: 13add84d7b18e40c42c612b2d29f6c37_6
   propertyLabel: has unit
   propertyURI: http://qudt.org/schema/qudt/hasUnit
