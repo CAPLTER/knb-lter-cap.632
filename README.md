@@ -9,6 +9,52 @@ fertilization project beginning with version 632.3.
 - The R script file that documents the creation of the database and initial
 publication are also included.
 
+### a note about annuals cover events
+
+We are clarifying the rare cases of annuals sampling where there are not any
+annual plants present in a plot with more consistent and diligent use of the
+`sampled = 1` value for such records. What that does not cover, however, are
+cases when a subplot was not sampled. This may be self evident by lack of a
+record for a year*plot*location*subplot combination but there is not a clear
+way to make this explicit. In the meantime, below we document cases where
+subplots were not sampled for a variety of reasons. Note that this does not
+address the COVID era when field work was curtailed and entire sites were
+skipped.
+
+> There are a few plots in 2017 and 2018 for which we have not recorded any
+> annual plants or plot characteristics despite having recorded observations at
+> other, adjacent plots in the same year.
+
+| year| plot_id|site_code |sample_date |treatment_code |location_within_plot | subplot| chars_missing_count|
+|----:|-------:|:---------|:-----------|:--------------|:--------------------|-------:|-------------------:|
+| 2017|      37|MVP       |2017-03-16  |NP             |IP                   |       1|                   3|
+| 2017|      37|MVP       |2017-03-16  |NP             |IP                   |       2|                   3|
+| 2017|      37|MVP       |2017-03-16  |NP             |P                    |       1|                   3|
+| 2018|      38|MVP       |2018-03-19  |C1             |IP                   |       2|                   3|
+| 2018|      38|MVP       |2018-03-19  |C1             |P                    |       1|                   3|
+| 2018|      38|MVP       |2018-03-19  |C1             |P                    |       2|                   3|
+| 2018|      39|MVP       |2018-03-19  |P              |IP                   |       1|                   3|
+| 2018|      39|MVP       |2018-03-19  |P              |P                    |       1|                   3|
+| 2018|      39|MVP       |2018-03-19  |P              |P                    |       2|                   3|
+| 2018|      15|SRR       |2018-03-19  |N              |IP                   |       1|                   3|
+| 2018|      15|SRR       |2018-03-19  |N              |P                    |       1|                   3|
+| 2018|      15|SRR       |2018-03-19  |N              |P                    |       2|                   3|
+| 2018|       6|UMP       |2018-03-21  |NP             |IP                   |       1|                   3|
+| 2018|       6|UMP       |2018-03-21  |NP             |P                    |       1|                   3|
+| 2018|       6|UMP       |2018-03-21  |NP             |P                    |       2|                   3|
+| 2018|      37|MVP       |2018-03-19  |NP             |IP                   |       1|                   2|
+| 2018|      37|MVP       |2018-03-19  |NP             |P                    |       1|                   2|
+
+data assessment by C. Hauck:
+
+- 2017 37 MVP P2 no data were taken because "subplot not found"
+- 2018 6 UMP IP2 no data were taken because "rebar missing -> not sampled"
+- 2018 15 SRR IP2 no data were taken because "disturbed and markers removed"
+- 2018 37 MVP P2 and IP2 no data were taken because "could not find plots"
+- 2018 38 MVP IP1 no data were taken because "2nd re-bar missing: not sampled"
+- 2018 39 MVP IP2 no data were taken because "1 re-bar missing: not sampled"
+
+
 ### knb-lter-cap.632.18 *2026-01-xx*
 
 - data refresh
