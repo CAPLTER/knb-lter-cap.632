@@ -1130,7 +1130,7 @@ EDIutils::logout()
 #| eval: TRUE
 #| label: clean
 
-file.remove(c(list.files(pattern = "^41_")))
+file.remove(c(list.files(pattern = "^632_")))
 capeml::eml_to_amz(list.files(pattern = "knb.+xml"))
 # file.copy(list.files(pattern = "knb.+xml"), "/home/srearl/localRepos/cap-metadata/cap-data-eml/")
 

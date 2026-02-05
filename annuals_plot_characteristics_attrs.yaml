@@ -91,18 +91,6 @@
     minimum: 0.0
     maximum: 0.9
     columnClasses: numeric
-  Ambrosia_stem:
-    attributeName: Ambrosia_stem
-    attributeDefinition: 'characterizing dead or broken branches of a plant of this type that have fallen into the plot'
-    propertyURI: ''
-    propertyLabel: ''
-    valueURI: ''
-    valueLabel: ''
-    unit: 'FRACTION'
-    numberType: real
-    minimum: 0.0
-    maximum: 0.75
-    columnClasses: numeric
   Bebbia_juncea_cover:
     attributeName: Bebbia_juncea_cover
     attributeDefinition: 'cover of the over story of a plant of this type within the plot or overhanging the subplot'

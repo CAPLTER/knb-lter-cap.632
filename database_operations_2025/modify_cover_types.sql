@@ -36,7 +36,8 @@ WHERE
     cover_type = 'total_comparable_annual_cover' OR
     cover_type = 'bare_ground' OR
     cover_type ~~* '%bryophyta%' OR
-    cover_type ~~* '%riccia%' 
+    cover_type ~~* '%riccia%' OR
+    cover_type = 'Ambrosia_stem'
 ;
 
 UPDATE urbancndep.cover_types
